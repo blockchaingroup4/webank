@@ -9,7 +9,7 @@ build_chain.sh的代码可以分为三部分：声明和定义全局变量、定
 打印帮助信息
 2. LOG_WARN()    
 打印警告信息
-3. LOG_INFO()
+3. LOG_INFO()   
 打印普通信息
 4. print_result()    
 打印脚本的执行结果
