@@ -33,7 +33,7 @@ TaSSL是国密版OpenSSL，这个函数主要检查是否有已经安装TaSSL，
 3. dir_must_not_exists()   
 判断目录是否存在，如果存在则输出提示（删除旧的目录）并结束脚本
 
-###### 用来生成证书、配置文件的函数
+###### 用来生成证书、密钥、配置文件的函数
 1. gen_chain_cert()
 2. gen_chain_cert_gm()
 3. gen_agency_cert()
@@ -53,7 +53,6 @@ TaSSL是国密版OpenSSL，这个函数主要检查是否有已经安装TaSSL，
 17. genTransTest()
 18. generate_server_scripts()
 
-
 ###### 用来解析的函数
 1. parse_params()   
 解析命令行参数，总共有18个选项，help函数中给出了这18个选项的作用，如-C用来设置生成的区块链的id，-f用来指定ip文件，而如果有-c则使用Raft共识算法，没有-c则默认使用PBFT共识算法......
@@ -65,12 +64,17 @@ TaSSL是国密版OpenSSL，这个函数主要检查是否有已经安装TaSSL，
 根据路径生成名字
 2. main()    
 main函数，大部分操作是在main函数中发生中，大概可以分为七部分
-    1. 准备输出目录
-    2. 处理ip参数
-    3. 获取fisco版本、下载并校验fisco-bcos
-    4. 准备CA
-    5. 如果使用国密模式，则执行一些与国密模式相关的操作
-    6. 生成密钥
+    1. 准备输出目录   
+    确保输出目录不存在，并且创建目录。默认的输出目录名是nodes，可以通过-o选项指定目录名。
+    2. 处理ip参数   
+    可以通过-l选项从命令行给出ip地址（可以有多个，用逗号分隔），也可以通过-f选项从指定的文件给出ip地址。有多少个ip地址，就有多少个agency和group；如果是用命令行参数给出ip地址，那么agency默认是"agency"，group默认是1；根据参数或者文件得到ip_array，后面会对每个ip都执行操作。
+    3. 获取fisco版本、下载并校验fisco-bcos  
+    可以通过-v选项指定fisco的版本，如果没有指定版本，那么默认使用master版本。
+    4. 准备CA   
+    如果CA文件已经存在，那么就会跳过这一步。如果不存在的话，首先，它会先确保${output_dir}/chain目录不存在，然后调用gen_chain_cert生成区块链的证书，然后再调用gen_agency_cert为每个代理生成证书。
+    5. 处理国密模式   
+    如果使用-g选项，那么就会使用国密模式。首先，它会先检查并安装TaSSL，然后调用generate_cert_conf_gm生成国密版的证书配置，然后调用gen_chain_cert_gm生成国密版的区块链证书，最后调用gen_agency_cert_gm生成国密版的代理证书（只有一个）。
+    6. 生成密钥   
     7. 生成配置
 
 ### 调用函数
