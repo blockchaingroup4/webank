@@ -37,7 +37,7 @@ TaSSL是国密版OpenSSL，这个函数主要检查是否有已经安装TaSSL，
 1. gen_chain_cert()
 2. gen_chain_cert_gm()
 3. gen_agency_cert()
-4. gen_agency_cert_gem()
+4. gen_agency_cert_gm()
 5. gen_node_cert()
 6. gen_cert_secp256k1()
 7. gen_node_cert_gm()
