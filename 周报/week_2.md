@@ -107,7 +107,7 @@ https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/index.html 
   	&emsp;&emsp;• Key Manager必须实时在线，响应节点的启动请求。   
   	&emsp;&emsp;• 当节点启动时，发来cipherDataKey，Key Manager用superKey对cipherDataKey进行解密，若解密成功，就将节点的dataK返回给节点。   
   	&emsp;&emsp;• Key Manager只能在内网访问，机构内的外网无法访问Key Manager.  
-![落盘加密](./images/落盘加密.png)
+![落盘加密](个人工作/陈思源/images/落盘加密.png)
 
 #### 知识点二：国密支持方案
 
