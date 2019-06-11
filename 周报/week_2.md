@@ -114,7 +114,7 @@ https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/index.html 
 为了充分支持国产密码学算法，金链盟基于国产密码学标准，实现了国密加解密、签名、验签、哈希算法、国密SSL通信协议，并将其集成到FISCO BCOS平台中，实现了对国家密码局认定的商用密码的完全支持。
 
 国密版FISCO BCOS将交易签名验签、p2p网络连接、节点连接、数据落盘加密等底层模块的密码学算法均替换为国密算法，国密版FISCO BCOS与标准版主要特性对比如下：
-![国密支持方案](./images/国密支持方案.png)
+![国密支持方案](./陈思源/images/国密支持方案.png)
 
 #### 知识点三：FISCO BCOS系统设计
 **整体架构**  
@@ -126,21 +126,21 @@ https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/index.html 
 • 管理层: 实现区块链的管理功能，包括参数配置、账本管理和AMOP      
 • 接口层: 面向区块链用户，提供多种协议的RPC接口、SDK和交互式控制台    
 FISCO BCOS基于多群组架构实现了强扩展性的群组多账本，基于清晰的模块设计，构建了稳定、健壮的区块系统。
-![架构设计](./images/F_S_structure.png)
+![架构设计](./陈思源/images/F_S_structure.png)
 
 **特点：群组架构**   
 考虑到真实的业务场景需求，FISCO BCOS引入多群组架构，支持区块链节点启动多个群组，群组间交易处理、数据存储、区块共识相互隔离，保障区块链系统隐私性的同时，降低了系统的运维复杂度。
-![群组架构](./images/qunzu.png)
+![群组架构](./陈思源/images/qunzu.png)
 
 多群组架构中，群组间共享网络，通过网络准入和账本白名单实现各账本间网络消息隔离。
-![群组架构](./images/qunzu_2.png)
+![群组架构](./陈思源/images/qunzu_2.png)
 群组间数据隔离，每个群组独立运行各自的共识算法，不同群组可使用不同的共识算法。每个账本模块自底向上主要包括核心层、接口层和调度层三层，这三层相互协作，FISCO BCOS可保证单个群组独立健壮地运行。
 
 • 核心层   
 核心层负责将群组的区块数据、区块信息、系统表以及区块执行结果写入底层数据库。
 
 存储分为世界状态(State)和分布式存储(AMDB)两部分，世界状态包括MPTState和StorageState，负责存储交易执行的状态信息，StorageState性能高于MPTState，但不存储区块历史信息；AMDB则向外暴露简单的查询(select)、提交(commit)和更新(update)接口，负责操作合约表、系统表和用户表，具有可插拔特性，后端可支持多种数据库类型，目前仅支持LevelDB数据库，后期会把基于mysql的AMDB集成到系统中。
-![核心层](./images/store_layer.png)
+![核心层](./陈思源/images/store_layer.png)
 
 • 接口层   
 接口层包括交易池(TxPool)、区块链(BlockChain)和区块执行器(BlockVerifier)三个模块。    
