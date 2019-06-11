@@ -133,7 +133,7 @@ FISCO BCOS基于多群组架构实现了强扩展性的群组多账本，基于�
 ![群组架构](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/qunzu.png)
 
 多群组架构中，群组间共享网络，通过网络准入和账本白名单实现各账本间网络消息隔离。
-![群组架构](.https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/qunzu_2.png)
+![群组架构](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/qunzu_2.png)
 群组间数据隔离，每个群组独立运行各自的共识算法，不同群组可使用不同的共识算法。每个账本模块自底向上主要包括核心层、接口层和调度层三层，这三层相互协作，FISCO BCOS可保证单个群组独立健壮地运行。
 
 • 核心层   
@@ -168,7 +168,7 @@ P2P主要功能
 • 单播，单个区块链节点向单个区块链节点发送消息，通过区块链节点标识寻址    
 • 组播，单个区块链节点向一组区块链节点发送消息，通过Topic寻址    
 • 广播，单个区块链节点向所有区块链节点发送消息    
-![消息收发]https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_2.png)
+![消息收发]（https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_2.png)
 ![消息收发](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_3.png)
 ![消息收发](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_4.png)
 状态同步：     
