@@ -168,7 +168,7 @@ P2P主要功能
 • 单播，单个区块链节点向单个区块链节点发送消息，通过区块链节点标识寻址    
 • 组播，单个区块链节点向一组区块链节点发送消息，通过Topic寻址    
 • 广播，单个区块链节点向所有区块链节点发送消息    
-![消息收发]（https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_2.png)
+![消息收发](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_2.png)
 ![消息收发](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_3.png)
 ![消息收发](https://github.com/blockchaingroup4/webank/blob/master/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E4%BD%9C/%E9%99%88%E6%80%9D%E6%BA%90/images/p2p_4.png)
 状态同步：     
