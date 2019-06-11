@@ -18,3 +18,7 @@
 # 3. 个人周报
 ## 第一周周报
 [张羽颀第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E5%BC%A0%E7%BE%BD%E9%A2%80_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)
+[李冠海第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E6%9D%8E%E5%86%A0%E6%B5%B7_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)
+[石望华第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E7%9F%B3%E6%9C%9B%E5%8D%8E_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)
+[贾学羽第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E8%B4%BE%E5%AD%A6%E9%9B%A8_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)
+[陈思源第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E9%99%88%E6%80%9D%E6%BA%90_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)
