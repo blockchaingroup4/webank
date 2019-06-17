@@ -23,7 +23,7 @@
 
 [石望华第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E7%9F%B3%E6%9C%9B%E5%8D%8E_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)  
  
-[贾学羽第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E8%B4%BE%E5%AD%A6%E9%9B%A8_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)  
+[贾学雨第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E8%B4%BE%E5%AD%A6%E9%9B%A8_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)  
 
 [陈思源第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E9%99%88%E6%80%9D%E6%BA%90_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)  
 
