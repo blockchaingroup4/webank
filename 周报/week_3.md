@@ -1,5 +1,6 @@
 # 第三周周报
 -------
+# 1. 李冠海
 ## 周一
 继续分析block_chain.sh源代码，并完善报告和ppt
 
@@ -159,3 +160,32 @@ repositories {
 ## 周五 （2019/6/14）
 
 ### 配置SDK环境，进行JAVA SDK开发。
+
+-------
+# 1. 石望华
+
+### 6.10  周一
+
+- 分析build_chain.sh的第22至32个函数，详见《read_build_chain.md》
+- 补充思维导图《build_chain\_思维导图.xmind》
+- 读<https://mp.weixin.qq.com/s/nRwHxt2E1TJiopJqLSvMOQ>，了解证书机制
+
+### 6.11  周二
+
+- 分析build_chain.sh的最后一个函数，main函数，详见《read_build_chain.md》
+- 上课，详见《上课笔记.md》，主要讲了以太坊、Solidity语言、FISCO-BCOS的构成
+
+### 6.12  周三
+
+- 上午学Loom Solidity教程第一课和第二课
+- 下午学Loom Solidity教程第三课
+- 实现虚拟机共享文件功能。。。
+- 复习之前运行过的部署、调用等命令
+
+### 6.13  周四
+
+- 在remix上写代码
+
+### 6.14-6.16  周五-周日
+
+​	放假
