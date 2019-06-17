@@ -27,9 +27,7 @@
 
 [陈思源第一周周报](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/%E7%AC%AC%E4%B8%80%E5%91%A8/%E9%99%88%E6%80%9D%E6%BA%90_%E7%AC%AC%E4%B8%80%E5%91%A8%E5%91%A8%E6%8A%A5.md)  
 
-[第二周周报整合版]
-(https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_2.md)
+[第二周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_2.md)  
 
-[第三周周报整合版]
-(https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_3.md)
+[第三周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_3.md)
 
