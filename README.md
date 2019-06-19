@@ -1,4 +1,4 @@
-# Learn_FISCO-BCOS
+# FISCO-BCOS of webank
 
 # 1. 项目简介
 
