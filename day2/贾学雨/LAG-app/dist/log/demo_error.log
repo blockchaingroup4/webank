@@ -1,0 +1,2 @@
+[ERROR] [2019-06-19 16:05:46] org.fisco.bcos.LAG.client.LAGClient.transferLAG(163) |  registerLAGAccount exception, error message is  load LAG contract address failed, please deploy it first. 
+[ERROR] [2019-06-19 16:06:19] org.fisco.bcos.LAG.client.LAGClient.transferLAG(163) |  registerLAGAccount exception, error message is Index: 0, Size: 0
