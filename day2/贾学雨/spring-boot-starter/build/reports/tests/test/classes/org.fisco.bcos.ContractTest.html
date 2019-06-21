@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.fisco.bcos.ContractTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.fisco.bcos.ContractTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.fisco.bcos.html">org.fisco.bcos</a> &gt; ContractTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.923s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">deployAndCallHelloWorld</td>
+<td class="success">1.923s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2019-06-20 13:45:28,586 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:308 - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.fisco.bcos.ContractTest], using SpringBootContextLoader
+2019-06-20 13:45:28,587 [Test worker] INFO  [o.s.test.context.support.AbstractContextLoader] AbstractContextLoader.java:264 - Could not detect default resource locations for test class [org.fisco.bcos.ContractTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-06-20 13:45:28,591 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:248 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-06-20 13:45:28,592 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:177 - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@d55fdb0, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@22ec3b2c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@64b8ac2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@20c985ed, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2534439, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@41a52a04, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1be2b568, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7768ad14, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@6f824d4c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@79fbfb2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@95813dc]
+2019-06-20 13:45:28,599 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-20 13:45:28,601 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-20 13:45:28,988 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:274d5557488a47fa9ca18507b876f024
+2019-06-20 13:45:28,989 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:718 - callback is null
+HelloWorld address is: 0x4e2e91447f97aae76e8150d7d6af6646b8a810c3
+2019-06-20 13:45:30,147 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:218 - response: {&quot;id&quot;:10,&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;result&quot;:&quot;0xa1ece66ee796d9db70dded70d3266753d969ffed21312e7ca2e081afdfd4cceb&quot;}
+
+2019-06-20 13:45:30,506 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:651635c54c3744de93a2cc5c54ebbe36
+2019-06-20 13:45:30,507 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:697 - found callback transaction callback
+Hello, World!
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.3.1</a> at 2019-6-20 13:45:30</p>
+</div>
+</div>
+</body>
+</html>

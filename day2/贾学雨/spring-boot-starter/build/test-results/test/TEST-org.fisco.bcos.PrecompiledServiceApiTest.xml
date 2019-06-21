@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.fisco.bcos.PrecompiledServiceApiTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-20T05:45:17" hostname="pc-HP-EliteOne-800-G2-23-in-Non-Touch-AiO" time="0.356">
+  <properties/>
+  <testcase name="testSystemConfigService" classname="org.fisco.bcos.PrecompiledServiceApiTest" time="0.356"/>
+  <system-out><![CDATA[13:45:14,136 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+13:45:14,136 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.groovy] at [file:/home/pc/LAG/spring-boot-starter/build/resources/main/logback.groovy]
+13:45:14,887 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+13:45:14,889 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Naming appender as [CONSOLE]
+13:45:15,014 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+13:45:15,015 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Naming appender as [FILE_INFO]
+13:45:15,043 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@288060450 - No compression will be used
+13:45:15,044 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@288060450 - Will use the pattern logs/spring-boot-starter/info.created_on_%d{yyyy-MM-dd}.part_%i.log for the active file
+13:45:15,045 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@7929e860 - The date pattern is 'yyyy-MM-dd' from file name pattern 'logs/spring-boot-starter/info.created_on_%d{yyyy-MM-dd}.part_%i.log'.
+13:45:15,045 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@7929e860 - Roll-over at midnight.
+13:45:15,048 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@7929e860 - Setting initial period to Thu Jun 20 13:45:15 CST 2019
+13:45:15,048 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@7929e860 - SizeAndTimeBasedFNATP is deprecated. Use SizeAndTimeBasedRollingPolicy instead
+13:45:15,048 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@7929e860 - For more information see http://logback.qos.ch/manual/appenders.html#SizeAndTimeBasedRollingPolicy
+13:45:15,052 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_INFO] - Active log file name: logs/spring-boot-starter/info.created_on_2019-06-20.part_0.log
+13:45:15,052 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_INFO] - File property is set to [null]
+13:45:15,053 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+13:45:15,054 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Naming appender as [FILE_ERROR]
+13:45:15,060 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1545422065 - No compression will be used
+13:45:15,060 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1545422065 - Will use the pattern logs/spring-boot-starter/error.created_on_%d{yyyy-MM-dd}.part_%i.log for the active file
+13:45:15,061 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@3cb69467 - The date pattern is 'yyyy-MM-dd' from file name pattern 'logs/spring-boot-starter/error.created_on_%d{yyyy-MM-dd}.part_%i.log'.
+13:45:15,061 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@3cb69467 - Roll-over at midnight.
+13:45:15,061 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@3cb69467 - Setting initial period to Thu Jun 20 13:45:15 CST 2019
+13:45:15,061 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@3cb69467 - SizeAndTimeBasedFNATP is deprecated. Use SizeAndTimeBasedRollingPolicy instead
+13:45:15,061 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@3cb69467 - For more information see http://logback.qos.ch/manual/appenders.html#SizeAndTimeBasedRollingPolicy
+13:45:15,064 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_ERROR] - Active log file name: logs/spring-boot-starter/error.created_on_2019-06-20.part_0.log
+13:45:15,064 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_ERROR] - File property is set to [null]
+13:45:15,067 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Setting level of logger [ROOT] to INFO
+13:45:15,073 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Attaching appender named [CONSOLE] to Logger[ROOT]
+13:45:15,074 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Attaching appender named [FILE_INFO] to Logger[ROOT]
+13:45:15,074 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@1d8fb885 - Attaching appender named [FILE_ERROR] to Logger[ROOT]
+
+2019-06-20 13:45:15,148 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:308 - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.fisco.bcos.PrecompiledServiceApiTest], using SpringBootContextLoader
+2019-06-20 13:45:15,218 [Test worker] INFO  [o.s.test.context.support.AbstractContextLoader] AbstractContextLoader.java:264 - Could not detect default resource locations for test class [org.fisco.bcos.PrecompiledServiceApiTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-06-20 13:45:15,315 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:248 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-06-20 13:45:15,324 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:177 - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@260e853, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3c5ed51b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@319f5e2a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@72db38c3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@77fc74bb, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3d409152, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@76e5e6de, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5dd3d5e1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@499e2b4c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@70ede92c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@296732f9]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.4.RELEASE)
+
+2019-06-20 13:45:15,774 [Test worker] INFO  [org.fisco.bcos.PrecompiledServiceApiTest] StartupInfoLogger.java:50 - Starting PrecompiledServiceApiTest on pc-HP-EliteOne-800-G2-23-in-Non-Touch-AiO with PID 12679 (started by pc in /home/pc/LAG/spring-boot-starter)
+2019-06-20 13:45:15,979 [Test worker] INFO  [org.fisco.bcos.PrecompiledServiceApiTest] SpringApplication.java:675 - No active profile set, falling back to default profiles: default
+2019-06-20 13:45:16,861 [Test worker] INFO  [org.fisco.bcos.autoconfigure.CredentialsConfig] CredentialsConfig.java:36 - userKye : 3bed914595c159cbce70ec5fb6aff3d6797e0c5ee5a7a9224a21cae8932d84a4
+2019-06-20 13:45:17,951 [Test worker] INFO  [org.fisco.bcos.PrecompiledServiceApiTest] StartupInfoLogger.java:59 - Started PrecompiledServiceApiTest in 2.603 seconds (JVM running for 4.212)
+2019-06-20 13:45:18,132 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-20 13:45:18,186 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-20 13:45:18,259 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:218 - response: {"id":3,"jsonrpc":"2.0","result":"0x9102b32d605eaf350aa795e6e09929baa8364775f5b722eb319ea4c263a7b466"}
+
+2019-06-20 13:45:18,299 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:0d314cf9ab0042858edb9e887cca90fc
+2019-06-20 13:45:18,300 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:697 - found callback transaction callback
+2000
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

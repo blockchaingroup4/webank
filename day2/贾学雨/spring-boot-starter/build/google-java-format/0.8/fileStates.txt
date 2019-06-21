@@ -1,0 +1,16 @@
+src/main/java/org/fisco/bcos/autoconfigure/GroupChannelConnectionsPropertyConfig.java,1561009269668135000,991,FORMATTED
+src/main/java/org/fisco/bcos/autoconfigure/CredentialsConfig.java,1561009269668135000,1462,FORMATTED
+src/test/java/org/fisco/bcos/Web3jApiTest.java,1561009269668135000,647,FORMATTED
+src/main/java/org/fisco/bcos/autoconfigure/EncryptTypeConfig.java,1561009269668135000,607,FORMATTED
+src/test/java/org/fisco/bcos/server/Channel2Server.java,1561009269668135000,964,FORMATTED
+src/main/java/org/fisco/bcos/autoconfigure/ServiceConfig.java,1561009269668135000,1103,FORMATTED
+src/test/java/org/fisco/bcos/server/Channel2Client.java,1561009269668135000,2153,FORMATTED
+src/main/java/org/fisco/bcos/Application.java,1561009269668135000,419,FORMATTED
+src/main/java/org/fisco/bcos/constants/ConnectConstants.java,1561009269668135000,857,FORMATTED
+src/main/java/org/fisco/bcos/constants/GasConstants.java,1561009269668135000,869,FORMATTED
+src/test/java/org/fisco/bcos/server/PushCallback.java,1561009269668135000,870,FORMATTED
+src/test/java/org/fisco/bcos/ContractTest.java,1561009269668135000,1356,FORMATTED
+src/test/java/org/fisco/bcos/BaseTest.java,1561009269668135000,910,FORMATTED
+src/test/java/org/fisco/bcos/server/ProxyServerTest.java,1561009269668135000,938,FORMATTED
+src/main/java/org/fisco/bcos/autoconfigure/Web3jConfig.java,1561009269668135000,1418,FORMATTED
+src/test/java/org/fisco/bcos/PrecompiledServiceApiTest.java,1561009269668135000,871,FORMATTED

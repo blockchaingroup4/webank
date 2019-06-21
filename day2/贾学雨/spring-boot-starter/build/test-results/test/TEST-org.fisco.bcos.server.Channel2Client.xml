@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.fisco.bcos.server.Channel2Client" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-20T05:45:18" hostname="pc-HP-EliteOne-800-G2-23-in-Non-Touch-AiO" time="7.02">
+  <properties/>
+  <testcase name="channel2ClientTest" classname="org.fisco.bcos.server.Channel2Client" time="7.02"/>
+  <system-out><![CDATA[2019-06-20 13:45:18,318 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:308 - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.fisco.bcos.server.Channel2Client], using SpringBootContextLoader
+2019-06-20 13:45:18,319 [Test worker] INFO  [o.s.test.context.support.AbstractContextLoader] AbstractContextLoader.java:264 - Could not detect default resource locations for test class [org.fisco.bcos.server.Channel2Client]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-06-20 13:45:18,323 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:248 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-06-20 13:45:18,324 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:177 - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@311d404f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3e56be1c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5380a803, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5d1c83f8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@658bf2c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@d7557a5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5be326b8, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@62d96d7f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@213b1fd7, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@654ac2a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@44c08cbe]
+3s ...
+2s ...
+1s ...
+start test
+===================================================================
+2019-06-20 13:45:23 request seq:4f1ee19133d04114a18ef442b312c19d, Content:request seq:4f1ee19133d04114a18ef442b312c19d
+2019-06-20 13:45:23response seq:4f1ee19133d04114a18ef442b312c19d, ErrorCode:100, Content:null
+2019-06-20 13:45:25 request seq:e7f5395a3a624bf5b3ca8827f2e4b05d, Content:request seq:e7f5395a3a624bf5b3ca8827f2e4b05d
+2019-06-20 13:45:25response seq:e7f5395a3a624bf5b3ca8827f2e4b05d, ErrorCode:100, Content:null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
