@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class org.fisco.bcos.ContractTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class org.fisco.bcos.ContractTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.fisco.bcos.html">org.fisco.bcos</a> &gt; ContractTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">6</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">6.283s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">deployAndCallHelloWorld</td>
+<td class="success">2.000s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testGetBalanceByOwner</td>
+<td class="success">0.038s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testGetTotalSupply</td>
+<td class="success">0.032s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testLoad</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testTransfer</td>
+<td class="success">0.397s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testdeploy</td>
+<td class="success">3.805s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>14:31:48,914 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+14:31:48,919 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.groovy] at [file:/home/fisco-bcos/Desktop/share/codes/spring-boot-starter/build/resources/main/logback.groovy]
+14:31:53,167 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+14:31:53,174 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Naming appender as [CONSOLE]
+14:31:53,841 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+14:31:53,844 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Naming appender as [FILE_INFO]
+14:31:53,963 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1448799625 - No compression will be used
+14:31:53,966 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1448799625 - Will use the pattern logs/spring-boot-starter/info.created_on_%d{yyyy-MM-dd}.part_%i.log for the active file
+14:31:53,971 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@2546116c - The date pattern is 'yyyy-MM-dd' from file name pattern 'logs/spring-boot-starter/info.created_on_%d{yyyy-MM-dd}.part_%i.log'.
+14:31:53,971 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@2546116c - Roll-over at midnight.
+14:31:53,986 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@2546116c - Setting initial period to Fri Jun 21 14:31:53 CST 2019
+14:31:53,987 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@2546116c - SizeAndTimeBasedFNATP is deprecated. Use SizeAndTimeBasedRollingPolicy instead
+14:31:53,987 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@2546116c - For more information see http://logback.qos.ch/manual/appenders.html#SizeAndTimeBasedRollingPolicy
+14:31:54,001 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_INFO] - Active log file name: logs/spring-boot-starter/info.created_on_2019-06-21.part_0.log
+14:31:54,001 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_INFO] - File property is set to [null]
+14:31:54,007 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+14:31:54,007 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Naming appender as [FILE_ERROR]
+14:31:54,026 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@282019891 - No compression will be used
+14:31:54,026 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@282019891 - Will use the pattern logs/spring-boot-starter/error.created_on_%d{yyyy-MM-dd}.part_%i.log for the active file
+14:31:54,029 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@706c77cd - The date pattern is 'yyyy-MM-dd' from file name pattern 'logs/spring-boot-starter/error.created_on_%d{yyyy-MM-dd}.part_%i.log'.
+14:31:54,029 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@706c77cd - Roll-over at midnight.
+14:31:54,030 |-INFO in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@706c77cd - Setting initial period to Fri Jun 21 14:31:54 CST 2019
+14:31:54,030 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@706c77cd - SizeAndTimeBasedFNATP is deprecated. Use SizeAndTimeBasedRollingPolicy instead
+14:31:54,030 |-WARN in ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP@706c77cd - For more information see http://logback.qos.ch/manual/appenders.html#SizeAndTimeBasedRollingPolicy
+14:31:54,042 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_ERROR] - Active log file name: logs/spring-boot-starter/error.created_on_2019-06-21.part_0.log
+14:31:54,042 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[FILE_ERROR] - File property is set to [null]
+14:31:54,065 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Setting level of logger [ROOT] to INFO
+14:31:54,090 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Attaching appender named [CONSOLE] to Logger[ROOT]
+14:31:54,092 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Attaching appender named [FILE_INFO] to Logger[ROOT]
+14:31:54,093 |-INFO in ch.qos.logback.classic.gaffer.ConfigurationDelegate@79733619 - Attaching appender named [FILE_ERROR] to Logger[ROOT]
+
+2019-06-21 14:31:54,373 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:308 - Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.fisco.bcos.ContractTest], using SpringBootContextLoader
+2019-06-21 14:31:54,403 [Test worker] INFO  [o.s.test.context.support.AbstractContextLoader] AbstractContextLoader.java:264 - Could not detect default resource locations for test class [org.fisco.bcos.ContractTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-06-21 14:31:54,955 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:248 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-06-21 14:31:55,005 [Test worker] INFO  [o.s.b.t.context.SpringBootTestContextBootstrapper] AbstractTestContextBootstrapper.java:177 - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@59fb3f31, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@76c0cd68, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3eee860a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@35da6e01, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3558cd3c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4503ed72, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@f97fd0e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@695b209b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1a9921a1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@402b37fd, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7064dd7b]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.4.RELEASE)
+
+2019-06-21 14:31:57,440 [Test worker] INFO  [org.fisco.bcos.ContractTest] StartupInfoLogger.java:50 - Starting ContractTest on fiscobcos-VirtualBox with PID 5299 (started by fisco-bcos in /home/fisco-bcos/Desktop/share/codes/spring-boot-starter)
+2019-06-21 14:31:57,454 [Test worker] INFO  [org.fisco.bcos.ContractTest] SpringApplication.java:675 - No active profile set, falling back to default profiles: default
+2019-06-21 14:32:01,670 [Test worker] INFO  [org.fisco.bcos.autoconfigure.CredentialsConfig] CredentialsConfig.java:40 - userKye : 3bed914595c159cbce70ec5fb6aff3d6797e0c5ee5a7a9224a21cae8932d84a4
+2019-06-21 14:32:06,999 [Test worker] INFO  [org.fisco.bcos.ContractTest] StartupInfoLogger.java:59 - Started ContractTest in 11.871 seconds (JVM running for 20.019)
+2019-06-21 14:32:08,817 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:09,019 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:09,437 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:03e8542bf5e9404f9ab8525c8a23dc6b
+2019-06-21 14:32:09,443 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:718 - callback is null
+2019-06-21 14:32:10,826 [Test worker] INFO  [org.fisco.bcos.ShopClient] ShopClient.java:74 - LAGC address is 0x961eb289f50c43999ec8bd7833a7d80ee01f4d83
+2019-06-21 14:32:10,851 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:10,858 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:11,261 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:894e05f905de4575a1e06c0a727dfe67
+2019-06-21 14:32:11,263 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:718 - callback is null
+HelloWorld address is: 0xb7a9cbd1447e2a7f4ee3d681ed38c8fa916a13ab
+2019-06-21 14:32:12,410 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:218 - response: {&quot;id&quot;:11,&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;result&quot;:&quot;0x72e54e6f4f83d7f36f827c7b4c36546da3634823ae209d4b8b3f174a8ab7730c&quot;}
+
+2019-06-21 14:32:12,789 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:fef2315229b14f4695b5f5eef45e679f
+2019-06-21 14:32:12,790 [nioEventLoopGroup-2-2] INFO  [org.fisco.bcos.channel.client.Service] Service.java:697 - found callback transaction callback
+Hello, World!
+2019-06-21 14:32:12,845 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,850 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,879 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,882 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,893 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,896 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,929 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,932 [Test worker] INFO  [org.fisco.bcos.web3j.tx.Contract] Contract.java:104 - ***version***
+2019-06-21 14:32:12,945 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:218 - response: {&quot;id&quot;:22,&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;result&quot;:&quot;0xfa20704edf41389d1222de01465cd6923a7feb4eeac6da2dcd28f289a69d2f6a&quot;}
+
+2019-06-21 14:32:13,311 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:694 - receive transaction success seq:61bc566159d6443f8f59eee14404de1a
+2019-06-21 14:32:13,312 [nioEventLoopGroup-2-1] INFO  [org.fisco.bcos.channel.client.Service] Service.java:697 - found callback transaction callback
+2019-06-21 14:32:13,314 [Test worker] INFO  [org.fisco.bcos.ShopClient] ShopClient.java:97 - status : 0x1a
+2019-06-21 14:32:13,315 [Test worker] INFO  [org.fisco.bcos.ContractTest] ContractTest.java:68 - transfer success !
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>java.lang.UnsupportedOperationException: Bitsize must be 8 bit aligned, and in range 0 &lt; bitSize &lt;= 256
+	at org.fisco.bcos.web3j.abi.datatypes.IntType.&lt;init&gt;(IntType.java:11)
+	at org.fisco.bcos.web3j.abi.datatypes.Uint.&lt;init&gt;(Uint.java:13)
+	at org.fisco.bcos.web3j.abi.datatypes.Uint.&lt;init&gt;(Uint.java:17)
+	at org.fisco.bcos.web3j.abi.datatypes.generated.Uint160.&lt;init&gt;(Uint160.java:18)
+	at org.fisco.bcos.web3j.abi.datatypes.Address.&lt;init&gt;(Address.java:22)
+	at org.fisco.bcos.web3j.abi.datatypes.Address.&lt;init&gt;(Address.java:26)
+	at org.fisco.bcos.contract.Shop.balanceOf(Shop.java:103)
+	at org.fisco.bcos.ShopClient.getBalanceByOwner(ShopClient.java:106)
+	at org.fisco.bcos.ContractTest.testGetBalanceByOwner(ContractTest.java:78)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:175)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:157)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+org.fisco.bcos.web3j.tx.exceptions.ContractCallException: Empty value (0x) returned from contract
+	at org.fisco.bcos.web3j.tx.Contract.executeCallSingleValueReturn(Contract.java:312)
+	at org.fisco.bcos.web3j.tx.Contract.lambda$executeRemoteCallSingleValueReturn$1(Contract.java:421)
+	at org.fisco.bcos.web3j.protocol.core.RemoteCall.send(RemoteCall.java:28)
+	at org.fisco.bcos.ShopClient.getTotalSupply(ShopClient.java:112)
+	at org.fisco.bcos.ContractTest.testGetTotalSupply(ContractTest.java:89)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:118)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:175)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:157)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.3.1</a> at Jun 21, 2019, 2:32:25 PM</p>
+</div>
+</div>
+</body>
+</html>
