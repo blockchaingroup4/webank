@@ -24,9 +24,9 @@
 
 * 以上测试截图记录如下：
 
-  ![test1](./images\test1.png)
+  ![test1](./images/test1.png)
 
-![test2](./images\test2.png)
+![test2](./images/test2.png)
 
 ### 3.2 转账
 
