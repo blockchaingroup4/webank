@@ -24,7 +24,7 @@ ip地址使用机器A的ip地址
 然后编写JavaFX应用：[JFXApplication.java](./asset-manager/src/main/java/org/fisco/bcos/JFXApplication.java)    
 **7. 使用说明**   
 启动时可以通过私钥进入，如果没有私钥，可以生成私钥：    
-![img](./images/start.jpg)    
+![img](./images/start.JPG)    
 生成私钥、注册资产并查询资产：   
 ![img](./images/gen.gif)    
 进行转账并查询转账后的资产：    
