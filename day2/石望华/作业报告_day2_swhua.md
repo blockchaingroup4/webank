@@ -8,7 +8,7 @@
 2. 课堂实验
 3. 使用spring-boot-starter部署课上的LAG积分合约https://github.com/FISCO-BCOS/spring-boot-starter/blob/master/doc/README_CN.md
 
-## 2. ![cryptozombies](./images/cryptozombies.png)
+## 2. ![cryptozombies](/images/cryptozombies.png)
 
 # 3. remix - 测试
 
@@ -24,9 +24,9 @@
 
 * 以上测试截图记录如下：
 
-  ![test1](./images/test1.png)
+  ![test1](./images\test1.png)
 
-![test2](./images/test2.png)
+![test2](./images\test2.png)
 
 ### 3.2 转账
 
@@ -95,8 +95,29 @@
 
   ![1561107359945](images/4.7.png)
 
-  现在的测试报告显示100%通过了，但从上面的命令行可以看到没有输出
+  现在的测试报告显示**100%通过**了，但从上面的命令行可以看到没有输出
 
   ![4.6](images/4.6.png)
 
-* 群里有同学说是要换个JDK，换成8.0版本的
+* 群里有同学说是要换个JDK，换成1.8.0版本的，然后build失败了：
+
+  ![q4](images/q4.png)
+
+显示是有个文件有语法错误，但之前是可以编译成功的；上面还显示verifyGoogleJavaFormat FAILED，于是运行./gradlew goJF，也是说有语法错误：
+
+![q5](images/q5.png)
+
+我特意在ContractTest.java里写了个错误，然后build，是会报出是哪一行出错、出什么错误的，但上面两个图片中都没有指明是什么错误。
+
+无论如何，现在的测试报告还是显示100%通过的，尽管build失败了。
+
+* 6月24日下午，为了把上午新出的所谓的“语法错误”揪出来，我一行一行把ContractTest.java的代码注释掉，在虚拟机里运行./gradlew goJF进行格式转化测试，最后发现是import包部分的代码的问题——import部分不能插入有“//”注释！（虽然上周这么做似乎没有出现bug）此外，还发现google的这个goJF命令还会改变import包的顺序，甚至可能删除你的代码！（当那个import包没有用到时）
+
+  最后，我分别在java11和java8的环境下运行./gradlew build, 得到以下结果：
+
+  ![java11](images/java11.png)
+
+![java8](images/java8.png)
+
+​	似乎除了输出更少了，没什么其他区别......
+
