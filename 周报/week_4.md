@@ -417,7 +417,7 @@
 
       }
   #### 启动节点
-![启动节点](./images/start_nodes.png)
+![启动节点](./day2/陈思源/images/start_nodes.png)
 #### 初始化
 ![初始化](./images/LAG_init.png)
 #### 转账
