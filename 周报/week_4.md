@@ -50,7 +50,7 @@
 ## 周三   
 阅读FISCO-BCOS的文档，根据[文档](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/browser/browser.html)搭建区块链浏览器，并[使用浏览器查看区块、节点信息](../day2/李冠海/blockchain_browser_usage.md)。    
 ## 周四~周五    
-阅读FISCO-BCOS的文档，根据[文档](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/tutorial/sdk_application.html)搭建一个区块链应用：[在一台机器上部署节点和合约，并在另一台机器上通过SDK开发一个可以调用合约的JavaFX应用](../day2/李冠海/asset_app.md)。
+阅读FISCO-BCOS的文档，根据[文档](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/tutorial/sdk_application.html)搭建一个区块链应用：[在一台机器上部署节点和合约，并在另一台机器上通过SDK开发一个可以调用合约的JavaFX应用](../days/李冠海/asset_app.md)。
 
 ------
 
@@ -76,7 +76,7 @@
 
 ## 周四 （2019/6/20）
 
-- #### 继续周三的spring-boot-starter项目开发测试，并最终完成测试。
+- #### 继续周三的spring-boot-starter项目开发测试，并最终[完成测试](https://github.com/blockchaingroup4/webank/blob/master/day2/%E8%B4%BE%E5%AD%A6%E9%9B%A8/LAGC%E7%A7%AF%E5%88%86%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2.md)。
 
 - #### 阅读FISCO-BCOS官方文档的[构建第一个区块链应用](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/tutorial/sdk_application.html),并参照案例的asset-app完成LAG-app书店积分系统开发。
 
