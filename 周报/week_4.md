@@ -177,7 +177,7 @@
 	简单的生成随机数的方法是不安全的。
 
 ## 生成代码
-![僵尸游戏完成情况](./images/Zombies_total.png)
+![僵尸游戏完成情况](../day2/陈思源/images/Zombies_total.png)
 ### zombieattack.sol   
       pragma solidity ^0.4.19;
 
@@ -417,18 +417,18 @@
 
       }
   #### 启动节点
-![启动节点](./day2/陈思源/images/start_nodes.png)
+![启动节点](../day2/陈思源/images/start_nodes.png)
 #### 初始化
-![初始化](./images/LAG_init.png)
+![初始化](../day2/陈思源/images/LAG_init.png)
 #### 转账
-![转账](./images/LAG_trans.png)
-![转账](./images/LAG_trans_2.png)
+![转账](../day2/陈思源/images/LAG_trans.png)
+![转账](../day2/陈思源/images/LAG_trans_2.png)
 #### 查询发放总额
-![查询发放](./images/LAG_totalsupply.png)
-![查询发放](./images/LAG_totalsupply_2.png)
+![查询发放](../day2/陈思源/images/LAG_totalsupply.png)
+![查询发放](../day2/陈思源/images/LAG_totalsupply_2.png)
 #### 查询余额
-![查询余额](./images/LAG_balance.png)
-![查询余额](./images/LAG_balance_2.png)
+![查询余额](../day2/陈思源/images/LAG_balance.png)
+![查询余额](../day2/陈思源/images/LAG_balance_2.png)
 
 # 5.
 
