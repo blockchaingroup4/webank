@@ -54,7 +54,37 @@
 
 ------
 
-# 3.
+# 3. 贾学雨
+
+## 周一 （2019/6/17）
+
+#### 继续完成[僵尸游戏](https://cryptozombies.io/)的章节练习，熟悉solidity语法。
+
+- #### 搭建僵尸工厂
+
+- #### 僵尸攻击人类
+
+- #### 高级solidity理论
+
+## 周二 （2019/6/18）
+
+#### 学习spring和spring boot的知识，为后面使用spring-boot-starter做准备。并了解和学习spring-boot-starter的结构和文件源码。
+
+## 周三 （2019/6/19）
+
+#### 下载IntelliJ IDEA,利用官方文档提供的spring-boot-starter开始开发LAGC书店积分系统。编写服务和测试，运行项目并debug。
+
+## 周四 （2019/6/20）
+
+- #### 继续周三的spring-boot-starter项目开发测试，并最终完成测试。
+
+- #### 阅读FISCO-BCOS官方文档的[构建第一个区块链应用](https://fisco-bcos-documentation.readthedocs.io/zh_CN/latest/docs/tutorial/sdk_application.html),并参照案例的asset-app完成LAG-app书店积分系统开发。
+
+## 周五 （2019/6/21）
+
+#### 继续开发LAG-app。这里最难处理的就是业务开发，因为asset-app和LAG-app的业务不用，所以很大程度上我需要重新开发业务。最终完成业务开发。并修改调用业务的脚本，最终完成LAG-app的开发。
+
+![lag3.png](https://github.com/blockchaingroup4/webank/blob/master/day2/%E8%B4%BE%E5%AD%A6%E9%9B%A8/images/lag3.png?raw=true)
 
 
 
