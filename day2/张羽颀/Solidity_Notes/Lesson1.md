@@ -1,7 +1,7 @@
-## Solidity学习笔记_CH1
+## Solidity学习笔记_Lesson 1
 
 ### 学习地址：https://cryptozombies.io/en/lesson/1/chapter/4
-### Chapter 1
+### Lesson 1
 * 版本指令：所有的 Solidity 源码都必须冠以 "version pragma" — 标明 Solidity 编译器的版本. 以避免将来新的编译器可能破坏你的代码。
 
 * 状态变量：状态被永久地保存在合约中。也就是说它们被写入以太币区块链中。

@@ -17,7 +17,22 @@
 [学习solidity lesson4](../day2/李冠海/homework_solidity_lesson4.md)    
 
 -------
-# 2. 贾学雨
+# 2. 张羽颀
+## 周一 （6.10）
+继续阅读和理解build_chain.sh脚本代码
+## 周二 （6.11）
+用Crypto Zombies学习solidity lesson1
+## 周三 （6.12）
+用Crypto Zombies学习solidity lesson2
+## 周四 （6.13）
+用Crypto Zombies学习solidity lesson3
+## 周五 （6.14）
+用Crypto Zombies学习solidity lesson4
+
+-------
+
+
+# 3. 贾学雨
 
 ## 周一 （2019/6/10）
 
@@ -162,7 +177,7 @@ repositories {
 ### 配置SDK环境，进行JAVA SDK开发。
 
 -------
-# 3. 石望华
+# 4. 石望华
 
 ### 6.10  周一
 
@@ -190,7 +205,7 @@ repositories {
 
 ​	放假
 
-# 4.陈思源
+# 5.陈思源
 
 ## 以太坊基础
 ### 账户数据结构：
