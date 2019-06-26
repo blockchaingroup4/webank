@@ -2,7 +2,7 @@
 -------
 # 1. 李冠海
 ## 周一
-继续分析block_chain.sh源代码，并完善报告和ppt
+继续分析build_chain.sh源代码，并完善报告和ppt
 
 ## 周二
 [学习solidity lesson1](../day2/李冠海/homework_solidity_lesson1.md)    
