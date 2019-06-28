@@ -2,6 +2,7 @@ pragma solidity ^0.4.25;
 
 contract CardManagementContract{
     struct Card{
+        string name;
         int8 level;
         uint cardId;
         string url;
@@ -35,9 +36,9 @@ contract CardManagementContract{
         cards[cardId].isOnSale = onSale;
     }
     
-    function createCard(uint cardId, string url, int8 level, address owner){
-        Card card = Card(level, cardId, url, false, 99999, owner);
-        cards[cardId] = card;
+    function createCard(string name, uint cardId, string url, int8 level, address owner){
+        cards[cardId] = Card(name, level, cardId, url, false, 99999, owner);
+        
         
     }
 
