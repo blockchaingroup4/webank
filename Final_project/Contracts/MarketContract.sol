@@ -1,16 +1,16 @@
 pragma solidity ^0.4.25;
 contract CardManagementInterface{
     //get Card id
-    function getPriceOf(string cardId)external returns(uint256);
-    function getCardOwner(string cardId)external returns(address);
-    function setCardOwner(string cardId, address owner)external;
-    function setCardOnSale(string cardId, bool onSale)external;
+    function getPriceOf(uint cardId)external returns(uint256);
+    function getCardOwner(uint cardId)external returns(address);
+    function setCardOwner(uint cardId, address owner)external;
+    function setCardOnSale(uint cardId, bool onSale)external;
 }
 
 contract AccountManagementInterface{
     function getBalanceOf(address addr)external returns(uint256);
-    function removeCard(address owner, string cardId)external;
-    function addCard(address who, string cardId)external;
+    function removeCard(address owner, uint cardId)external;
+    function addCard(address who, uint cardId)external;
     //get balance of 
     //set balance of 
 }
@@ -34,12 +34,13 @@ contract MarketContract{
         // accountManagementContract.buyDrawCards(add, times);
     }
     
-    function pushCard(address who, string cardId){
+    function pushCard(address who, uint cardId, uint price){
+        
         //get cardId
         //cardsOnSale++
     }
     
-    function pullCard(string cardId){
+    function pullCard(uint cardId){
         //cardsOnSale--
     }
     
@@ -51,6 +52,7 @@ contract MarketContract{
         accountManagementInterface.removeCard(oldOwner, cardId);
         accountManagementInterface.addCard(who, cardId);
         _removeCardsOnSale(cardId);
+        
         //get cardId
         //set card owner
         //set owner card
@@ -58,7 +60,7 @@ contract MarketContract{
     }
     
     uint nonce = 0;
-    function drawCard(string wish)external pure returns(int8, uint){
+    function drawCard(string wish)external returns(int8, uint){
         uint cardId = uint(keccak256(abi.encodePacked(wish))) + 
                 uint(keccak256(now, msg.sender, nonce));
         uint rand = cashId % 10000;
@@ -80,7 +82,9 @@ contract MarketContract{
         return (level, cardId);
     }
     
-    function giveCardTo(address who, uint cardId, )
+    function giveCardTo(address who, uint cardId, string url, int8 level){
+        
+    }
     
     function _removeCardsOnSale(uint cardId)private{
         //todo
