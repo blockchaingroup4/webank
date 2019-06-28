@@ -5,9 +5,10 @@
   <title>今日方舟登陆界面</title>
   
   
-  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>
+<!--  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>-->
 
       <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/popup.css">
 
   
 </head>
@@ -45,7 +46,7 @@
       </div>
     </div>
     <div class="form sign-up">
-      <h2>欢迎回家！！！</h2>
+      <h2>欢迎加入！</h2>
       <label>
         <span>用户名</span>
         <input type="text" />
@@ -54,24 +55,41 @@
         <span>电话号码</span>
         <input type="email" />
       </label>
-      <label>
-        <span>密码</span>
-        <input type="password" />
-      </label>
-      <button type="button" class="submit">注册</button>
+<!--      <label>-->
+<!--        <span>设置密码</span>-->
+<!--        <input type="password" />-->
+<!--      </label>-->
+      <button type="button" class="submit" id="button_register">注册</button>
+
+      <!-- 弹窗 -->
+      <div id="popupElement" class="modal">
+
+        <!-- 弹窗内容 -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>短信验证</h2>
+          </div>
+          <div class="modal-body">
+            <input id="message_veri" placeholder="请输入短信验证码">
+            <button type="button" class="submit" id="message_verification">提交</button>
+          </div>
+          <div class="modal-footer">
+            <h3></h3>
+          </div>
+        </div>
+
+      </div>
 <!--      <button type="button" class="fb-btn">Join with <span>facebook</span></button>-->
     </div>
+
   </div>
 </div>
 
-<a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
-  <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
-</a>
-<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
-  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
-</a>
+
   
     <script src="js/index.js"></script>
+    <script src="js/popup.js"></script>
 
 </body>
 </html>
