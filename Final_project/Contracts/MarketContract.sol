@@ -5,7 +5,7 @@ contract CardManagementInterface{
     function setCardOwner(uint cardId, address owner)external;
     function setCardOnSale(uint cardId, bool onSale)external;
     function setCardPrice(uint cardId, uint price)external;
-    function createCard(uint cardId, string url, int8 level);
+    function createCard(uint cardId, string url, int8 level, address owner);
 }
 
 contract AccountManagementInterface{
@@ -117,7 +117,7 @@ contract MarketContract{
     }
     
     function createCardAndGiveTo(address who, uint cardId, string url, int8 level){
-        cardManagementInterface.createCard(cardId, url, level);
+        cardManagementInterface.createCard(cardId, url, level, who);
         accountManagementInterface.addCard(who, cardId);
     }
 }
