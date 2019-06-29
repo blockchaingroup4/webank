@@ -2,6 +2,7 @@ pragma solidity ^0.4.25;
 contract CardManagementInterface{
     function getPriceOf(uint cardId)external returns(uint);
     function getCardOwner(uint cardId)external returns(address);
+    function getCardName(uint cardId)external returns(string);
     function setCardOwner(uint cardId, address owner)external;
     function setCardOnSale(uint cardId, bool onSale)external;
     function setCardPrice(uint cardId, uint price)external;
@@ -13,14 +14,19 @@ contract AccountManagementInterface{
     function setBalanceOf(address addr, uint balance)external;
     function removeCard(address owner, uint cardId)external;
     function addCard(address who, uint cardId)external;
+    function addTransaction(address who, uint transactionId)external;
     function getDrawCountOf(address addr)external returns(uint32);
     function setDrawCountOf(address addr, uint count)external;
 }
-
+contract TransactionManagementInterface{
+    function createTransaction(uint transactionId,  uint timestamp, uint cardId, 
+    string cardname, uint price, address sellerAddress, address buyerAddress)external returns(uint);
+}
 contract MarketContract{
     uint[] cardsOnSale;
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
+    TransactionManagementInterface transactionManagementInterface;
     
     function setAccoundManagementInterface(address addr){
         accountManagementInterface = AccountManagementInterface(addr);
@@ -69,12 +75,24 @@ contract MarketContract{
         address seller = cardManagementInterface.getCardOwner(cardId);
         uint balanceOfSeller = accountManagementInterface.getBalanceOf(seller);
         uint price = cardManagementInterface.getPriceOf(cardId);
+        string memory name = cardManagementInterface.getCardName(cardId);
+        uint timestamp = now;
+        
         cardManagementInterface.setCardOwner(cardId, buyer);
         cardManagementInterface.setCardOnSale(cardId, false);
+        
+        address buyeraddress = buyer;
+        uint transactionId = transactionManagementInterface.createTransaction(0, now, cardId, name, price, seller, buyeraddress);
+        
         accountManagementInterface.removeCard(seller, cardId);
         accountManagementInterface.addCard(buyer, cardId);
+        
+        accountManagementInterface.addTransaction(buyer, transactionId);
+        accountManagementInterface.addTransaction(seller, transactionId);
+        
         accountManagementInterface.setBalanceOf(buyer, balanceOfBuyer -  price);
         accountManagementInterface.setBalanceOf(seller, balanceOfSeller + price);
+        
         _removeCardOnSale(cardId);
     }
     
