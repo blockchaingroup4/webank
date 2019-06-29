@@ -16,20 +16,26 @@ contract TransactionManagementContract{
     }
     
     Transaction[] transactions;
-    function createTransaction(uint timestamp, uint cardId, string cardname, uint price, address sellerAddress, address buyerAddress) returns (uint){
+    function createTransaction(uint timestamp, uint cardId, string cardname, uint price, address sellerAddress, address buyerAddress)external returns (uint){
         uint transactionId = transactions.push(Transaction(timestamp, cardId, cardname, price, sellerAddress, buyerAddress, 0, false, false, false))-1;
         transactions[transactionId].transactionId = transactionId;
         return transactionId;
     }
     
-    function getTransaction(uint transactionId)returns(uint, uint, string, uint){
-        Transaction transaction = transactions[transactionId];
+    function getTransactionInfo(uint transactionId)external view returns(uint, uint, string, uint, address, address, uint, bool, bool, bool){
+        Transaction storage transaction = transactions[transactionId];
+        return (transaction.timestamp, transaction.cardId, transaction.cardname, transaction.price, transaction.sellerAddress, transaction.buyerAddress,
+                transaction.transactionId, transaction.isReversing, transaction.isReversed, transaction.reverseResult);
+    }
+    
+    function getTransaction(uint transactionId)external view returns(uint, uint, string, uint){
+        Transaction storage transaction = transactions[transactionId];
         return (transaction.timestamp, transaction.cardId, transaction.cardname, transaction.price);
     }
     
-    function getTransaction_re(bool role, uint transactionId) returns(address)
+    function getTransaction_re(bool role, uint transactionId)external view returns(address)
     {
-        Transaction transaction = transactions[transactionId];
+        Transaction storage transaction = transactions[transactionId];
         if (role){
             return (transaction.sellerAddress);
         }
@@ -40,8 +46,8 @@ contract TransactionManagementContract{
         //       1:seller
     }
     
-    function getRole(address who, uint transactionId)returns (bool){
-        Transaction transaction = transactions[transactionId];
+    function getRole(address who, uint transactionId)external view returns (bool){
+        Transaction storage transaction = transactions[transactionId];
         if(transaction.sellerAddress == who){
             return false;
         }
@@ -50,13 +56,13 @@ contract TransactionManagementContract{
         }
     }
     
-    function getCardId(uint transactionId)external returns(uint){
-        Transaction transaction = transactions[transactionId];
+    function getCardId(uint transactionId)external view returns(uint){
+        Transaction storage transaction = transactions[transactionId];
         return transaction.cardId;
     }
     
-    function getPriceOf(uint transactionId)external returns(uint){
-        Transaction transaction = transactions[transactionId];
+    function getPriceOf(uint transactionId)external view returns(uint){
+        Transaction storage transaction = transactions[transactionId];
         return transaction.price;
     }
     
@@ -64,12 +70,20 @@ contract TransactionManagementContract{
         transactions[transactionId].isReversing = true;
     }
     
-    function dealWithRequestions(uint transactionId, bool result){
+    function dealWithRequestions(uint transactionId, bool result)external{
         transactions[transactionId].isReversed = true;
         transactions[transactionId].isReversing = false;
         transactions[transactionId].reverseResult = result;
         
         //true:exchange the card and delete the reverseApplication
         //false: delete the reverseApplication
+    }
+    
+    function getBuyer(uint transactionId)external view returns(address){
+        return transactions[transactionId].buyerAddress;
+    }
+    
+    function getSeller(uint transactionId)external view returns(address){
+        return transactions[transactionId].sellerAddress;
     }
 }
