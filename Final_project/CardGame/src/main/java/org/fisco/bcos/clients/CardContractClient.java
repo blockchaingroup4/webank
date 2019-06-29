@@ -4,11 +4,11 @@ import org.fisco.bcos.beans.CardInfo;
 import org.fisco.bcos.web3j.crypto.Credentials;
 
 public class CardContractClient extends ContractClient{
-    public CardContractClient(Credentials credentials){
-        super(credentials);
-        load();
+    public CardContractClient(Credentials credentials, String contractAddress){
+        super(credentials, contractAddress);
     }
 
+    @Override
     public void load(){
 
     }

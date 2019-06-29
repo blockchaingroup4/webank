@@ -7,11 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MarketContractClient extends ContractClient{
-    public MarketContractClient(Credentials credentials){
-        super(credentials);
-        load();
+    public MarketContractClient(Credentials credentials, String contractAddress){
+        super(credentials, contractAddress);
     }
 
+    @Override
     public void load(){
 
     }

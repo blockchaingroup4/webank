@@ -27,6 +27,11 @@ contract MarketContract{
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
     TransactionManagementInterface transactionManagementInterface;
+    function setACTInterfaces(address accountAddr, address cardAddr, address transactionAddr){
+        accountManagementInterface = AccountManagementInterface(accountAddr);
+        cardManagementInterface = CardManagementInterface(cardAddr);
+        transactionManagementInterface = TransactionManagementInterface(transactionAddr);
+    }
     
     function setAccoundManagementInterface(address addr)external{
         accountManagementInterface = AccountManagementInterface(addr);

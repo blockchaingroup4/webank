@@ -6,11 +6,11 @@ import org.fisco.bcos.web3j.crypto.Credentials;
 import java.util.Arrays;
 
 public class AccountContractClient extends ContractClient{
-    public AccountContractClient(Credentials credentials){
-        super(credentials);
-        load();
+    public AccountContractClient(Credentials credentials, String contractAddress){
+        super(credentials, contractAddress);
     }
 
+    @Override
     public void load(){
 
     }

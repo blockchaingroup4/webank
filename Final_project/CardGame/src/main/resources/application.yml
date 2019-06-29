@@ -11,6 +11,9 @@ channel-service:
   group-id: 1 # The specified group to which the SDK connects
   org-id: fisco # agency name
 
-user-key:
-  user-key: 3bed914595c159cbce70ec5fb6aff3d6797e0c5ee5a7a9224a21cae8932d84a4 # user key 
-
+contract-addr:
+  account-contract-address: 1239489238
+  card-contract-address: 19835324
+  transaction-contract-address: 234875234
+  market-contract-address: 23957123
+  reverse-contract-address: 2398519

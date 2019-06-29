@@ -40,20 +40,26 @@ contract ReverseManagementContract{
     }
     
     ReverseApplication[] reverseApplications;
-    TransactionInterface transactioninterface;
+    TransactionInterface transactionInterface;
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
+        function setACTInterfaces(address accountAddr, address cardAddr, address transactionAddr){
+        accountManagementInterface = AccountManagementInterface(accountAddr);
+        cardManagementInterface = CardManagementInterface(cardAddr);
+        transactionManagementInterface = TransactionManagementInterface(transactionAddr);
+    }
+    
     function getReverseInfo(uint reverseId)external view returns(uint, uint, bool, string, bool){
         ReverseApplication storage reverse = reverseApplications[reverseId];
         return (reverse.reverseApplyId, reverse.transactionId, reverse.role, reverse.discribe, reverse.dealed);
     }
     
     function createReverseApplies(address who, uint transactionId, string discribe)external{
-        uint cardId = transactioninterface.getCardId(transactionId);
+        uint cardId = transactionInterface.getCardId(transactionId);
         require(cardManagementInterface.getCardOwner(cardId) == who);
         
-        bool role = transactioninterface.getRole(who, transactionId);
-        transactioninterface.setReversingTrue(transactionId);
+        bool role = transactionInterface.getRole(who, transactionId);
+        transactionInterface.setReversingTrue(transactionId);
         uint reverseApplyId = reverseApplications.push(ReverseApplication(0, transactionId, role, discribe, false))-1;
         reverseApplications[reverseApplyId].reverseApplyId = reverseApplyId;
         //create re_applicationId
@@ -72,7 +78,7 @@ contract ReverseManagementContract{
     function sendReverseInform(uint reverseApplyId)external{
         uint transactionId = reverseApplications[reverseApplyId].transactionId;
         bool role = reverseApplications[reverseApplyId].role;
-        address aim = transactioninterface.getTransaction_re(role, transactionId);
+        address aim = transactionInterface.getTransaction_re(role, transactionId);
     
         accountManagementInterface.addRequestions(aim, reverseApplyId);
     }
@@ -81,15 +87,15 @@ contract ReverseManagementContract{
         reverseApplications[reverseApplyId].dealed = true;
         uint transactionId = reverseApplications[reverseApplyId].transactionId;
         bool anotherRole = reverseApplications[reverseApplyId].role; //the user who give me the requestion
-        address who = transactioninterface.getTransaction_re(anotherRole, transactionId); //who is the user who use this function
+        address who = transactionInterface.getTransaction_re(anotherRole, transactionId); //who is the user who use this function
         
         
-        transactioninterface.dealWithRequestions(transactionId, result);
+        transactionInterface.dealWithRequestions(transactionId, result);
         if (result){
-            uint cardId = transactioninterface.getCardId(transactionId);
-            uint price = transactioninterface.getPriceOf(transactionId);
-            address buyer = transactioninterface.getBuyer(transactionId);
-            address seller = transactioninterface.getSeller(transactionId);
+            uint cardId = transactionInterface.getCardId(transactionId);
+            uint price = transactionInterface.getPriceOf(transactionId);
+            address buyer = transactionInterface.getBuyer(transactionId);
+            address seller = transactionInterface.getSeller(transactionId);
             uint buyerBalance = accountManagementInterface.getBalanceOf(buyer);
             uint sellerBalance = accountManagementInterface.getBalanceOf(seller);
             

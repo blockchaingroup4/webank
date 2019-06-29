@@ -9,11 +9,11 @@ import java.util.List;
 
 public class ReverseContractClient extends ContractClient{
     public static String ADDRESS="...";
-    public ReverseContractClient(Credentials credentials){
-        super(credentials);
-        load();
+    public ReverseContractClient(Credentials credentials, String contractAddress){
+        super(credentials, contractAddress);
     }
 
+    @Override
     public void load(){
 
     }

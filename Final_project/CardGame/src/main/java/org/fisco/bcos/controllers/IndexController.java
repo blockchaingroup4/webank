@@ -1,11 +1,13 @@
 package org.fisco.bcos.controllers;
 
 import com.alibaba.fastjson.JSONObject;
+import org.fisco.bcos.beans.ContractAddr;
 import org.fisco.bcos.clients.*;
 import org.fisco.bcos.util.KeyUtil;
 import org.fisco.bcos.util.PhoneDB;
 import org.fisco.bcos.util.SendMessageUtil;
 import org.fisco.bcos.web3j.crypto.Credentials;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -17,6 +19,8 @@ import java.util.List;
 
 @Controller
 public class IndexController {
+    @Autowired
+    ContractAddr contractAddr;
     //get home page
     @RequestMapping("/index")
     public String index(){
@@ -81,11 +85,11 @@ public class IndexController {
         Credentials credentials = Credentials.create(privateKey);
         //todo: check credentials
         request.getSession().setAttribute("credentials", credentials);
-        request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials));
-        request.getSession().setAttribute("market_contract_client", new MarketContractClient(credentials));
-        request.getSession().setAttribute("card_contract_client", new CardContractClient(credentials));
-        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(credentials));
-        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(credentials));
+        request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials, contractAddr.getAccountContractAddress()));
+        request.getSession().setAttribute("market_contract_client", new MarketContractClient(credentials, contractAddr.getMarketContractAddress()));
+        request.getSession().setAttribute("card_contract_client", new CardContractClient(credentials, contractAddr.getCardContractAddress()));
+        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(credentials, contractAddr.getTransactionContractAddress()));
+        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(credentials, contractAddr.getReverseContractAddress()));
         ret.put("status", "ok");
         return ret.toJSONString();
     }
