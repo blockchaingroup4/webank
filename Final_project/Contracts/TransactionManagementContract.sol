@@ -49,4 +49,17 @@ contract TransactionManagementContract{
             return true;
         }
     }
+    
+    function setReversingTrue(uint transactionId)external{
+        transactions[transactionId].isReversing = true;
+    }
+    
+    function dealWithRequestions(uint transactionId, bool result){
+        transactions[transactionId].isReversed = true;
+        transactions[transactionId].isReversing = false;
+        transactions[transactionId].reverseResult = result;
+        
+        //true:exchange the card and delete the reverseApplication
+        //false: delete the reverseApplication
+    }
 }

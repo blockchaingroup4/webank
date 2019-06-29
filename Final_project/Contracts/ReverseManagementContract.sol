@@ -2,6 +2,7 @@ pragma solidity ^0.4.25;
 contract Transactioninterface{
     function getTransaction_re(bool role, uint transactionId) returns(address);
     function getRole(address who, uint transactionId)returns (bool);
+    function setReversingTrue(uint transactionId)external;
 }
 contract AccountManagementInterface{
     function addRequestions(address who, uint requestionId);
@@ -28,6 +29,7 @@ contract ReverseManagementContract{
     
     function createReverseApplies(address who, uint transactionId, string discribe)external{
         bool role = transactioninterface.getRole(who, transactionId);
+        transactioninterface.setReversingTrue(transactionId);
         uint reverseApplyId = reverseApplications.push(ReverseApplication(0, transactionId, role, discribe, false))-1;
         reverseApplications[reverseApplyId].reverseApplyId = reverseApplyId;
         //create re_applicationId

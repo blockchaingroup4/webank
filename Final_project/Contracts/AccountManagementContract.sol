@@ -75,10 +75,7 @@ contract AccountManagementContract{
         return accounts[who].requestionsId.length;
     }
     
-    function dealWithRequestions(uint requestionsId, bool result){
-        //true:exchange the card and delete the reverseApplication
-        //false: delete the reverseApplication
-    }
+    
     
  // function getAccountInfo(address addr)external returns(string, uint256, uint32, uint256){
     //     //returns string name, uint256 balance, uint32 drawCount
