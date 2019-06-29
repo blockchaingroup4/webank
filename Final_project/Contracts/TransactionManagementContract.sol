@@ -50,6 +50,16 @@ contract TransactionManagementContract{
         }
     }
     
+    function getCardId(uint transactionId)external returns(uint){
+        Transaction transaction = transactions[transactionId];
+        return transaction.cardId;
+    }
+    
+    function getPriceOf(uint transactionId)external returns(uint){
+        Transaction transaction = transactions[transactionId];
+        return transaction.price;
+    }
+    
     function setReversingTrue(uint transactionId)external{
         transactions[transactionId].isReversing = true;
     }
