@@ -1,10 +1,7 @@
 package org.fisco.bcos.controllers;
 
 import com.alibaba.fastjson.JSONObject;
-import org.fisco.bcos.clients.AccountContractClient;
-import org.fisco.bcos.clients.CardContractClient;
-import org.fisco.bcos.clients.MarketContractClient;
-import org.fisco.bcos.clients.TransactionContractClient;
+import org.fisco.bcos.clients.*;
 import org.fisco.bcos.util.KeyUtil;
 import org.fisco.bcos.util.PhoneDB;
 import org.fisco.bcos.util.SendMessageUtil;
@@ -87,7 +84,8 @@ public class IndexController {
         request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials));
         request.getSession().setAttribute("market_contract_client", new MarketContractClient(credentials));
         request.getSession().setAttribute("card_contract_client", new CardContractClient(credentials));
-        request.getSession().setAttribute("reverse_contract_client", new TransactionContractClient(credentials));
+        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(credentials));
+        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(credentials));
         ret.put("status", "ok");
         return ret.toJSONString();
     }
