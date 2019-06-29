@@ -28,6 +28,11 @@ contract CardManagementContract{
         return ownerAddr;
     }
     
+    function getCardName(uint cardId)external returns(string){
+        string name = cards[cardId].name;
+        return name;
+    }
+    
     function setCardOwner(uint cardId, address owner)external{
         cards[cardId].owner = owner;
     }

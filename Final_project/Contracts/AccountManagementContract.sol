@@ -1,6 +1,9 @@
 pragma solidity ^0.4.25;
 contract TransactionInterface{
-    function getTransaction(uint transactionId)external returns(uint, uint, string, uint);
+    function getTransactionInfo(uint transactionId)external returns(uint, uint, string, uint);
+}
+contract ReverseInterface{
+    function setReverseApplies(bool, uint, string)external returns(bool, uint);
 }
 contract AccountManagementContract{
     struct Account{
@@ -8,11 +11,15 @@ contract AccountManagementContract{
         uint balance;
         uint32 drawCount;
         uint[] cardsId;
-        uint[]transactionsId;
+        uint[] transactionsId;
+        uint[] requestionsId;   //reverseapplications(requestions) the user get
     }
     mapping(address => Account)accounts;
+    ReverseInterface reverseInterface;
+    TransactionInterface transactionInterface;
+    
     function addAccount(address addr, string name)public{
-        accounts[addr] = Account(name, 0, 5, new uint[](0), new uint[](0));
+        accounts[addr] = Account(name, 0, 5, new uint[](0), new uint[](0), new uint[](0));
     }
     
     function getBalanceOf(address addr)external returns(uint){
@@ -40,6 +47,10 @@ contract AccountManagementContract{
         accounts[who].cardsId.push(cardId);
     }
     
+    function getCardsNum(address who)external returns(uint){
+        return accounts[who].cardsId.length;
+    }
+    
     function getDrawCountOf(address addr)external returns(uint32){
         return accounts[addr].drawCount;
     }
@@ -48,7 +59,28 @@ contract AccountManagementContract{
         accounts[addr].drawCount = uint32(count);
     }
     
-    // function getAccountInfo(address addr)external returns(string, uint256, uint32, uint256){
+    function addTransaction(address who, uint transactionId)external{
+        accounts[who].transactionsId.push(transactionId);
+    } 
+    
+    function getTransactionsNum(address who)external returns(uint){
+        return accounts[who].transactionsId.length;
+    }
+   
+    function addRequestions(address who, uint requestionId)external{
+        accounts[who].requestionsId.push(requestionId);    
+    }
+    
+    function getRequestionsNum(address who)external returns(uint){
+        return accounts[who].requestionsId.length;
+    }
+    
+    function dealWithRequestions(uint requestionsId, bool result){
+        //true:exchange the card and delete the reverseApplication
+        //false: delete the reverseApplication
+    }
+    
+ // function getAccountInfo(address addr)external returns(string, uint256, uint32, uint256){
     //     //returns string name, uint256 balance, uint32 drawCount
     //     //for cardsLength
         
@@ -114,23 +146,5 @@ contract AccountManagementContract{
     //         applicantAddresses.length--;
     //     }
     // }
-
-    function applyForReverse(bool role, uint transactionId, string discribe) external returns(bool){
-        //new a ReverseApplication => ReApplicationId
-        setReverseApplication(role, transactionId, ReApplicationId, discribe);
-        //0£ºapply for reverse unsuccessfully
-        //1£ºsuccessfully
-        
-    }
-    
-    function getReverseApplictions()returns(string cardname, string timestamp){
-        //get cardname && timestamp
-    }
-    
-    function dealWithReserve(bool result){
-        //true:exchange the card and delete the reverseApplication
-        //false: delete the reverseApplication
-    }
-    
 
 }

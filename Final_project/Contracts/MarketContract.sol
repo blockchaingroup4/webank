@@ -1,123 +1,68 @@
 pragma solidity ^0.4.25;
-contract CardManagementInterface{
-    function getPriceOf(uint cardId)external returns(uint);
-    function getCardOwner(uint cardId)external returns(address);
-    function setCardOwner(uint cardId, address owner)external;
-    function setCardOnSale(uint cardId, bool onSale)external;
-    function setCardPrice(uint cardId, uint price)external;
-    function createCard(uint cardId, string url, int8 level, address owner);
+contract Transactioninterface{
+    function getTransaction_re(bool role, uint transactionId) returns(address);
+    function getRole(address who, uint transactionId)returns (bool);
 }
-
 contract AccountManagementInterface{
-    function getBalanceOf(address addr)external returns(uint);
-    function setBalanceOf(address addr, uint balance)external;
-    function removeCard(address owner, uint cardId)external;
-    function addCard(address who, uint cardId)external;
-    function getDrawCountOf(address addr)external returns(uint32);
-    function setDrawCountOf(address addr, uint count)external;
+    function addRequestions(address who, uint requestionId);
 }
-
-contract MarketContract{
-    uint[] cardsOnSale;
+contract ReverseManagementContract{
+    //public the address of managers
+    // address managerAddress = ...;
+    
+    struct ReverseApplication{
+        uint reverseApplyId;
+        uint transactionId;
+        bool role;  
+        string discribe;
+        bool dealed; //whether dealed by manager
+        
+        //role:  0:seller
+        //       1:buyer
+    }
+    
+    
+    ReverseApplication[] reverseApplications;
+    Transactioninterface transactioninterface;
     AccountManagementInterface accountManagementInterface;
-    CardManagementInterface cardManagementInterface;
     
-    function setAccoundManagementInterface(address addr){
-        accountManagementInterface = AccountManagementInterface(addr);
+    function createReverseApplies(address who, uint transactionId, string discribe)external{
+        bool role = transactioninterface.getRole(who, transactionId);
+        uint reverseApplyId = reverseApplications.push(ReverseApplication(0, transactionId, role, discribe, false))-1;
+        reverseApplications[reverseApplyId].reverseApplyId = reverseApplyId;
+        //create re_applicationId
+        //reverseApplications ++
     }
     
-    function setCardManagementInterface(address addr){
-        cardManagementInterface = CardManagementInterface(addr);
+    function getReverseAppliesNum() external returns (uint){
+        return reverseApplications.length;
     }
     
-    function recharge(address addr, uint amount){
-        uint balance = accountManagementInterface.getBalanceOf(addr);
-        accountManagementInterface.setBalanceOf(addr, balance + amount);
+    function getReverseApply(uint index)external returns(uint, uint, bool, string, bool){
+        return (reverseApplications[index].reverseApplyId, reverseApplications[index].transactionId, reverseApplications[index].role, 
+        reverseApplications[index].discribe, reverseApplications[index].dealed );
     }
     
-    //0:success
-    //1:balance not enough
-    function buyDrawCards(address addr, uint times)returns(uint){
-        uint amountPerTime = 10;
-        uint balance = accountManagementInterface.getBalanceOf(addr);
-        uint needBalance = times*amountPerTime;
-        if(needBalance > balance){
-            return 1;
-        }
-        accountManagementInterface.setBalanceOf(addr, balance - needBalance);
-        uint32 count = accountManagementInterface.getDrawCountOf(addr);
-        accountManagementInterface.setDrawCountOf(addr, count + times);
-        return 0;
+    //click the button to deal with the reverseapplications.
+    // function ManageReverseApply(bool role, uint transactionId) external returns(bool){
+    //      address aim;
+    //      string memory cardname;
+    //      uint timestamp;
+    //      (aim, cardname, timestamp)=transactioninterface.getTransaction_re(role, transactionId);
+    //      return sendReverseInform(aim, cardname, timestamp);
+    // }
+    
+   
+    
+    
+    function sendReverseInform(uint reverseApplyId)external{
+        uint transactionId = reverseApplications[reverseApplyId].transactionId;
+        bool role = reverseApplications[reverseApplyId].role;
+        address aim = transactioninterface.getTransaction_re(role, transactionId);
+    
+        accountManagementInterface.addRequestions(aim, reverseApplyId);
+        
+        
     }
     
-    function pushCard(address who, uint cardId, uint price)returns(uint){
-        cardsOnSale.push(cardId);
-        cardManagementInterface.setCardOnSale(cardId, true);
-        cardManagementInterface.setCardPrice(cardId, price);
-        return 0;
-    }
-    
-    //0:success
-    //1:card is not on sale
-    function pullCard(uint cardId)returns(uint){
-        cardManagementInterface.setCardOnSale(cardId, false);
-        return _removeCardOnSale(cardId);
-    }
-    
-    function buyCard(address buyer, uint cardId){
-        uint balanceOfBuyer = accountManagementInterface.getBalanceOf(buyer);
-        address seller = cardManagementInterface.getCardOwner(cardId);
-        uint balanceOfSeller = accountManagementInterface.getBalanceOf(seller);
-        uint price = cardManagementInterface.getPriceOf(cardId);
-        cardManagementInterface.setCardOwner(cardId, buyer);
-        cardManagementInterface.setCardOnSale(cardId, false);
-        accountManagementInterface.removeCard(seller, cardId);
-        accountManagementInterface.addCard(buyer, cardId);
-        accountManagementInterface.setBalanceOf(buyer, balanceOfBuyer -  price);
-        accountManagementInterface.setBalanceOf(seller, balanceOfSeller + price);
-        _removeCardOnSale(cardId);
-    }
-    
-    //0:success
-    //1:card is not on sale
-    function _removeCardOnSale(uint cardId)private returns(uint){
-        for(uint i = 0; i < cardsOnSale.length; i++){
-            if(cardsOnSale[i] == cardId){
-                for(uint j = i; j < cardsOnSale.length-1; j++){
-                    cardsOnSale[j] = cardsOnSale[j+1];
-                }
-                cardsOnSale.length--;
-                return 0;
-            }
-        }
-        return 1;
-    }
-    
-    uint nonce = 0;
-    function drawCard(string wish)external returns(int8, uint){
-        uint cardId = uint(keccak256(abi.encodePacked(wish))) + 
-                uint(keccak256(now, msg.sender, nonce));
-        uint rand = cardId % 10000;
-        nonce++;
-        int8 level = 0;
-        if(rand < 5000){
-            level = 1;
-        }else if(rand < 7500){
-            level = 2;
-        }else if(rand < 8550){
-            level = 3;
-        }else if(rand < 9390){
-            level = 4;
-        }else if(rand <9890){
-            level = 5;
-        }else{
-            level = 6;
-        }
-        return (level, cardId);
-    }
-    
-    function createCardAndGiveTo(address who, uint cardId, string url, int8 level){
-        cardManagementInterface.createCard(cardId, url, level, who);
-        accountManagementInterface.addCard(who, cardId);
-    }
 }
