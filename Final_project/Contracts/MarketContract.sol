@@ -1,29 +1,29 @@
 pragma solidity ^0.4.25;
 contract CardManagementInterface{
-    function getPriceOf(uint cardId)external view returns(uint);
-    function getCardOwner(uint cardId)external view returns(address);
-    function getCardName(uint cardId)external view returns(string);
-    function setCardOwner(uint cardId, address owner)external;
-    function setCardOnSale(uint cardId, bool onSale)external;
-    function setCardPrice(uint cardId, uint price)external;
-    function createCard(string name, uint cardId, string url, int8 level, address owner)external;
+    function getPriceOf(address cardId)external view returns(uint);
+    function getCardOwner(address cardId)external view returns(address);
+    function getCardName(address cardId)external view returns(string);
+    function setCardOwner(address cardId, address owner)external;
+    function setCardOnSale(address cardId, bool onSale)external;
+    function setCardPrice(address cardId, uint price)external;
+    function createCard(string name, address cardId, string url, int8 level, address owner)external;
 }
 
 contract AccountManagementInterface{
     function getBalanceOf(address addr)external view returns(uint);
     function setBalanceOf(address addr, uint balance)external;
-    function removeCard(address owner, uint cardId)external;
-    function addCard(address who, uint cardId)external;
+    function removeCard(address owner, address cardId)external;
+    function addCard(address who, address cardId)external;
     function addTransaction(address who, uint transactionId)external;
     function getDrawCountOf(address addr)external view returns(uint32);
     function setDrawCountOf(address addr, uint32 count)external;
 }
 contract TransactionManagementInterface{
-    function createTransaction(uint timestamp, uint cardId, string cardname, uint price, address sellerAddress, address buyerAddress)external returns(uint);
+    function createTransaction(uint timestamp, address cardId, string cardname, uint price, address sellerAddress, address buyerAddress)external returns(uint);
 }
 contract MarketContract{
-    uint[] cardsOnSale;
-    event DrawCardEvent(int8 level, uint cardId);
+    address[] cardsOnSale;
+    event DrawCardEvent(int8 level, address cardId);
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
     TransactionManagementInterface transactionManagementInterface;
@@ -66,7 +66,7 @@ contract MarketContract{
         return 0;
     }
     
-    function pushCard(uint cardId, uint price)external returns(uint){
+    function pushCard(address cardId, uint price)external returns(uint){
         cardsOnSale.push(cardId);
         cardManagementInterface.setCardOnSale(cardId, true);
         cardManagementInterface.setCardPrice(cardId, price);
@@ -75,12 +75,12 @@ contract MarketContract{
     
     //0:success
     //1:card is not on sale
-    function pullCard(uint cardId)external returns(uint){
+    function pullCard(address cardId)external returns(uint){
         cardManagementInterface.setCardOnSale(cardId, false);
         return _removeCardOnSale(cardId);
     }
     
-    function buyCard(address buyer, uint cardId)external{
+    function buyCard(address buyer, address cardId)external{
         uint balanceOfBuyer = accountManagementInterface.getBalanceOf(buyer);
         address seller = cardManagementInterface.getCardOwner(cardId);
         uint balanceOfSeller = accountManagementInterface.getBalanceOf(seller);
@@ -106,7 +106,7 @@ contract MarketContract{
     
     //0:success
     //1:card is not on sale
-    function _removeCardOnSale(uint cardId)private returns(uint){
+    function _removeCardOnSale(address cardId)private returns(uint){
         for(uint i = 0; i < cardsOnSale.length; i++){
             if(cardsOnSale[i] == cardId){
                 for(uint j = i; j < cardsOnSale.length-1; j++){
@@ -122,9 +122,10 @@ contract MarketContract{
     uint nonce = 0;
     function drawCard(address who, string wish)external{
         require(accountManagementInterface.getDrawCountOf(who) > 0);
-        uint cardId = uint(keccak256(abi.encodePacked(wish))) + 
+        uint cardIdInt = uint(keccak256(abi.encodePacked(wish))) + 
                 uint(keccak256(abi.encodePacked(now, msg.sender, nonce)));
-        uint rand = cardId % 10000;
+        uint rand = cardIdInt % 10000;
+        address cardId = address(cardIdInt);
         nonce++;
         int8 level = 0;
         if(rand < 5000){
@@ -143,7 +144,7 @@ contract MarketContract{
         emit DrawCardEvent(level, cardId);
     }
     
-    function createCardAndGiveTo(string name, address who, uint cardId, string url, int8 level)external{
+    function createCardAndGiveTo(string name, address who, address cardId, string url, int8 level)external{
         cardManagementInterface.createCard(name, cardId, url, level, who);
         accountManagementInterface.addCard(who, cardId);
         accountManagementInterface.setDrawCountOf(who, accountManagementInterface.getDrawCountOf(who) - 1);

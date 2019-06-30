@@ -3,7 +3,7 @@ pragma solidity ^0.4.25;
 contract TransactionManagementContract{
     struct Transaction{
         uint timestamp;
-        uint cardId;
+        address cardId;
         string cardname;
         uint price;
         address sellerAddress;
@@ -16,19 +16,19 @@ contract TransactionManagementContract{
     }
     
     Transaction[] transactions;
-    function createTransaction(uint timestamp, uint cardId, string cardname, uint price, address sellerAddress, address buyerAddress)external returns (uint){
+    function createTransaction(uint timestamp, address cardId, string cardname, uint price, address sellerAddress, address buyerAddress)external returns (uint){
         uint transactionId = transactions.push(Transaction(timestamp, cardId, cardname, price, sellerAddress, buyerAddress, 0, false, false, false))-1;
         transactions[transactionId].transactionId = transactionId;
         return transactionId;
     }
     
-    function getTransactionInfo(uint transactionId)external view returns(uint, uint, string, uint, address, address, uint, bool, bool, bool){
+    function getTransactionInfo(uint transactionId)external view returns(uint, address, string, uint, address, address, uint, bool, bool, bool){
         Transaction storage transaction = transactions[transactionId];
         return (transaction.timestamp, transaction.cardId, transaction.cardname, transaction.price, transaction.sellerAddress, transaction.buyerAddress,
                 transaction.transactionId, transaction.isReversing, transaction.isReversed, transaction.reverseResult);
     }
     
-    function getTransaction(uint transactionId)external view returns(uint, uint, string, uint){
+    function getTransaction(uint transactionId)external view returns(uint, address, string, uint){
         Transaction storage transaction = transactions[transactionId];
         return (transaction.timestamp, transaction.cardId, transaction.cardname, transaction.price);
     }
@@ -56,7 +56,7 @@ contract TransactionManagementContract{
         }
     }
     
-    function getCardId(uint transactionId)external view returns(uint){
+    function getCardId(uint transactionId)external view returns(address){
         Transaction storage transaction = transactions[transactionId];
         return transaction.cardId;
     }

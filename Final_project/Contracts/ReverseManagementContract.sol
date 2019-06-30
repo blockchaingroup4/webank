@@ -2,7 +2,7 @@ pragma solidity ^0.4.25;
 contract TransactionInterface{
     function getTransaction_re(bool role, uint transactionId)external view returns(address);
     function getRole(address who, uint transactionId)external view returns (bool);
-    function getCardId(uint transactionId)external view returns (uint);
+    function getCardId(uint transactionId)external view returns (address);
     function getPriceOf(uint transactionId)external view returns(uint);
     function setReversingTrue(uint transactionId)external;
     function dealWithRequestions(uint transactionId, bool result)external;
@@ -14,13 +14,13 @@ contract AccountManagementInterface{
     function addRequestions(address who, uint requestionId)external;
     function getBalanceOf(address addr)external view returns(uint);
     function setBalanceOf(address addr, uint balance)external;
-    function removeCard(address owner, uint cardId)external;
-    function addCard(address who, uint cardId)external;
+    function removeCard(address owner, address cardId)external;
+    function addCard(address who, address cardId)external;
 }
 
 contract CardManagementInterface{
-    function getCardOwner(uint cardId)external view returns(address);
-    function setCardOwner(uint cardId, address owner)external;
+    function getCardOwner(address cardId)external view returns(address);
+    function setCardOwner(address cardId, address owner)external;
 }
 
 contract ReverseManagementContract{
@@ -54,7 +54,7 @@ contract ReverseManagementContract{
     }
     
     function createReverseApplies(address who, uint transactionId, string discribe)external{
-        uint cardId = transactionInterface.getCardId(transactionId);
+        address cardId = transactionInterface.getCardId(transactionId);
         require(cardManagementInterface.getCardOwner(cardId) == who);
         
         bool role = transactionInterface.getRole(who, transactionId);
@@ -91,7 +91,7 @@ contract ReverseManagementContract{
         
         transactionInterface.dealWithRequestions(transactionId, result);
         if (result){
-            uint cardId = transactionInterface.getCardId(transactionId);
+            address cardId = transactionInterface.getCardId(transactionId);
             uint price = transactionInterface.getPriceOf(transactionId);
             address buyer = transactionInterface.getBuyer(transactionId);
             address seller = transactionInterface.getSeller(transactionId);

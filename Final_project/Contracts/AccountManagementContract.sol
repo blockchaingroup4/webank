@@ -4,14 +4,14 @@ contract AccountManagementContract{
         string name;
         uint balance;
         uint32 drawCount;
-        uint[] cardsId;
+        address[] cardsId;
         uint[] transactionsId;
         uint[] requestionsId;   //reverseapplications(requestions) the user get
     }
     mapping(address => Account)accounts;
     
     function addAccount(address addr, string name)public{
-        accounts[addr] = Account(name, 0, 5, new uint[](0), new uint[](0), new uint[](0));
+        accounts[addr] = Account(name, 0, 5, new address[](0), new uint[](0), new uint[](0));
     }
     
     function getAccountInfo(address who)external view returns(string, uint, uint32, uint, uint, uint){
@@ -28,8 +28,8 @@ contract AccountManagementContract{
         accounts[addr].balance = balance;
     }
     
-    function removeCard(address owner, uint cardId)external{
-        uint[] storage ids = accounts[owner].cardsId;
+    function removeCard(address owner, address cardId)external{
+        address[] storage ids = accounts[owner].cardsId;
         for(uint i = 0; i < ids.length; i++){
             if(ids[i] == cardId){
                 for(uint j = i; j < ids.length - 1; j++){
@@ -41,7 +41,7 @@ contract AccountManagementContract{
         }
     }
     
-    function addCard(address who, uint cardId)external{
+    function addCard(address who, address cardId)external{
         accounts[who].cardsId.push(cardId);
     }
     
@@ -49,7 +49,7 @@ contract AccountManagementContract{
         return accounts[who].cardsId.length;
     }
     
-    function getCardId(address who, uint index)external view returns(uint){
+    function getCardId(address who, uint index)external view returns(address){
         return accounts[who].cardsId[index];
     }
     
