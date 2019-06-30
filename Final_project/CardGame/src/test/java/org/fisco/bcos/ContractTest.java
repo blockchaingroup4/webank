@@ -3,7 +3,7 @@ package org.fisco.bcos;
 import static org.junit.Assert.assertTrue;
 
 import org.fisco.bcos.constants.GasConstants;
-import org.fisco.bcos.temp.HelloWorld;
+import org.fisco.bcos.solidity.HelloWorld;
 import org.fisco.bcos.web3j.crypto.Credentials;
 import org.fisco.bcos.web3j.protocol.Web3j;
 import org.fisco.bcos.web3j.tx.gas.StaticGasProvider;
@@ -33,6 +33,7 @@ public class ContractTest extends BaseTest {
             String result = helloWorld.get().send();
             System.out.println(result);
             assertTrue("Hello, World!".equals(result));
+            HelloWorld.load(helloWorld.getContractAddress(), web3j, credentials, GasConstants.STATIC_GAS_PROVIDER);
         }
     }
 }

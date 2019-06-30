@@ -21,7 +21,6 @@ contract AccountManagementInterface{
 contract CardManagementInterface{
     function getCardOwner(uint cardId)external view returns(address);
     function setCardOwner(uint cardId, address owner)external;
-    function createCard(uint cardId, string url, int8 level, address owner)external;
 }
 
 contract ReverseManagementContract{
@@ -43,10 +42,10 @@ contract ReverseManagementContract{
     TransactionInterface transactionInterface;
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
-        function setACTInterfaces(address accountAddr, address cardAddr, address transactionAddr){
+    function setACTInterfaces(address accountAddr, address cardAddr, address transactionAddr)external{
         accountManagementInterface = AccountManagementInterface(accountAddr);
         cardManagementInterface = CardManagementInterface(cardAddr);
-        transactionManagementInterface = TransactionManagementInterface(transactionAddr);
+        transactionInterface = TransactionInterface(transactionAddr);
     }
     
     function getReverseInfo(uint reverseId)external view returns(uint, uint, bool, string, bool){

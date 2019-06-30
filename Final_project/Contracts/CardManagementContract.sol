@@ -11,8 +11,8 @@ contract CardManagementContract{
         address owner;
     }
     mapping (uint => Card) cards;
-    
-    function setCardPrice(uint cardId, uint256 price)public{
+
+    function setCardPrice(uint cardId, uint price)external{
         // require(cards[cardId].owner == msg.sender);
         cards[cardId].price = price;
     }
@@ -43,7 +43,7 @@ contract CardManagementContract{
     function setCardOnSale(uint cardId, bool onSale)external{
         cards[cardId].isOnSale = onSale;
     }
-    
+
     function createCard(string name, uint cardId, string url, int8 level, address owner)external{
         cards[cardId] = Card(name, level, cardId, url, false, 99999, owner);
     }

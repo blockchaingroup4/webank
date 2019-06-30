@@ -7,6 +7,8 @@ import org.fisco.bcos.util.KeyUtil;
 import org.fisco.bcos.util.PhoneDB;
 import org.fisco.bcos.util.SendMessageUtil;
 import org.fisco.bcos.web3j.crypto.Credentials;
+import org.fisco.bcos.web3j.crypto.gm.GenCredential;
+import org.fisco.bcos.web3j.protocol.Web3j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,8 @@ import java.util.List;
 public class IndexController {
     @Autowired
     ContractAddr contractAddr;
+    @Autowired
+    Web3j web3j;
     //get home page
     @RequestMapping("/index")
     public String index(){
@@ -59,7 +63,7 @@ public class IndexController {
     }
 
     //sign up
-    //input: {code: codeIn}
+    //input: {code: codeIn, name: "..."}
     //output:
     //  success: {status: "ok", public_key: "0x....", address: "0x....", private_key: "...."}
     @RequestMapping(value = "/sign_up", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -72,6 +76,11 @@ public class IndexController {
         ret.put("public_key", key.getPublicKey());
         ret.put("address", key.getAddress());
         ret.put("private_key", key.getPrivateKey());
+        Credentials credentials = GenCredential.create(key.getPrivateKey());
+        AccountContractClient client = new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j);
+        request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j));
+        String name = request.getParameter("name");
+        client.addAccount(name);
         return ret.toJSONString();
     }
 
@@ -82,14 +91,16 @@ public class IndexController {
     public String signIn(HttpServletRequest request){
         JSONObject ret = new JSONObject();
         String privateKey = request.getParameter("private_key");
-        Credentials credentials = Credentials.create(privateKey);
+        Credentials credentials = GenCredential.create(privateKey);
         //todo: check credentials
         request.getSession().setAttribute("credentials", credentials);
-        request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials, contractAddr.getAccountContractAddress()));
-        request.getSession().setAttribute("market_contract_client", new MarketContractClient(credentials, contractAddr.getMarketContractAddress()));
-        request.getSession().setAttribute("card_contract_client", new CardContractClient(credentials, contractAddr.getCardContractAddress()));
-        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(credentials, contractAddr.getTransactionContractAddress()));
-        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(credentials, contractAddr.getReverseContractAddress()));
+        Object client = request.getSession().getAttribute("account_contract_client");
+        if(client == null)
+            request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j));
+        request.getSession().setAttribute("market_contract_client", new MarketContractClient(credentials, contractAddr.getMarketContractAddress(), web3j));
+        request.getSession().setAttribute("card_contract_client", new CardContractClient(credentials, contractAddr.getCardContractAddress(), web3j));
+        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(credentials, contractAddr.getTransactionContractAddress(), web3j));
+        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(credentials, contractAddr.getReverseContractAddress(), web3j));
         ret.put("status", "ok");
         return ret.toJSONString();
     }

@@ -50,8 +50,9 @@ dependencies {
 	compile 'commons-logging:commons-logging:1.1.1'
 	compile 'commons-codec:commons-codec:1.4'
 	compile 'commons-httpclient:commons-httpclient:3.0.1'
-	compile	'org.fisco-bcos:web3sdk:2.0.0-rc2'
+	compile	'org.fisco-bcos:web3sdk:2.0.3'
 	compile 'org.projectlombok:lombok:1.18.6'
+	compile group: "org.fisco-bcos", name: "web3sdk", version: "2.0.34-SNAPSHOT"
 }
 
 configurations {

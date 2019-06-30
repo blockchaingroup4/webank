@@ -1,19 +1,28 @@
 package org.fisco.bcos.clients;
 
+import lombok.Data;
 import org.fisco.bcos.beans.CardInfo;
+import org.fisco.bcos.constants.GasConstants;
+import org.fisco.bcos.contracts.MarketContract;
+import org.fisco.bcos.util.CardDB;
 import org.fisco.bcos.web3j.crypto.Credentials;
+import org.fisco.bcos.web3j.protocol.Web3j;
+import org.fisco.bcos.web3j.protocol.core.methods.response.TransactionReceipt;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
+@Data
 public class MarketContractClient extends ContractClient{
-    public MarketContractClient(Credentials credentials, String contractAddress){
-        super(credentials, contractAddress);
+    MarketContract contract;
+    public MarketContractClient(Credentials credentials, String contractAddress, Web3j web3j){
+        super(credentials, contractAddress, web3j);
     }
 
     @Override
     public void load(){
-
+        contract = MarketContract.load(getContractAddress(), getWeb3j(), getCredentials(), GasConstants.STATIC_GAS_PROVIDER);
     }
 
     public List<String>getCardsOnSale(){
@@ -36,9 +45,21 @@ public class MarketContractClient extends ContractClient{
         return 0;
     }
 
-    public CardInfo drawCard(){
+    public CardInfo drawCard(String wish){
         CardInfo info = new CardInfo();
-        info.setUrl(".....");
+        try {
+            TransactionReceipt receipt = contract.drawCard(credentials.getAddress(), wish).send();
+            List<MarketContract.DrawCardEventEventResponse>responses = contract.getDrawCardEventEvents(receipt);
+            if(!responses.isEmpty()){
+                info.setLevel(responses.get(0).level.intValue());
+                info.setCardId(String.valueOf(responses.get(0).cardId));
+            }
+            CardDB.setCardUrlAndName(info);
+            contract.createCardAndGiveTo(info.getName(), credentials.getAddress(), new BigInteger(info.getCardId()), info.getUrl(), BigInteger.valueOf(info.getLevel()));
+            return info;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return info;
     }
 

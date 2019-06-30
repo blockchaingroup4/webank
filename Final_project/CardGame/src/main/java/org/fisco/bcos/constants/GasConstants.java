@@ -15,10 +15,13 @@
  */
 package org.fisco.bcos.constants;
 
+import org.fisco.bcos.web3j.tx.gas.StaticGasProvider;
+
 import java.math.BigInteger;
 
 public class GasConstants {
 
     public static final BigInteger GAS_PRICE = new BigInteger("300000000");
     public static final BigInteger GAS_LIMIT = new BigInteger("300000000");
+    public static final StaticGasProvider STATIC_GAS_PROVIDER = new StaticGasProvider(GAS_PRICE, GAS_LIMIT);
 }

@@ -3,14 +3,15 @@ package org.fisco.bcos.clients;
 
 import org.fisco.bcos.beans.ReverseInfo;
 import org.fisco.bcos.web3j.crypto.Credentials;
+import org.fisco.bcos.web3j.protocol.Web3j;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class ReverseContractClient extends ContractClient{
     public static String ADDRESS="...";
-    public ReverseContractClient(Credentials credentials, String contractAddress){
-        super(credentials, contractAddress);
+    public ReverseContractClient(Credentials credentials, String contractAddress, Web3j web3j){
+        super(credentials, contractAddress, web3j);
     }
 
     @Override

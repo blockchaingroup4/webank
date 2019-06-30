@@ -83,7 +83,7 @@ public class MarketController {
         return ret.toJSONString();
     }
 
-    //input:{}
+    //input:{wish: "..."}
     //output:
     //  onSUccess:{status: "ok", card_info:{....}}
     @RequestMapping(value = "/draw_card", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -92,7 +92,8 @@ public class MarketController {
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("market_contract_client");
         MarketContractClient client = (MarketContractClient)clientObj;
-        CardInfo info = client.drawCard();
+        String wish = request.getParameter("wish");
+        CardInfo info = client.drawCard(wish);
         ret.put("status", "ok");
         ret.put("card_info", info);
         return ret.toJSONString();

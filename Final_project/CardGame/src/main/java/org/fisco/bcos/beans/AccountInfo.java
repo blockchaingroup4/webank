@@ -11,5 +11,5 @@ public class AccountInfo {
     String drawCount;
     List<String>cardsId;
     List<String>transactionsId;
-    String address;
+    List<String>reversesId;
 }
