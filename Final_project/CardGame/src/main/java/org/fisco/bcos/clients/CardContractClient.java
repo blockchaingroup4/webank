@@ -25,10 +25,10 @@ public class CardContractClient extends ContractClient{
     public CardInfo getCardInfo(String cardId){
         CardInfo cardInfo = new CardInfo();
         try {
-            Tuple7<String, BigInteger, BigInteger, String, Boolean, BigInteger, String>  info = contract.getCardInfo(new BigInteger(cardId)).send();
+            Tuple7<String, BigInteger, String, String, Boolean, BigInteger, String>  info = contract.getCardInfo(cardId).send();
             cardInfo.setName(info.getValue1());
             cardInfo.setLevel(info.getValue2().intValue());
-            cardInfo.setCardId(String.valueOf(info.getValue3()));
+            cardInfo.setCardId(info.getValue3());
             cardInfo.setUrl(info.getValue4());
             cardInfo.setOnSale(info.getValue5());
             cardInfo.setPrice(String.valueOf(info.getValue6()));

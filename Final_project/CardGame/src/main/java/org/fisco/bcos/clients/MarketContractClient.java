@@ -52,10 +52,10 @@ public class MarketContractClient extends ContractClient{
             List<MarketContract.DrawCardEventEventResponse>responses = contract.getDrawCardEventEvents(receipt);
             if(!responses.isEmpty()){
                 info.setLevel(responses.get(0).level.intValue());
-                info.setCardId(String.valueOf(responses.get(0).cardId));
+                info.setCardId(responses.get(0).cardId);
             }
             CardDB.setCardUrlAndName(info);
-            contract.createCardAndGiveTo(info.getName(), credentials.getAddress(), new BigInteger(info.getCardId()), info.getUrl(), BigInteger.valueOf(info.getLevel()));
+            contract.createCardAndGiveTo(info.getName(), credentials.getAddress(), info.getCardId(), info.getUrl(), BigInteger.valueOf(info.getLevel())).send();
             return info;
         } catch (Exception e) {
             e.printStackTrace();

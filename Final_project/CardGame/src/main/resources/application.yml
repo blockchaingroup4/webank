@@ -15,11 +15,11 @@ user-key:
   user-key: 9b0b7de664abdeff59771047cda1e50a62bc9d3ecd017f31fcb4f7a93e8ae43c
 
 contract-addr:
-  account-contract-address: "0xab17afe10cb73614e7552337adc1c3c1da70307d"
-  card-contract-address: "0x9fa8b5a9422584228c46f8758800bcdf8d313476"
-  transaction-contract-address: "0xbb5d1394bacc1feac019e210636a63b5c8e5e242"
-  market-contract-address: "0x54f9861fbdd5174aaa0809cee4d32e39af7cd137"
-  reverse-contract-address: "0xa6937643225bdc1f077abc5b87ef58d61d438eda"
+  account-contract-address: "0xad78baadb860881fbc28813d0740ddd3a5109293"
+  card-contract-address: "0x166afdab2706f6ff3fd9739a193299e4c9428958"
+  transaction-contract-address: "0xa5837e61a4e7013db67f3cbba12a43f73983c321"
+  market-contract-address: "0xafebf207d42711108c6ad88db34cf9c700fff250"
+  reverse-contract-address: "0xa9a27c92d68c6e3dfd239a8457337db3e57a3d84"
 
 test-keys:
   user1: 9b0b7de664abdeff59771047cda1e50a62bc9d3ecd017f31fcb4f7a93e8ae43c

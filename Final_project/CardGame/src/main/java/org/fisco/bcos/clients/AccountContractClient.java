@@ -48,8 +48,8 @@ public class AccountContractClient extends ContractClient{
             int numTrans = info.getValue5().intValue();
             int numRev = info.getValue6().intValue();
             for(int i = 0; i < numCard; i++){
-                BigInteger id = contract.getCardId(credentials.getAddress(), BigInteger.valueOf(i)).send();
-                accountInfo.getCardsId().add(String.valueOf(id));
+                String id = contract.getCardId(credentials.getAddress(), BigInteger.valueOf(i)).send();
+                accountInfo.getCardsId().add(id);
             }
             for(int i = 0; i < numTrans; i++){
                 BigInteger id = contract.getTransactionId(credentials.getAddress(), BigInteger.valueOf(i)).send();

@@ -38,7 +38,7 @@ public class MarketClientTest extends BaseTest {
             List<MarketContract.DrawCardEventEventResponse> responses = contract.getDrawCardEventEvents(receipt);
             if(!responses.isEmpty()){
                 BigInteger level = responses.get(0).level;
-                BigInteger cardId = responses.get(0).cardId;
+                String cardId = responses.get(0).cardId;
                 System.out.println("level: " + level + "\ncardId: " + cardId);
             }
         } catch (Exception e) {
@@ -51,13 +51,13 @@ public class MarketClientTest extends BaseTest {
         System.out.println(KeyUtil.getAddress(credentials));
         MarketContractClient marketContractClient = new MarketContractClient(credentials, contractAddr.getMarketContractAddress(), web3j);
         AccountContractClient accountContractClient = new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j);
-//        accountContractClient.addAccount("hello");
+        accountContractClient.addAccount("hello");
         try {
             System.out.println(accountContractClient.getAccountInfo());
-//            System.out.println(accountContractClient.getContract().getDrawCountOf(credentials.getAddress()).send());
-//            System.out.println(marketContractClient.drawCard("i wish"));
-//            System.out.println(accountContractClient.getContract().getDrawCountOf(credentials.getAddress()).send());
-//            System.out.println(accountContractClient.getAccountInfo());
+            System.out.println(accountContractClient.getContract().getDrawCountOf(credentials.getAddress()).send());
+            System.out.println(marketContractClient.drawCard("i wish"));
+            System.out.println(accountContractClient.getContract().getDrawCountOf(credentials.getAddress()).send());
+            System.out.println(accountContractClient.getAccountInfo());
         } catch (Exception e) {
             e.printStackTrace();
         }
