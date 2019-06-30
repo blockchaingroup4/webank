@@ -35,4 +35,18 @@ public class CardController {
         ret.put("info", info);
         return ret.toJSONString();
     }
+
+    //input:{card_id:,price:}
+    @RequestMapping(value = "/set_card_price", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String setCardPrice(HttpServletRequest request){
+        JSONObject ret = new JSONObject();
+        Object clientObj = request.getSession().getAttribute("market_contract_client");
+        CardContractClient client = (CardContractClient)clientObj;
+        String cardId = request.getParameter("card_id");
+        String price = request.getParameter("price");
+        client.setCardPrice(cardId, price);
+        ret.put("status", "ok");
+        return ret.toJSONString();
+    }
 }

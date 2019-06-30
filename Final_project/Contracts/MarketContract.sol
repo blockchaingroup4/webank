@@ -27,6 +27,13 @@ contract MarketContract{
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
     TransactionManagementInterface transactionManagementInterface;
+    function getCardsOnSaleNum()external view returns(uint){
+        return cardsOnSale.length;
+    }
+    
+    function getAddressOfCardOnSale(uint index)external view returns(address){
+        return cardsOnSale[index];
+    }
     
     function setACTInterfaces(address accountAddr, address cardAddr, address transactionAddr)external{
         accountManagementInterface = AccountManagementInterface(accountAddr);

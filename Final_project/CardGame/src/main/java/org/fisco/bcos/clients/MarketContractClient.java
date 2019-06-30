@@ -10,6 +10,7 @@ import org.fisco.bcos.web3j.protocol.Web3j;
 import org.fisco.bcos.web3j.protocol.core.methods.response.TransactionReceipt;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,25 +26,52 @@ public class MarketContractClient extends ContractClient{
         contract = MarketContract.load(getContractAddress(), getWeb3j(), getCredentials(), GasConstants.STATIC_GAS_PROVIDER);
     }
 
+    //todo
     public List<String>getCardsOnSale(){
-        return Arrays.asList("xxxxx", "xxxxx", "yyyyy");
+        List<String> ret = new ArrayList<>();
+        try {
+            int num = contract.getCardsOnSaleNum().send().intValue();
+            for(int i = 0; i < num; i++){
+                ret.add(contract.getAddressOfCardOnSale(BigInteger.valueOf(i)).send());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return ret;
     }
 
     public Integer buyCard(String cardId){
-        return 0;
+        try {
+            contract.buyCard(credentials.getAddress(), cardId).send();
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
     }
 
     public Integer pullCard(String cardId){
-        return 0;
+        try {
+            contract.pullCard(cardId).send();
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
     }
 
-    public Integer pushCard(String cardId){
-        return 0;
+    public Integer pushCard(String cardId, BigInteger amount){
+        try {
+            contract.pushCard(cardId, amount).send();
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
     }
 
-    public Integer setCardPrice(String cardId, String price){
-        return 0;
-    }
+
 
     public CardInfo drawCard(String wish){
         CardInfo info = new CardInfo();
@@ -64,6 +92,12 @@ public class MarketContractClient extends ContractClient{
     }
 
     public Integer recharge(String amount){
-        return 0;
+        try {
+            contract.recharge(credentials.getAddress(), new BigInteger(amount)).send();
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
     }
 }

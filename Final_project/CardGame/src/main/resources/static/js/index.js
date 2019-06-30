@@ -123,3 +123,4 @@ $('#buy_card_btn').on('click', function () {
       }
    });
 })
+

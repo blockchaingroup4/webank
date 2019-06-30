@@ -29,7 +29,7 @@ public class ReverseController {
 
     //input:{}
     //output:
-    // onSuccess:{status: "ok", reverses_id:[....]}
+    // onSuccess:{status: "ok", reverses:[{...}, {...},....]}
     // onError: todo
     @RequestMapping(value = "/get_reverse_applies", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
@@ -37,7 +37,7 @@ public class ReverseController {
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("reverse_contract_client");
         ReverseContractClient client = (ReverseContractClient)clientObj;
-        List<String> applies = client.getReverseApplies();
+        List<ReverseInfo> applies = client.getReverseApplies();
         ret.put("status", "ok");
         ret.put("reverses_id", applies);
         return ret.toJSONString();

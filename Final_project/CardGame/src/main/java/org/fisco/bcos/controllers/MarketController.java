@@ -2,6 +2,7 @@ package org.fisco.bcos.controllers;
 
 import com.alibaba.fastjson.JSONObject;
 import org.fisco.bcos.beans.CardInfo;
+import org.fisco.bcos.clients.CardContractClient;
 import org.fisco.bcos.clients.MarketContractClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,21 +10,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class MarketController {
     //get cards on sale
     //output:
-    //  onSuccess: {status: "ok", cards_on_sale: [xxx, yyy, zzz....]}
+    //  onSuccess: {status: "ok", cards_on_sale: [{...}, {...}, {...},....]}
     @RequestMapping(value = "/get_cards_on_sale", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String getCardsOnSale(HttpServletRequest request){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("market_contract_client");
+        Object cardClientObj = request.getSession().getAttribute("card_contract_client");
         MarketContractClient client = (MarketContractClient)clientObj;
+        CardContractClient cardClient = (CardContractClient)cardClientObj;
         ret.put("status", "ok");
-        ret.put("cards_on_sale", client.getCardsOnSale());
+        List<String>addrs = client.getCardsOnSale();
+        List<CardInfo>cards = new ArrayList<>();
+        for(String addr : addrs){
+            cards.add(cardClient.getCardInfo(addr));
+        }
+        ret.put("cards_on_sale", cards);
         return ret.toJSONString();
     }
 
@@ -56,7 +66,7 @@ public class MarketController {
         return ret.toJSONString();
     }
 
-    //input:{card_id:}
+    //input:{card_id:, amount: ""}
     @RequestMapping(value = "/push_card", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String pushCard(HttpServletRequest request){
@@ -64,21 +74,8 @@ public class MarketController {
         Object clientObj = request.getSession().getAttribute("market_contract_client");
         MarketContractClient client = (MarketContractClient)clientObj;
         String cardId = request.getParameter("card_id");
-        client.pushCard(cardId);
-        ret.put("status", "ok");
-        return ret.toJSONString();
-    }
-
-    //input:{card_id:,price:}
-    @RequestMapping(value = "/set_card_price", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public String setCardPrice(HttpServletRequest request){
-        JSONObject ret = new JSONObject();
-        Object clientObj = request.getSession().getAttribute("market_contract_client");
-        MarketContractClient client = (MarketContractClient)clientObj;
-        String cardId = request.getParameter("card_id");
-        String price = request.getParameter("price");
-        client.setCardPrice(cardId, price);
+        String amount = request.getParameter("amount");
+        client.pushCard(cardId, new BigInteger(amount));
         ret.put("status", "ok");
         return ret.toJSONString();
     }

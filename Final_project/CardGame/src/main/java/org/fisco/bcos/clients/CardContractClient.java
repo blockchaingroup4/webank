@@ -38,4 +38,14 @@ public class CardContractClient extends ContractClient{
         }
         return cardInfo;
     }
+
+    public Integer setCardPrice(String cardId, String price){
+        try {
+            contract.setCardPrice(cardId, new BigInteger(price)).send();
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
+    }
 }
