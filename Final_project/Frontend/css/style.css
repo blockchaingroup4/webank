@@ -77,6 +77,44 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 30px 0;
 }
 
+/* 图片表格从这里开始 */
+.pic_list_con{
+  width:80%;
+  border:1px solid #ddd;
+  /*多出来的ul要剪掉*/
+  overflow:hidden;
+}
+.pic_list_con h3{
+  width:918px;
+  height:50px;
+  border-bottom: 1px solid #ddd;
+  /*是h3居中，不是h3中的文字居中哦！*/
+  margin:0 auto;
+}
+.pic_list_con h3 span{
+  /*内联元素转为内联块元素，支持全部样式*/
+  display:inline-block;
+  height:50px;
+  border-bottom: 2px solid #d4af7a;
+  font: 18px/50px 'Microsoft YaHei UI';
+  padding:0 15px;
+}
+.pic_list_con ul{
+  width: 950px;
+  margin:20px 0 13px 20px;
+}
+.pic_list_con ul li{
+  width:160px;
+  height:68px;
+  /*多个div在一个页面上，默认情况是：一行一个div，但是只要在div的css中使用
+  float：left，可以使一行有多个div，这样可以把网页划分成很多块，
+  但是使用该属性会影响后面的元素，所有如果后面的div不想再被影响，
+  可以使用clear:both；
+  可以理解为清除float:left和float:right的影响，返回到默认状态。*/
+  float:left;
+  margin:0 29px 25px 0;
+}
+
 figure {
   margin-bottom: 2em;
 }
