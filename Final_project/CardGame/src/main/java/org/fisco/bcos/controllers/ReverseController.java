@@ -3,6 +3,8 @@ package org.fisco.bcos.controllers;
 import com.alibaba.fastjson.JSONObject;
 import org.fisco.bcos.beans.ReverseInfo;
 import org.fisco.bcos.clients.ReverseContractClient;
+import org.fisco.bcos.web3j.crypto.Credentials;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +15,8 @@ import java.util.List;
 
 @Controller
 public class ReverseController {
+    @Autowired
+    Credentials credentials;
     //input:{transaction_id:, reason:}
     @RequestMapping(value = "/apply_for_reverse", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
@@ -27,14 +31,20 @@ public class ReverseController {
         return ret.toJSONString();
     }
 
-    //input:{private_key:}
+    //input:{}
     //output:
     // onSuccess:{status: "ok", reverses:[{...}, {...},....]}
-    // onError: todo
+    // onError: {status: "ok", error_type: "not_manager"}
     @RequestMapping(value = "/get_reverse_applies", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String getReverseApplies(HttpServletRequest request){
         JSONObject ret = new JSONObject();
+        Object inputCredentialsObj = request.getSession().getAttribute("credentials");
+        if(inputCredentialsObj == null || !((Credentials)inputCredentialsObj).getEcKeyPair().getPrivateKey().equals(credentials.getEcKeyPair().getPrivateKey())){
+            ret.put("status", "error");
+            ret.put("error_type", "not_manager");
+            return ret.toJSONString();
+        }
         Object clientObj = request.getSession().getAttribute("reverse_contract_client");
         ReverseContractClient client = (ReverseContractClient)clientObj;
         List<ReverseInfo> applies = client.getReverseApplies();
@@ -46,7 +56,7 @@ public class ReverseController {
     //input:{reverse_id:}
     //output:
     // onSuccess:{status: "ok", info:{....}};
-    // onError: todo
+    // onError: {status: "error", error_type: "not_manager"}
     @RequestMapping(value = "/get_reverse_info", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String getReverseInfo(HttpServletRequest request){
@@ -63,11 +73,17 @@ public class ReverseController {
     //input:{reverse_id:}
     //output:
     // onSuccess:{status: "ok"};
-    // onError: todo
+    // onError: {status: "error", error_type: "not_manager"}
     @RequestMapping(value = "/send_reverse", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String sendReverse(HttpServletRequest request){
         JSONObject ret = new JSONObject();
+        Object inputCredentialsObj = request.getSession().getAttribute("credentials");
+        if(inputCredentialsObj == null || !((Credentials)inputCredentialsObj).getEcKeyPair().getPrivateKey().equals(credentials.getEcKeyPair().getPrivateKey())){
+            ret.put("error_type", "not_manager");
+            ret.put("status", "error");
+            return ret.toJSONString();
+        }
         Object clientObj = request.getSession().getAttribute("reverse_contract_client");
         ReverseContractClient client = (ReverseContractClient)clientObj;
         String reverseId = request.getParameter("reverse_id");

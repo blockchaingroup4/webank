@@ -1,7 +1,7 @@
 # FISCO-BCOS of webank
 
 # 1. 项目简介
-
+[大作业设计文档](https://github.com/blockchaingroup4/webank/blob/master/Final_project/Documents/%E9%A1%B9%E7%9B%AE%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A32.30%EF%BC%88%E6%8F%90%E4%BA%A4%EF%BC%89.docx)
 
 
 # 2. 小组成员
@@ -37,3 +37,9 @@
 
 ## 第四周周报
 [第四周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_4.md)
+
+## 第五周周报
+[第五周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_5.md)
+
+## 第六周周报
+[第六周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_6.md)
