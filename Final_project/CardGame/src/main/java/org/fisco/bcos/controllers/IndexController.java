@@ -25,6 +25,8 @@ public class IndexController {
     ContractAddr contractAddr;
     @Autowired
     Web3j web3j;
+    @Autowired
+    Credentials credentials;
     //get home page
     @RequestMapping("/index")
     public String index(){
@@ -85,22 +87,27 @@ public class IndexController {
 
     //sign in
     //input: {private_key : "..."}
+    //output: {status: "ok", type: "user"/"manager"}
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String signIn(HttpServletRequest request){
         JSONObject ret = new JSONObject();
         String privateKey = request.getParameter("private_key");
-        Credentials credentials = GenCredential.create(privateKey);
+        Credentials inputCredentials = GenCredential.create(privateKey);
         //todo: check credentials
-        request.getSession().setAttribute("credentials", credentials);
+        request.getSession().setAttribute("credentials", inputCredentials);
         Object client = request.getSession().getAttribute("account_contract_client");
         if(client == null)
-            request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j));
-        request.getSession().setAttribute("market_contract_client", new MarketContractClient(credentials, contractAddr.getMarketContractAddress(), web3j));
-        request.getSession().setAttribute("card_contract_client", new CardContractClient(credentials, contractAddr.getCardContractAddress(), web3j));
-        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(credentials, contractAddr.getTransactionContractAddress(), web3j));
-        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(credentials, contractAddr.getReverseContractAddress(), web3j));
+            request.getSession().setAttribute("account_contract_client", new AccountContractClient(inputCredentials, contractAddr.getAccountContractAddress(), web3j));
+        request.getSession().setAttribute("market_contract_client", new MarketContractClient(inputCredentials, contractAddr.getMarketContractAddress(), web3j));
+        request.getSession().setAttribute("card_contract_client", new CardContractClient(inputCredentials, contractAddr.getCardContractAddress(), web3j));
+        request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(inputCredentials, contractAddr.getTransactionContractAddress(), web3j));
+        request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(inputCredentials, contractAddr.getReverseContractAddress(), web3j));
         ret.put("status", "ok");
+        if(inputCredentials.getEcKeyPair().getPrivateKey().equals(credentials.getEcKeyPair().getPrivateKey())){
+            ret.put("type", "user");
+        }
+        else ret.put("type", "manager");
         return ret.toJSONString();
     }
 
