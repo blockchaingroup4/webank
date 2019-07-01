@@ -123,7 +123,7 @@ figure {
   }
 }
 .fh5co-cover .btn {
-  padding: 1em 2em;
+  padding: 10px 25px;
   opacity: .9;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
@@ -859,6 +859,7 @@ figure {
 }
 
 .section-title {
+  color:rgb(240,240,255);
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -1096,6 +1097,7 @@ figure {
 .btn.btn-primary {
   background: #4CB648;
   color: #fff;
+  font-size: 28px;
   border: none !important;
   border: 2px solid transparent !important;
 }
