@@ -19,7 +19,7 @@ public class CardContractClient extends ContractClient{
 
     @Override
     public void load(){
-        contract = CardManagementContract.load(credentials.getAddress(), getWeb3j(), getCredentials(), GasConstants.STATIC_GAS_PROVIDER);
+        contract = CardManagementContract.load(getContractAddress(), getWeb3j(), getCredentials(), GasConstants.STATIC_GAS_PROVIDER);
     }
 
     public CardInfo getCardInfo(String cardId){
