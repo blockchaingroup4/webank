@@ -37,3 +37,9 @@
 
 ## 第四周周报
 [第四周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_4.md)
+
+## 第五周周报
+[第四周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_5.md)
+
+## 第六周周报
+[第四周周报整合版](https://github.com/blockchaingroup4/webank/blob/master/%E5%91%A8%E6%8A%A5/week_6.md)
