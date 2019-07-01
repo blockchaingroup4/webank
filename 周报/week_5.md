@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# 第四周周报
+# 第五周周报
 
 ------
 
@@ -594,9 +593,9 @@ contract ReverseManagementContract{
     }
   }
 =======
-# 第五周周报
+
 ---
-# 1. 李冠海
+# 2. 李冠海
 
 ## 周一   
 继续完善区块链教程应用   
@@ -630,17 +629,5 @@ contract ReverseManagementContract{
 [MarketContractClient.java](../Final_project/CardGame/src/main/java/org/fisco/bcos/clients/MarketContractClient.java)    
 [ReverseContractClient.java](../Final_project/CardGame/src/main/java/org/fisco/bcos/clients/ReverseContractClient.java)    
 [TransactionContractClient.java](../Final_project/CardGame/src/main/java/org/fisco/bcos/clients/TransactionContractClient.java)    
----
 
-# 2.
 ---
-
-# 3.
----
-
-# 4.
----
-
-# 5.
----
->>>>>>> 453befca4ed0fe9fac7455578fe17b71fb49bcfb
