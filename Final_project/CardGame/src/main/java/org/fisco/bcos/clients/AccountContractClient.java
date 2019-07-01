@@ -61,6 +61,7 @@ public class AccountContractClient extends ContractClient{
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
         return accountInfo;
     }

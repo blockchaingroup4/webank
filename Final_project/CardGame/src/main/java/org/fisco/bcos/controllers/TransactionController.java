@@ -23,11 +23,29 @@ public class TransactionController {
     public String getTransactionInfo(HttpServletRequest request){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("transaction_contract_client");
+        //未登录
+        if(clientObj == null){
+            ret.put("status", "error");
+            ret.put("error_type", "client_null");
+            return ret.toJSONString();
+        }
         TransactionContractClient client = (TransactionContractClient)clientObj;
         String transactionId = request.getParameter("transaction_id");
+        //缺少transaction_id参数
+        if(transactionId == null){
+            ret.put("status", "error");
+            ret.put("error_type", "lack_transaction_id");
+            return ret.toJSONString();
+        }
         TransactionInfo info = client.getTransactionInfo(transactionId);
-        ret.put("status", "ok");
+        //获取交易信息失败
+        if(info == null){
+            ret.put("status", "error");
+            ret.put("error_type", "info_null");
+            return ret.toJSONString();
+        }
         ret.put("info", info);
+        ret.put("status", "ok");
         return ret.toJSONString();
     }
 }

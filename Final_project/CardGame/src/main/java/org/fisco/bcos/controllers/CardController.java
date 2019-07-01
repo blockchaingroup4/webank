@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class CardController {
     //获取卡片信息
+    //input: {card_id:}
     //output:
     // onSuccess: {status: "ok", info{name:"", level:"", card_id:"", url:"", is_on_sale:"", price:"", owner:""}}
     @RequestMapping(value = "/get_card_info", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -22,15 +23,27 @@ public class CardController {
     public String getCardInfo(HttpServletRequest request){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("card_contract_client");
+        //未登录
         if(clientObj == null){
             ret.put("status", "error");
             ret.put("error_type", "client_null");
             return ret.toJSONString();
         }
-
         CardContractClient client = (CardContractClient)clientObj;
         String cardId = request.getParameter("card_id");
+        //缺少card_id参数
+        if(cardId == null){
+            ret.put("status","error");
+            ret.put("error_type", "lack_card_id");
+            return ret.toJSONString();
+        }
         CardInfo info = client.getCardInfo(cardId);
+        //获取信息失败
+        if(info == null){
+            ret.put("status", "error");
+            ret.put("error", "info_null");
+            return ret.toJSONString();
+        }
         ret.put("status", "ok");
         ret.put("info", info);
         return ret.toJSONString();
@@ -42,6 +55,12 @@ public class CardController {
     public String setCardPrice(HttpServletRequest request){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("market_contract_client");
+        //未登录
+        if(clientObj == null){
+            ret.put("status", "error");
+            ret.put("error_type", "client_null");
+            return ret.toJSONString();
+        }
         CardContractClient client = (CardContractClient)clientObj;
         String cardId = request.getParameter("card_id");
         String price = request.getParameter("price");

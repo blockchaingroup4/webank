@@ -35,6 +35,7 @@ public class CardContractClient extends ContractClient{
             cardInfo.setOwner(info.getValue7());
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
         return cardInfo;
     }

@@ -27,7 +27,7 @@ public class ReverseController {
         return ret.toJSONString();
     }
 
-    //input:{}
+    //input:{private_key:}
     //output:
     // onSuccess:{status: "ok", reverses:[{...}, {...},....]}
     // onError: todo

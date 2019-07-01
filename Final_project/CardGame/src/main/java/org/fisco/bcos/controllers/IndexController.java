@@ -35,7 +35,7 @@ public class IndexController {
     //cooldown time > 60 second
     //input: {phone_number: phoneNumber}
     //output:
-    //  onSuccess: {status: "ok", code: "...."}
+    //  onSuccess: {status: "ok"}
     //  lackPhoneError: {status: "error", error_type: "lack_phone"}
     //  cooldownError: {status: "error",  error_type: "cooldown"}
     //  repeatError: {status: "error", error_type: "repeat"}
@@ -57,7 +57,6 @@ public class IndexController {
             //todo
         }
         ret.put("status", "ok");
-        ret.put("code", code);
         request.getSession().setAttribute("code", code);
         return ret.toJSONString();
     }
@@ -105,28 +104,5 @@ public class IndexController {
         return ret.toJSONString();
     }
 
-//    @RequestMapping(value = "/send_check_code", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//    @ResponseBody
-//    public String sendCheckCode(HttpServletRequest request) {
-//        System.out.println(request);
-//        System.out.println(request.getParameter("phone"));
-//
-////        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-////        System.out.println(request);
-//        String code = SendMessageUtil.getRandomCode(6);
-//        System.out.println(code);
-//        JSONObject obj = new JSONObject();
-//        obj.put("code", code);
-//        return obj.toJSONString();
-//    }
-
-//    @RequestMapping(value = "/test", method= RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//    @ResponseBody
-//    public String test(){
-//        JSONObject obj = new JSONObject();
-//        obj.put("first", "haha");
-//        obj.put("second", 20);
-//        return obj.toJSONString();
-//    }
 }
 
