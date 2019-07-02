@@ -5,7 +5,9 @@ import org.fisco.bcos.beans.ReverseInfo;
 import org.fisco.bcos.beans.TransactionInfo;
 import org.fisco.bcos.clients.ReverseContractClient;
 import org.fisco.bcos.clients.TransactionContractClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,13 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class TransactionController {
+    @Autowired
+    HttpServletRequest request;
     //input:{transaction_id:}
     //output:
     // onSuccess:{status: "ok", info:{....}};
     // onError: todo
     @RequestMapping(value = "/get_transaction_info", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getTransactionInfo(HttpServletRequest request){
+    public String getTransactionInfo(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("transaction_contract_client");
         //未登录
@@ -30,7 +34,7 @@ public class TransactionController {
             return ret.toJSONString();
         }
         TransactionContractClient client = (TransactionContractClient)clientObj;
-        String transactionId = request.getParameter("transaction_id");
+        String transactionId = (String)jsonObject.get("transaction_id");
         //缺少transaction_id参数
         if(transactionId == null){
             ret.put("status", "error");

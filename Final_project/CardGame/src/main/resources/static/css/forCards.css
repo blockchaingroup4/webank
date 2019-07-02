@@ -1,0 +1,22 @@
+.lgh_row{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.card-cont{
+    padding: 15px;
+    display: inline;
+    color: #fff;
+    background: #fff;
+    border: 2px dashed #fff;
+
+}
+
+.all-card-container{
+    margin-top: 50px;
+}
+
+.card-img{
+    width: 300px;
+    height: 450px;
+}

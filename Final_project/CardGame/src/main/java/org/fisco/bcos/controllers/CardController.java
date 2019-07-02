@@ -5,7 +5,9 @@ import org.fisco.bcos.beans.AccountInfo;
 import org.fisco.bcos.beans.CardInfo;
 import org.fisco.bcos.clients.AccountContractClient;
 import org.fisco.bcos.clients.CardContractClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,13 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class CardController {
+    @Autowired
+    HttpServletRequest request;
     //获取卡片信息
     //input: {card_id:}
     //output:
     // onSuccess: {status: "ok", info{name:"", level:"", card_id:"", url:"", is_on_sale:"", price:"", owner:""}}
     @RequestMapping(value = "/get_card_info", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getCardInfo(HttpServletRequest request){
+    public String getCardInfo(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("card_contract_client");
         //未登录
@@ -30,7 +34,7 @@ public class CardController {
             return ret.toJSONString();
         }
         CardContractClient client = (CardContractClient)clientObj;
-        String cardId = request.getParameter("card_id");
+        String cardId = (String)jsonObject.get("card_id");
         //缺少card_id参数
         if(cardId == null){
             ret.put("status","error");
@@ -52,7 +56,7 @@ public class CardController {
     //input:{card_id:,price:}
     @RequestMapping(value = "/set_card_price", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String setCardPrice(HttpServletRequest request){
+    public String setCardPrice(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
         Object clientObj = request.getSession().getAttribute("market_contract_client");
         //未登录
@@ -62,8 +66,8 @@ public class CardController {
             return ret.toJSONString();
         }
         CardContractClient client = (CardContractClient)clientObj;
-        String cardId = request.getParameter("card_id");
-        String price = request.getParameter("price");
+        String cardId = (String)jsonObject.get("card_id");
+        String price = (String)jsonObject.get("price");
         client.setCardPrice(cardId, price);
         ret.put("status", "ok");
         return ret.toJSONString();

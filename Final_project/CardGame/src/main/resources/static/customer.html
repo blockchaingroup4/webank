@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>欢迎来到今日方舟</title>
+    <title>账户信息</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
@@ -29,6 +29,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
 
+    <link href='https://fonts.useso.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -58,11 +59,11 @@
                 <div class="container">
                     <div class="nav-header">
                         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                        <h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1><!-- 标题在这 -->
+                        <h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
                         <!-- START #fh5co-menu-wrap -->
                         <nav id="fh5co-menu-wrap" role="navigation">
                             <ul class="sf-menu" id="fh5co-primary-menu">
-                                <li class="active">
+                                <li>
                                     <a href="index.html">首页</a>
                                 </li>
                                 <li>
@@ -79,7 +80,7 @@
                                 <li><a href="cards.html">卡牌</a></li>
                                 <li><a href="about.html">玩法</a></li>
                                 <li><a href="transaction.html">交易记录</a></li>
-                                <li><a href="customer.html">用户</a></li>
+                                <li class="active"><a href="customer.html">用户</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -95,18 +96,51 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7">
-                                <h2>欢迎回来，伟大的<br>召唤师： <b><!-- 用户名 --></b></h2>
-                                <p><span>今天也要元气满满哦 <i class="icon-heart3"></i> </span></p>
-                                <span><a class="btn btn-primary" href="#">抽卡</a></span>
+
+
+                                <div class="container">
+                                    <div class="row">
+
+
+                                        <div class="col-md-4 animate-box">
+                                            <h3 class="section-title" style="font-size: 40px;">用户信息</h3>
+                                            <ul class="contact-info">
+                                                <li style="color:rgb(240,240,240); font-size: 30px; "><i
+                                                        class="icon-user"></i> 用户名称：
+                                                </li>
+                                                <li style="color:rgb(240,240,240); font-size: 30px;"><i
+                                                        class="icon-coin-yen"></i> 用户余额：
+                                                </li>
+                                                <li style="color:rgb(240,240,240); font-size: 30px;"><i
+                                                        class="icon-phone"></i> 用户电话：
+                                                </li>
+                                                <li style="color:rgb(240,240,240); font-size: 30px;"><i
+                                                        class="icon-credit-card"></i> 剩余抽奖次数：
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- 增加内容 -->
                             </div>
+                            <span><a class="btn btn-primary" href="schedule.html">充值</a></span>
+                            <span><a class="btn btn-primary" href="cards.html">卡牌</a></span>
+                            <span><a class="btn btn-primary" href="transaction.html" style="font-size: 24px;">交易信息</a></span>
+                            <span><a class="btn btn-primary" href="transaction.html" style="font-size: 24px;">逛逛市场</a></span>
                         </div>
+
                     </div>
                 </div>
             </div>
+
         </div>
-
-
     </div>
+
     <!-- END fh5co-page -->
 
 </div>

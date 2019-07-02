@@ -41,11 +41,26 @@ public class IndexController {
     //  lackPhoneError: {status: "error", error_type: "lack_phone"}
     //  cooldownError: {status: "error",  error_type: "cooldown"}
     //  repeatError: {status: "error", error_type: "repeat"}
+//    $.ajax({
+//        url:"http://localhost:8080/send_check_code",
+//                type:"post",
+//                dataType:"json",
+//                contentType:"application/json",
+//                data:JSON.stringify({"phone_number":"123456"}),
+//        success:function(o){
+//            console.log(o);
+//        },
+//        error:function(o){
+//            console.log(o);
+//        }
+//    })
+    @Autowired
+    HttpServletRequest request;
     @RequestMapping(value = "/send_check_code", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String sendCheckCode(HttpServletRequest request){
+    public String sendCheckCode(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
-        String phoneNumber = request.getParameter("phone_number");
+        String phoneNumber = (String)jsonObject.get("phone_number");
         if(phoneNumber == null){
             ret.put("status", "error");
             ret.put("error_type", "lack_phone");
@@ -69,7 +84,7 @@ public class IndexController {
     //  success: {status: "ok", public_key: "0x....", address: "0x....", private_key: "...."}
     @RequestMapping(value = "/sign_up", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String signUp(HttpServletRequest request){
+    public String signUp(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
         //todo : check code
         KeyUtil.UserKey key = KeyUtil.createUserKey();
@@ -80,7 +95,7 @@ public class IndexController {
         Credentials credentials = GenCredential.create(key.getPrivateKey());
         AccountContractClient client = new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j);
         request.getSession().setAttribute("account_contract_client", new AccountContractClient(credentials, contractAddr.getAccountContractAddress(), web3j));
-        String name = request.getParameter("name");
+        String name = (String)jsonObject.get("name");
         client.addAccount(name);
         return ret.toJSONString();
     }
@@ -90,9 +105,9 @@ public class IndexController {
     //output: {status: "ok", type: "user"/"manager"}
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String signIn(HttpServletRequest request){
+    public String signIn(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
-        String privateKey = request.getParameter("private_key");
+        String privateKey = (String)jsonObject.get("private_key");
         Credentials inputCredentials = GenCredential.create(privateKey);
         //todo: check credentials
         request.getSession().setAttribute("credentials", inputCredentials);
