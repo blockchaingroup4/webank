@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,23 +107,22 @@ public class IndexController {
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String signIn(@RequestBody JSONObject jsonObject){
+
         JSONObject ret = new JSONObject();
         String privateKey = (String)jsonObject.get("private_key");
         Credentials inputCredentials = GenCredential.create(privateKey);
         //todo: check credentials
         request.getSession().setAttribute("credentials", inputCredentials);
-        Object client = request.getSession().getAttribute("account_contract_client");
-        if(client == null)
-            request.getSession().setAttribute("account_contract_client", new AccountContractClient(inputCredentials, contractAddr.getAccountContractAddress(), web3j));
+        request.getSession().setAttribute("account_contract_client", new AccountContractClient(inputCredentials, contractAddr.getAccountContractAddress(), web3j));
         request.getSession().setAttribute("market_contract_client", new MarketContractClient(inputCredentials, contractAddr.getMarketContractAddress(), web3j));
         request.getSession().setAttribute("card_contract_client", new CardContractClient(inputCredentials, contractAddr.getCardContractAddress(), web3j));
         request.getSession().setAttribute("transaction_contract_client", new TransactionContractClient(inputCredentials, contractAddr.getTransactionContractAddress(), web3j));
         request.getSession().setAttribute("reverse_contract_client", new ReverseContractClient(inputCredentials, contractAddr.getReverseContractAddress(), web3j));
         ret.put("status", "ok");
         if(inputCredentials.getEcKeyPair().getPrivateKey().equals(credentials.getEcKeyPair().getPrivateKey())){
-            ret.put("type", "user");
+            ret.put("type", "manager");
         }
-        else ret.put("type", "manager");
+        else ret.put("type", "user");
         return ret.toJSONString();
     }
 

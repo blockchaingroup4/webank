@@ -27,7 +27,7 @@ input, button {
   overflow: hidden;
   position: relative;
   width: 900px;
-  height: 550px;
+  height: 650px;
   margin: 0 auto 100px;
   background: #fff;
 }
@@ -210,7 +210,7 @@ h2 {
 label {
   display: block;
   width: 260px;
-  margin: 25px auto 0;
+  margin: 50px auto 0;
   text-align: center;
 }
 label span {
