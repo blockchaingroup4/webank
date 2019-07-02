@@ -20,11 +20,66 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-</head>
-<body style="background-image: url('images/star0.png');background-size: 100%  100%;">
+    <link rel="shortcut icon" href="favicon.ico">
 
-<div class="limiter">
-    <div class="container-table100" style="background-image: url('images/star0.png');background-size: 100%  100%;">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Superfish -->
+    <link rel="stylesheet" href="css/superfish.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body style="background-image: url('images/market_background.png');background-size: 100%  100%;">
+<div id="fh5co-wrapper">
+    <div class="limiter">
+        <div id="fh5co-page">
+            <div id="fh5co-header">
+                <header id="fh5co-header-section">
+                    <div class="container">
+                        <div class="nav-header">
+                            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                            <h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
+                            <!-- START #fh5co-menu-wrap -->
+                            <nav id="fh5co-menu-wrap" role="navigation">
+                                <ul class="sf-menu" id="fh5co-primary-menu">
+                                    <li class="active">
+                                        <a href="index.html">首页</a>
+                                    </li>
+                                    <li>
+                                        <a href="market.html">市场</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="reverse.html">仲裁</a>
+                                    </li>
+                                    <li><a href="about.html">玩法</a></li>
+                                    <li><a href="transactions_2.html">交易</a></li>
+                                    <li><a href="account.html">用户</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+    <div class="container-table100"
+         style="background-image: url('images/trans_back.jpg');background-size: 100%  100%;margin-top: 100px;">
         <div class="wrap-table100">
 
             <div class="table100 ver3 m-b-110">
@@ -35,7 +90,7 @@
                             <th class="cell100 column1">交易的卡片ID</th>
                             <th class="cell100 column2">价格</th>
                             <th class="cell100 column3">交易时间</th>
-                            <th class="cell100 column4">卡片名称 </th>
+                            <th class="cell100 column4">卡片名称</th>
                             <th class="cell100 column5">交易状态</th>
                         </tr>
                         </thead>
@@ -241,10 +296,10 @@
 <!--===============================================================================================-->
 <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
-    $('.js-pscroll').each(function(){
+    $('.js-pscroll').each(function () {
         var ps = new PerfectScrollbar(this);
 
-        $(window).on('resize', function(){
+        $(window).on('resize', function () {
             ps.update();
         })
     });
