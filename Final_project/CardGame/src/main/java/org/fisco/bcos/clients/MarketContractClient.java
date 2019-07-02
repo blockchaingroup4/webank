@@ -84,7 +84,7 @@ public class MarketContractClient extends ContractClient{
             }
             CardDB.setCardUrlAndName(info);
             contract.createCardAndGiveTo(info.getName(), credentials.getAddress(), info.getCardId(), info.getUrl(), BigInteger.valueOf(info.getLevel())).send();
-            
+
             return info;
         } catch (Exception e) {
             e.printStackTrace();
