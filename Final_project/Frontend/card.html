@@ -148,32 +148,32 @@
 		// document.querySelectorAll(selector)
 		// document.querySelectorAll("#btn-get_card_info-Json").onclick = function () {
 		// 	var ajax = new XMLHttpRequest();
-	
+
 		// 	ajax.open('get','./get_card_info');
-	
+
 		// 	ajax.send();
-	
+
 		// 	ajax.onreadystatechange = function () {
 		// 		if (ajax.readyState==4&&ajax.status==200) {
 		// 			// json 字符串 是字符串 所以我们可以 通过  responseText获取
 		// 			console.log(ajax.responseText);
-	
+
 		// 			// 转化为 js对象
 		// 			var jsObj = JSON.parse(ajax.responseText);
-	
+
 		// 			console.log(jsObj);
-	
+
 		// 			// 拼接ul s
 		// 			var str = '';
-	
+
 		// 			str+='<ul>';
 		// 			str+='<li>'+jsObj.name+'</li>';
 		// 			str+='<li>'+jsObj.skill+'</li>';
 		// 			str+='<li>'+jsObj.friend+'</li>';
 		// 			str+='</ul>';
-	
+
 		// 			// 设置到界面上
-	
+
 		// 			document.body.innerHTML = str;
 		// 		}
 		// 	}
@@ -212,7 +212,7 @@
 					// 获取卡片的张数
 					 for(var aItem in jsonData){
 						imgNum++;
-					 }    
+					 }
 					 this.cardNum=imgNum;
 				},
 				//执行失败或错误的回调函数
@@ -220,7 +220,7 @@
 					alert("未能拿到用户的卡片id信息！");
 				}
 		});
-		for (i = 0; i < imgNum; i++) { 
+		for (i = 0; i < imgNum; i++) {
 		// 请求图片url
 		$.ajax({
 				url: '/get_card_info',
@@ -234,7 +234,7 @@
 				success:function(data) {
 					// alert(data.url);
 					var jsonData = JSON.parse(data);
-					urlImg[i]=jsonData.info.url;   
+					urlImg[i]=jsonData.info.url;
 					this.cardsName[i]=jsonData.info.name;
 					this.isOnSale[i]=jsonData.info.isOnSale;
 					this.cardsLevel[i]=jsonData.info.level;
@@ -245,13 +245,13 @@
 				}
 		});
 		}
-		
+
 		// 动态添加图片
 		// 第一种方法   appendChild
 		// 获取位置元素
 		// var dynamicImg=document.getElementById('dynamicImg');
 		// // 把图片一张张插入页面
-		// for (i = 0; i < imgNum; i++) { 
+		// for (i = 0; i < imgNum; i++) {
 		// 	var aImg=document.createElement('img');
 		// 	var imgId= document.createTextNode(""+i+1);// 第几张图片，从1开始
 		// 	aImg.src=urlImg[i];
@@ -263,7 +263,7 @@
 		// 第二种方法 动态加入图片
 		var imgClass = document.getElementsByClassName("imgClass");
 		var list="";
-		for (i = 0; i < imgNum; i++) { 
+		for (i = 0; i < imgNum; i++) {
 			list += "<li><a href=\"\"><img src=\"" + urlImg[i] +"\" alt=\"商品图片\"></a></li>";
 			list += "<div class=\"item\""+
 						"<div class=\"imgContainer\" >"
@@ -347,7 +347,7 @@
     };
     // goSale.click();  //模拟点击事件，页面刷新，出发点击事件
 
-	</script> -->-->
+	</script> &ndash;&gt;-->
 
     <script src="js/showUsercards.js"></script>
     <script src="js/jquery.min.js"></script>
