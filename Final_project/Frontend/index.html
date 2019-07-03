@@ -168,7 +168,7 @@
 						<h4 class="modal-title" id="myModalLabel2" style="color: #ffffff; font-weight: bold; font-size: 30px">
 							恭喜！你抽到了：
 						</h4>
-						<img src="./images/6_1.png">
+						<img src="./images/6_1.png" id="card_hit" style="width: 360px; height: 640px">
 					</div>
 
 					<div class="modal-footer" style="background: rgb(0,0,0)">
@@ -200,18 +200,38 @@
 	}
 </script>
 	<script>
+		function draw(){
+			$.ajax({
+				async:false,
+				url:"/draw_card",
+				type:"post",
+				data:JSON.stringify({"wish": "hello world"}),
+				dataType:"json",
+				contentType:"application/json",
+				success: function (result) {
+					let info = result["card_info"];
+					console.log(info);
+					$("#card_hit").attr("src", info.url);
+				},
+				error: function (result) {
+					console.log(result);
+				}
+			});
+			$("#card_dialog_in").modal();
+		}
 		$("#button_draw").on('click', function () {
 			$("#card_dialog").modal();
 		});
+		$("")
 		$("#lottery1").on('click', function () {
-			$("#card_dialog_in").modal();
+			draw();
 
 		});
 		$("#lottery2").on('click', function () {
-			$("#card_dialog_in").modal();
+			draw();
 		});
 		$("#lottery3").on('click', function () {
-			$("#card_dialog_in").modal();
+			draw();
 		});
 		// {
 		// 	status: “ok”,
@@ -240,6 +260,8 @@
 				console.log(result);
 			}
 		});
+
+
 	</script>
 	</body>
 </html>
