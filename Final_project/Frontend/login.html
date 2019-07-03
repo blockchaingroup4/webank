@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/forLogin.css">
     <link rel="stylesheet" href="css/popup.css">
 
-
 </head>
 
 <body >
@@ -18,16 +17,16 @@
 <div class="cont">
     <div class="form sign-in">
         <h2>欢迎肥来</h2>
-        <label>
-            <span>输入你的电话号码</span>
-            <input type="email"/>
-        </label>
+<!--        <label>-->
+<!--            <span>输入你的电话号码</span>-->
+<!--            <input type="email"/>-->
+<!--        </label>-->
         <label>
             <span>密钥</span>
-            <input type="password"/>
+            <input type="password" id="input_private_key"/>
         </label>
         <p class="forgot-pass">忘记密码？那就没办法了，我们也没存有</p>
-        <button type="button" class="submit" id="Login">登陆</button>
+        <button type="button" class="submit" id="button_login">登陆</button>
         <!--    <button type="button" class="fb-btn">Connect with <span>facebook</span></button>-->
     </div>
     <div class="sub-cont">
@@ -51,16 +50,21 @@
             <h2>欢迎加入！</h2>
             <label>
                 <span>用户名</span>
-                <input type="text"/>
+                <input type="text" id="input_name" value="test"/>
             </label>
             <label>
                 <span>电话号码</span>
-                <input type="email"/>
+                <input type="email" id="input_phone" value="test"/>
+            </label>
+            <label>
+                <span>验证码</span>
+                <input type="text" id="input_code" value="test"/>
             </label>
             <!--      <label>-->
             <!--        <span>设置密码</span>-->
             <!--        <input type="password" />-->
             <!--      </label>-->
+            <button type="button" class="submit" id="button_send_check_code">发送验证码</button>
             <button type="button" class="submit" id="button_register">注册</button>
 
             <!-- 弹窗 -->
@@ -68,13 +72,29 @@
 
                 <!-- 弹窗内容 -->
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <span class="close">&times;</span>
-                        <h2>短信验证</h2>
+                        <h2>注册结果</h2>
                     </div>
                     <div class="modal-body">
-                        <input id="message_veri" placeholder="请输入短信验证码">
-                        <button type="button" class="submit" id="message_verification">提交</button>
+                        <ul>
+                            <li style="list-style: none">
+                                <span><label>你的地址：</label></span>
+                                <span><textarea readonly="true" id="textarea_addr"></textarea></span>
+                            </li>
+                            <li style="list-style: none">
+                                <span><label>你的公钥：</label></span>
+                                <span><textarea readonly="true" id="textarea_pubkey"></textarea></span>
+                            </li>
+
+                            <li style="list-style: none">
+                                <span><label>你的私钥：</label></span>
+                                <span><textarea readonly="true" id="textare_prikey"></textarea> </span>
+                            </li>
+                        </ul>
+<!--                        <input id="message_veri" placeholder="请输入短信验证码">-->
+<!--                        <button type="button" class="submit" id="message_verification">提交</button>-->
                     </div>
                     <div class="modal-footer">
                         <h3></h3>
@@ -89,11 +109,14 @@
 </div>
 
 
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/popup.js"></script>
+
 <script>
     // window.location.href="registeerSucceed.html";
-
 </script>
 </body>
 </html>

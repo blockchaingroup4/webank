@@ -86,9 +86,9 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-7">
-								<h2>欢迎回来，伟大的<br>召唤师 <b>XXX</b></h2> <!-- 在这里返回一个用户名  -->
+								<h2>欢迎回来，伟大的<br>召唤师 <b id="b_name"></b></h2> <!-- 在这里返回一个用户名  -->
 								<p><span>今天也要元气满满哦 <i class="icon-heart3"></i></span></p>
-								<span><a class="btn btn-primary" href="#">抽卡</a></span>
+								<span><a class="btn btn-primary" href="#" id="button_draw">抽卡</a></span>
 							</div>
 						</div>
 					</div>
@@ -122,6 +122,35 @@
 	<!-- Main JS (Do not remove) -->
 	<script src="js/main.js"></script>
 
+	<script>
+		// {
+		// 	status: “ok”,
+		// 	info: {
+		// 		name: 用户名
+		// 		balance: 余额
+		// 		drawCount: 剩余抽奖次数
+		// 		cardsId: 用户持有的所有的卡片的id
+		// 		transactionsId: 用户参与的所有的交易的id
+		// 	}
+		// }
+
+		$.ajax({
+			async:true,
+			url:"/get_account_info",
+			type:"post",
+			data:JSON.stringify({}),
+			dataType:"json",
+			contentType:"application/json",
+			success: function (result) {
+				let info = result["info"];
+				$("#b_name").text(info.name);
+				console.log(info);
+			},
+			error: function (result) {
+				console.log(result);
+			}
+		});
+	</script>
 	</body>
 </html>
 
