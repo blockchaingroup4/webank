@@ -102,26 +102,26 @@
                                     <div class="wthree_tab_content_pos">
                                         <div class="wthree_tab_content_pos_grid">
                                             <h2 style="font-size: 40px;font-weight: 900;color: #1f1a14">Information</h2>
-                                            <h6 style="font-size: 35px;color: #fffeff">{user.name}</h6>
+                                            <h6 style="font-size: 35px;color: #fffeff" id="h6_user_name">{user.name}</h6>
                                             <ul class="address">
                                                 <li>
                                                     <ul class="address-text">
                                                         <li><b style="font-size: 15px;">账户余额 </b></li>
-                                                        <li style="font-size: 17px;margin-left: 20px">{user.balance}</li>
+                                                        <li style="font-size: 17px;margin-left: 20px" id="li_user_balance">{user.balance}</li>
                                                     </ul>
                                                 </li>
                                                 <li>
                                                     <ul class="address-text">
                                                         <li><b style="font-size: 15px">剩余抽卡次数 </b></li>
-                                                        <li style="font-size: 17px;margin-left: 20px">{user.Drawtimes}</li>
+                                                        <li style="font-size: 17px;margin-left: 20px" id="li_user_draw_times">{user.Drawtimes}</li>
                                                     </ul>
                                                 </li>
                                                 <li>
                                                     <div class="row" style="margin-top:20px">
-                                                        <button class="btn btn-default btn-flat btn-sm">我的卡组</button>
-                                                        <button class="btn btn-default btn-flat btn-sm">我的仲裁</button>
-                                                        <button class="btn btn-default btn-flat btn-sm">账户充值</button>
-                                                        <button class="btn btn-default btn-flat btn-sm">次数购买</button>
+                                                        <button class="btn btn-default btn-flat btn-sm" id="btn_my_cards">我的卡组</button>
+                                                        <button class="btn btn-default btn-flat btn-sm" id="btn_my_reverses">我的仲裁</button>
+                                                        <button class="btn btn-default btn-flat btn-sm" id="btn_recharge">账户充值</button>
+                                                        <button class="btn btn-default btn-flat btn-sm" id="btn_buy_draw_times">次数购买</button>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -133,6 +133,10 @@
                     <!-- END fh5co-page -->
 
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
                 <!-- END fh5co-wrapper -->
 
                 <!-- jQuery -->
@@ -154,6 +158,80 @@
                 <!-- Main JS (Do not remove) -->
                 <script src="js/main.js"></script>
 
+                <script type="text/javascript">
+                    // {
+                    // 	status: “ok”,
+                    // 	info: {
+                    // 		name: 用户名
+                    // 		balance: 余额
+                    // 		drawCount: 剩余抽奖次数
+                    // 		cardsId: 用户持有的所有的卡片的id
+                    // 		transactionsId: 用户参与的所有的交易的id
+                    // 	}
+                    // }
+                    $.ajax({
+                        async:true,
+                        url:"/get_account_info",
+                        type:"post",
+                        data:JSON.stringify({}),
+                        dataType:"json",
+                        contentType:"application/json",
+                        success: function (result) {
+                            let info = result["info"];
+                            $("#h6_user_name").text(info.name);
+                            $("#li_user_balance").text(info.balance);
+                            $("#li_user_draw_times").text(info.drawCount);
+                            console.log(info);
+                        },
+                        error: function (result) {
+                            console.log(result);
+                        }
+                    });
+
+                    $("#btn_my_cards").on("click", function () {
+                       window.location.href = "card_need_test.html"
+                    });
+                    $("#btn_my_reverses").on("click", function () {
+                       window.location.href = "user_reverses.html"
+                    });
+                    $("#btn_recharge").on("click", function () {
+                       let amount = window.prompt();
+                        $.ajax({
+                            async:true,
+                            url:"/recharge",
+                            type:"post",
+                            data:JSON.stringify({"amount": amount}),
+                            dataType:"json",
+                            contentType:"application/json",
+                            success: function (result) {
+                                alert("充值成功");
+                                window.location.reload();
+                            },
+                            error: function (result) {
+                                console.log(result);
+                            }
+                        });
+                       console.log(amount);
+                    });
+                    $("#btn_buy_draw_times").on("click", function () {
+                       let times = window.prompt();
+                       $.ajax({
+                           async:true,
+                           url:"/buy_draw_card",
+                           type:"post",
+                           data:JSON.stringify({"times": times}),
+                           dataType:"json",
+                           contentType:"application/json",
+                           success: function (result) {
+                               alert("购买成功");
+                               window.location.reload();
+                           },
+                           error: function (result) {
+                               console.log(result);
+                           }
+                       });
+                    });
+                </script>
 </body>
 </html>
 
