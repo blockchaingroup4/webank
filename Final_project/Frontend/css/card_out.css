@@ -1,0 +1,34 @@
+.scene {
+    width: 314px;
+    height: 443px;
+    perspective: 600px;
+}
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+.card__face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+.card__face--front {
+    background-image: url("../images/cards_out_bg.png");
+}
+
+.card__face--back {
+    background-image: url("../images/cards_out_bg.png");
+    transform: rotateY( 180deg );
+}
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+.fh5co-hero li{
+    list-style: none;
+    float: left;
+    width: 33.3%;/*三列图片排列*/
+}
