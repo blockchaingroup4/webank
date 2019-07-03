@@ -25,3 +25,10 @@ test-keys:
   user1: 9b0b7de664abdeff59771047cda1e50a62bc9d3ecd017f31fcb4f7a93e8ae43c
   user2: c4b59a5b613ed4167ecb4d557027ad63221ba17ed436eef1e655212672af11ac
   user3: c2db03860692b088a623c3405fcb58a7c164557c5f9cc739df09e606bb87b495
+
+spring:
+  resources:
+    static-locations: file:${upload.filedir}
+
+upload:
+  filedir: /home/lgh/Documents/webank/Final_project/Frontend
