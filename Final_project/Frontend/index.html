@@ -48,7 +48,7 @@
 	<![endif]-->
 
 	</head >
-	<body style="background-image: url(images/bottom.png);">
+	<body style="background: #090909;">
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page" >
 		<div id="fh5co-header" >
@@ -108,13 +108,13 @@
 
 		<div class="modal fade" id="card_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
-				<div class="modal-content">
+				<div class="modal-content" style="width: 800px; margin-top:200px;">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
 						<h4 class="modal-title" id="myModalLabel">
-							模态框（Modal）标题
+							选择你要抽的卡片
 						</h4>
 					</div>
 					<div class="modal-body">
@@ -124,7 +124,7 @@
 								<li class="zyq">
 									<div class="scene">
 										<div class="card">
-											<div class="card__face card__face--front"></div>
+											<div class="card__face card__face--front"><a id="lottery1" data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
 											<div class="card__face card__face--back"></div>
 										</div>
 									</div>
@@ -132,7 +132,7 @@
 								<li class="zyq">
 									<div class="scene">
 										<div class="card">
-											<div class="card__face card__face--front"></div>
+											<div class="card__face card__face--front"><a id="lottery2" data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
 											<div class="card__face card__face--back"></div>
 										</div>
 									</div>
@@ -140,7 +140,7 @@
 								<li class="zyq">
 									<div class="scene">
 										<div class="card">
-											<div class="card__face card__face--front"></div>
+											<div class="card__face card__face--front"><a id="lottery3" data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
 											<div class="card__face card__face--back"></div>
 										</div>
 									</div>
@@ -151,8 +151,29 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">
-							确定
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							返回
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		<div class="modal fade" id="card_dialog_in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content" style="width: 800px; margin-top:200px;">
+					<div class="modal-header" style="background-image: url('images/card_out_bg.png')">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel2" style="color: #ffffff; font-weight: bold; font-size: 30px">
+							恭喜！你抽到了：
+						</h4>
+						<img src="./images/6_1.png">
+					</div>
+
+					<div class="modal-footer" style="background: rgb(0,0,0)">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							返回
 						</button>
 					</div>
 				</div><!-- /.modal-content -->
@@ -173,12 +194,25 @@
 <script src="js/cards_out.js"></script>
 	<!-- Main JS (Do not remove) -->
 	<script src="js/main.js"></script>
-
+<script>
+	function custom_close(){
+		window.close();
+	}
+</script>
 	<script>
 		$("#button_draw").on('click', function () {
 			$("#card_dialog").modal();
 		});
+		$("#lottery1").on('click', function () {
+			$("#card_dialog_in").modal();
 
+		});
+		$("#lottery2").on('click', function () {
+			$("#card_dialog_in").modal();
+		});
+		$("#lottery3").on('click', function () {
+			$("#card_dialog_in").modal();
+		});
 		// {
 		// 	status: “ok”,
 		// 	info: {
