@@ -143,7 +143,7 @@ figure {
 .fh5co-cover,
 .fh5co-hero {
   position: relative;
-  height: 800px;
+  height: 990px;
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover,
@@ -175,7 +175,7 @@ figure {
   bottom: 0;
   right: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0);
 }
 
 .fh5co-cover {
@@ -569,7 +569,8 @@ figure {
   margin-bottom: 4em;
 }
 .heading-section h2 {
-  font-size: 24px;
+  font-size: 35px;
+
   letter-spacing: 1px;
   text-transform: uppercase;
   position: relative;
