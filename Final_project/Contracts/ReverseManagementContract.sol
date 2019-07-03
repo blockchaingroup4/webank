@@ -33,6 +33,7 @@ contract ReverseManagementContract{
         bool role;  
         string discribe;
         bool dealed; //whether dealed by manager
+        bool isSent;
         
         //role:  0:seller
         //       1:buyer
@@ -48,9 +49,9 @@ contract ReverseManagementContract{
         transactionInterface = TransactionInterface(transactionAddr);
     }
     
-    function getReverseInfo(uint reverseId)external view returns(uint, uint, bool, string, bool){
+    function getReverseInfo(uint reverseId)external view returns(uint, uint, bool, string, bool, bool){
         ReverseApplication storage reverse = reverseApplications[reverseId];
-        return (reverse.reverseApplyId, reverse.transactionId, reverse.role, reverse.discribe, reverse.dealed);
+        return (reverse.reverseApplyId, reverse.transactionId, reverse.role, reverse.discribe, reverse.dealed, reverse.isSent);
     }
     
     function createReverseApplies(address who, uint transactionId, string discribe)external{
@@ -59,7 +60,7 @@ contract ReverseManagementContract{
         
         bool role = transactionInterface.getRole(who, transactionId);
         transactionInterface.setReversingTrue(transactionId);
-        uint reverseApplyId = reverseApplications.push(ReverseApplication(0, transactionId, role, discribe, false))-1;
+        uint reverseApplyId = reverseApplications.push(ReverseApplication(0, transactionId, role, discribe, false, false))-1;
         reverseApplications[reverseApplyId].reverseApplyId = reverseApplyId;
         //create re_applicationId
         //reverseApplications ++
@@ -69,17 +70,13 @@ contract ReverseManagementContract{
         return reverseApplications.length;
     }
     
-    function getReverseApply(uint index)external view returns(uint, uint, bool, string, bool){
-        return (reverseApplications[index].reverseApplyId, reverseApplications[index].transactionId, reverseApplications[index].role, 
-        reverseApplications[index].discribe, reverseApplications[index].dealed );
-    }
-    
     function sendReverseInform(uint reverseApplyId)external{
         uint transactionId = reverseApplications[reverseApplyId].transactionId;
         bool role = reverseApplications[reverseApplyId].role;
         address aim = transactionInterface.getTransaction_re(role, transactionId);
     
         accountManagementInterface.addRequestions(aim, reverseApplyId);
+        reverseApplications[reverseApplyId].isSent = true;
     }
     
     function setReverseResult(uint reverseApplyId,bool result)external{

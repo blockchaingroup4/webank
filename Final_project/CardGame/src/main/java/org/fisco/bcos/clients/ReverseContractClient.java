@@ -8,6 +8,7 @@ import org.fisco.bcos.contracts.ReverseManagementContract;
 import org.fisco.bcos.web3j.crypto.Credentials;
 import org.fisco.bcos.web3j.protocol.Web3j;
 import org.fisco.bcos.web3j.tuples.generated.Tuple5;
+import org.fisco.bcos.web3j.tuples.generated.Tuple6;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -59,12 +60,13 @@ public class ReverseContractClient extends ContractClient{
     public ReverseInfo getReverseInfo(String reverseId){
         ReverseInfo ret = new ReverseInfo();
         try {
-            Tuple5<BigInteger, BigInteger, Boolean, String, Boolean>info = contract.getReverseInfo(new BigInteger(reverseId)).send();
+            Tuple6<BigInteger, BigInteger, Boolean, String, Boolean, Boolean> info = contract.getReverseInfo(new BigInteger(reverseId)).send();
             ret.setReverseId(String.valueOf(info.getValue1()));
             ret.setTransactionId(String.valueOf(info.getValue2()));
             ret.setRole(info.getValue3());
             ret.setReason(info.getValue4());
             ret.setDealed(info.getValue5());
+            ret.setSent(info.getValue6());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
