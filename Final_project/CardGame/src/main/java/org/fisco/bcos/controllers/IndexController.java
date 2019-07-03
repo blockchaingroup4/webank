@@ -71,9 +71,9 @@ public class IndexController {
             //todo
         }
         String code = SendMessageUtil.getRandomCode(6);
-        if(SendMessageUtil.sendCode(code)!=1){
-            //todo
-        }
+//        if(SendMessageUtil.sendCode(code, phoneNumber)!=1){
+//            //todo
+//        }
         ret.put("status", "ok");
         request.getSession().setAttribute("code", code);
         return ret.toJSONString();

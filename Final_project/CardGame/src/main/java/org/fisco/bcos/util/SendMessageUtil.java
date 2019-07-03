@@ -10,8 +10,9 @@ import org.junit.Test;
 
 public class SendMessageUtil {
     private static final String SMS_Url = "http://sms.webchinese.cn/web_api/";
-    public static Integer sendCode(String code){
+    public static Integer sendCode(String code, String number){
         //todo
+        send("lghfoo", "d41d8cd98f00b204e980", number, "验证码："+code);
         return 1;
     }
     /**

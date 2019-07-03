@@ -53,6 +53,7 @@ public class MarketController {
         Object clientObj = request.getSession().getAttribute("market_contract_client");
         MarketContractClient client = (MarketContractClient)clientObj;
         String cardId = (String)jsonObject.get("card_id");
+        client.buyCard(cardId);
         ret.put("status", "ok");
         return ret.toJSONString();
     }
@@ -109,6 +110,20 @@ public class MarketController {
         MarketContractClient client = (MarketContractClient)clientObj;
         String amount = (String)jsonObject.get("amount");
         client.recharge(amount);
+        ret.put("status", "ok");
+        return ret.toJSONString();
+    }
+
+    //todo
+    //input:{times:""}
+    @RequestMapping(value = "/buy_draw_card", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String buyDrawCard(@RequestBody JSONObject jsonObject){
+        JSONObject ret = new JSONObject();
+        Object clientObj = request.getSession().getAttribute("market_contract_client");
+        MarketContractClient client = (MarketContractClient)clientObj;
+        String times = (String)jsonObject.get("times");
+        client.buyDrawCard(times);
         ret.put("status", "ok");
         return ret.toJSONString();
     }

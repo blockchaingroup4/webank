@@ -6,6 +6,7 @@ contract CardManagementInterface{
     function setCardOwner(address cardId, address owner)external;
     function setCardOnSale(address cardId, bool onSale)external;
     function setCardPrice(address cardId, uint price)external;
+    function isCardOnSale(address cardId)external view returns(bool);
     function createCard(string name, address cardId, string url, int8 level, address owner)external;
 }
 
@@ -24,6 +25,7 @@ contract TransactionManagementInterface{
 contract MarketContract{
     address[] cardsOnSale;
     event DrawCardEvent(int8 level, address cardId);
+    event CreateCardAndGiveEvent(string name, int8 level, address cardId, string url, bool isOnSale, uint price, address owner);
     AccountManagementInterface accountManagementInterface;
     CardManagementInterface cardManagementInterface;
     TransactionManagementInterface transactionManagementInterface;
@@ -150,10 +152,10 @@ contract MarketContract{
         }
         emit DrawCardEvent(level, cardId);
     }
-    
     function createCardAndGiveTo(string name, address who, address cardId, string url, int8 level)external{
-        cardManagementInterface.createCard(name, cardId, url, level, who);
         accountManagementInterface.addCard(who, cardId);
         accountManagementInterface.setDrawCountOf(who, accountManagementInterface.getDrawCountOf(who) - 1);
+        cardManagementInterface.createCard(name, cardId, url, level, who);
+        emit CreateCardAndGiveEvent(name, level, cardId, url, cardManagementInterface.isCardOnSale(cardId), cardManagementInterface.getPriceOf(cardId), who);
     }
 }

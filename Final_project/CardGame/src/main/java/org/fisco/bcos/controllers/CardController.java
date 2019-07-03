@@ -58,11 +58,11 @@ public class CardController {
     @ResponseBody
     public String setCardPrice(@RequestBody JSONObject jsonObject){
         JSONObject ret = new JSONObject();
-        Object clientObj = request.getSession().getAttribute("market_contract_client");
+        Object clientObj = request.getSession().getAttribute("card_contract_client");
         //未登录
         if(clientObj == null){
-            ret.put("status", "error");
             ret.put("error_type", "client_null");
+            ret.put("status", "error");
             return ret.toJSONString();
         }
         CardContractClient client = (CardContractClient)clientObj;

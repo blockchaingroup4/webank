@@ -52,7 +52,7 @@ public class ReverseController {
         ReverseContractClient client = (ReverseContractClient)clientObj;
         List<ReverseInfo> applies = client.getReverseApplies();
         ret.put("status", "ok");
-        ret.put("reverses_id", applies);
+        ret.put("reverses", applies);
         return ret.toJSONString();
     }
 
@@ -106,7 +106,7 @@ public class ReverseController {
         Object clientObj = request.getSession().getAttribute("reverse_contract_client");
         ReverseContractClient client = (ReverseContractClient)clientObj;
         String reverseId = (String)jsonObject.get("reverse_id");
-        Boolean result = Boolean.valueOf((String)jsonObject.get("result"));
+        Boolean result = jsonObject.getBoolean("result");
         client.setReverseResult(reverseId, result);
         ret.put("status", "ok");
         return ret.toJSONString();

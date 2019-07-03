@@ -48,4 +48,7 @@ contract CardManagementContract{
         cards[cardId] = Card(name, level, cardId, url, false, 99999, owner);
     }
 
+    function isCardOnSale(address cardId)external view returns(bool){
+        return cards[cardId].isOnSale;
+    }
 }

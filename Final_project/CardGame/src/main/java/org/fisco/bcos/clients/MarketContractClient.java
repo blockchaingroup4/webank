@@ -83,8 +83,13 @@ public class MarketContractClient extends ContractClient{
                 info.setCardId(responses.get(0).cardId);
             }
             CardDB.setCardUrlAndName(info);
-            contract.createCardAndGiveTo(info.getName(), credentials.getAddress(), info.getCardId(), info.getUrl(), BigInteger.valueOf(info.getLevel())).send();
-
+            receipt = contract.createCardAndGiveTo(info.getName(), credentials.getAddress(), info.getCardId(), info.getUrl(), BigInteger.valueOf(info.getLevel())).send();
+            List<MarketContract.CreateCardAndGiveEventEventResponse>responses1 = contract.getCreateCardAndGiveEventEvents(receipt);
+            if(!responses1.isEmpty()){
+                info.setPrice(String.valueOf(responses1.get(0).price));
+                info.setOnSale(responses1.get(0).isOnSale);
+                info.setOwner(responses1.get(0).owner);
+            }
             return info;
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,5 +105,16 @@ public class MarketContractClient extends ContractClient{
             e.printStackTrace();
             return 1;
         }
+    }
+
+    //todo
+    public Integer buyDrawCard(String times){
+        try {
+            contract.buyDrawCards(credentials.getAddress(), new BigInteger(times)).send();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
+        return 0;
     }
 }
