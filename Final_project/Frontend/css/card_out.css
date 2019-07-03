@@ -27,7 +27,7 @@
 .card.is-flipped {
     transform: rotateY(180deg);
 }
-li{
+.fh5co-hero li{
     list-style: none;
     float: left;
     width: 33.3%;/*三列图片排列*/
