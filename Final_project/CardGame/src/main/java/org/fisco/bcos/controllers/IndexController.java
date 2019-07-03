@@ -34,6 +34,11 @@ public class IndexController {
         return "index.html";
     }
 
+    @RequestMapping("/")
+    public String login(){
+        return "login.html";
+    }
+
     //get check code
     //cooldown time > 60 second
     //input: {phone_number: phoneNumber}

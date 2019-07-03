@@ -9,4 +9,5 @@ public class ReverseInfo {
     boolean role;
     String reason;
     boolean dealed;
+    boolean isSent;
 }

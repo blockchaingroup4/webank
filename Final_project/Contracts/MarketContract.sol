@@ -62,16 +62,19 @@ contract MarketContract{
     
     //0:success
     //1:balance not enough
+    event BuyDrawCardsEvent(address addr, uint times, int code);
     function buyDrawCards(address addr, uint times)external returns(uint){
         uint amountPerTime = 10;
         uint balance = accountManagementInterface.getBalanceOf(addr);
         uint needBalance = times*amountPerTime;
         if(needBalance > balance){
+            emit BuyDrawCardsEvent(addr, times, 1);
             return 1;
         }
         accountManagementInterface.setBalanceOf(addr, balance - needBalance);
         uint32 count = accountManagementInterface.getDrawCountOf(addr);
         accountManagementInterface.setDrawCountOf(addr, uint32(count + times));
+        emit BuyDrawCardsEvent(addr, times, 0);
         return 0;
     }
     
@@ -89,11 +92,18 @@ contract MarketContract{
         return _removeCardOnSale(cardId);
     }
     
+    //0:success
+    //1:failed
+    event BuyCardEvent(address buyer, address cardId, int code);
     function buyCard(address buyer, address cardId)external{
         uint balanceOfBuyer = accountManagementInterface.getBalanceOf(buyer);
+        uint price = cardManagementInterface.getPriceOf(cardId);
+        if(balanceOfBuyer < price){
+            emit BuyCardEvent(buyer, cardId, 1);
+            return;
+        }
         address seller = cardManagementInterface.getCardOwner(cardId);
         uint balanceOfSeller = accountManagementInterface.getBalanceOf(seller);
-        uint price = cardManagementInterface.getPriceOf(cardId);
         string memory name = cardManagementInterface.getCardName(cardId);
         cardManagementInterface.setCardOwner(cardId, buyer);
         cardManagementInterface.setCardOnSale(cardId, false);
@@ -111,6 +121,7 @@ contract MarketContract{
         accountManagementInterface.setBalanceOf(seller, balanceOfSeller + price);
         
         _removeCardOnSale(cardId);
+        emit BuyCardEvent(buyer, cardId, 0);
     }
     
     //0:success
@@ -128,24 +139,30 @@ contract MarketContract{
         return 1;
     }
     
+    //1: 0.5889 ==> 5889 
+    //2: 0.3000 ==> 8889
+    //3: 0.1000 ==> 9889
+    //4: 0.0100 ==> 9989
+    //5: 0.0010 ==> 9999
+    //6: 0.0001 ==> 10000
     uint nonce = 0;
     function drawCard(address who, string wish)external{
         require(accountManagementInterface.getDrawCountOf(who) > 0);
         uint cardIdInt = uint(keccak256(abi.encodePacked(wish))) + 
                 uint(keccak256(abi.encodePacked(now, msg.sender, nonce)));
-        uint rand = cardIdInt % 10000;
+        uint rand = cardIdInt % 10000 + 1;
         address cardId = address(cardIdInt);
         nonce++;
         int8 level = 0;
-        if(rand < 5000){
+        if(rand <= 58889){
             level = 1;
-        }else if(rand < 7500){
+        }else if(rand <= 8889){
             level = 2;
-        }else if(rand < 8550){
+        }else if(rand <= 9889){
             level = 3;
-        }else if(rand < 9390){
+        }else if(rand <= 9989){
             level = 4;
-        }else if(rand <9890){
+        }else if(rand <=9999){
             level = 5;
         }else{
             level = 6;
