@@ -1,128 +1,376 @@
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>仲裁</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
-
-	<link href='https://fonts.useso.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Superfish -->
-	<link rel="stylesheet" href="css/superfish.css">
-
-	<link rel="stylesheet" href="css/style.css">
+<html lang="en">
+<head>
+    <title>交易信息</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <link rel="shortcut icon" href="favicon.ico">
 
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Superfish -->
+    <link rel="stylesheet" href="css/superfish.css">
 
-	</head>
-	<body style="background: #090909">
-		<div id="fh5co-wrapper">
-		<div id="fh5co-page">
-		<div id="fh5co-header">
-			<header id="fh5co-header-section">
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li>
-									<a href="index.html">首页</a>
-								</li>
-								<li>
-									<a href="market.html" >市场</a>
-									 
-								</li>
-								<li class="active">
-									<a href="reverse.html">仲裁</a>
-								</li>
-
-								<li><a href="about.html">玩法</a></li>
-								<li><a href="transactions_2.html">交易</a></li>
-								<li><a href="account.html">用户</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>		
-		</div>
-		<!-- end:fh5co-header -->
-		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/home-image.jpg);">
-				<div class="desc animate-box">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-								<h2>充值金额</h2>
-								<input type="text" name="money" style=background:#C0C0C0>
-								<br>
-								<span><a class="btn btn-primary" href="recharge.html">确定</a></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- END fh5co-page -->
-
-	</div>
-	<!-- END fh5co-wrapper -->
-
-	<!-- jQuery -->
+    <link rel="stylesheet" href="css/style.css">
 
 
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
 
-	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>
 
-	</body>
+</head>
+<body style="background: #090909;background-size: 100%  100%;">
+<div id="fh5co-wrapper">
+    <div class="limiter">
+        <div id="fh5co-page">
+            <div id="fh5co-header">
+                <header id="fh5co-header-section">
+                    <div class="container">
+                        <div class="nav-header">
+                            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                            <h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
+                            <!-- START #fh5co-menu-wrap -->
+                            <nav id="fh5co-menu-wrap" role="navigation">
+                                <ul class="sf-menu" id="fh5co-primary-menu">
+                                    <li class="active">
+                                        <a href="index.html">首页</a>
+                                    </li>
+                                    <li>
+                                        <a href="market.html">市场</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="reverse.html">仲裁</a>
+                                    </li>
+                                    <li><a href="about.html">玩法</a></li>
+                                    <li><a href="transactions_2.html">交易</a></li>
+                                    <li><a href="account.html">用户</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+    <div class="container-table100"
+         style="background-image: url('images/trans_back.jpg');background-size: 100%  100%;margin-top: 100px;">
+        <div class="wrap-table100">
+
+            <div class="table100 ver3 m-b-110">
+                <div class="table100-head">
+                    <table>
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">交易ID</th>
+                            <th class="cell100 column2">交易时间</th>
+                            <th class="cell100 column3">卡片名字</th>
+                            <th class="cell100 column4">理由</th>
+                            <th class="cell100 column5">操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody id="rev_body">
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1"></td>-->
+<!--                            <td class="cell100 column2"></td>-->
+<!--                            <td class="cell100 column3"></td>-->
+<!--                            <td class="cell100 column4"></td>-->
+<!--                            <td class="cell100 column5"></td>-->
+<!--                        </tr>-->
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="vendor/bootstrap/js/popper.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
+<!--===============================================================================================-->
+<script src="js/jquery-2.1.4.min.js"/>
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+    $('.js-pscroll').each(function () {
+        var ps = new PerfectScrollbar(this);
+
+        $(window).on('resize', function () {
+            ps.update();
+        })
+    });
+
+    function loadReverses(reversesId){
+        let rowNum = 15;
+        let body = $("#rev_body");
+        for(var i = 0; i < reversesId.length; i++){
+            $.ajax({
+                async:false,
+                url:"/get_reverse_info",
+                type:"post",
+                data:JSON.stringify({"reverse_id": reversesId[i]}),
+                dataType:"json",
+                contentType:"application/json",
+                success: function (result) {
+                    let info = result["info"];
+                    let transId = info.transactionId;
+                    let revId = info.reverseId;
+                    let reason = info.reason;
+                    let dealed = info.dealed;
+                    $.ajax({
+                        async:false,
+                        url:"/get_transaction_info",
+                        type:"post",
+                        data:JSON.stringify({"transaction_id": transId}),
+                        dataType:"json",
+                        contentType:"application/json",
+                        success: function (result) {
+                            let info = result["info"];
+                            let transTime = info.timestamp;
+                            let cardName = info.cardName;
+                            var rev_body = $("#rev_body");
+                            var row = $("<tr class=\"row100 body\"></tr>");
+                            var transCol = $("<td class=\"cell100 column1\">" + transId + "</td>");
+                            var transTimeCol = $("<td class=\"cell100 column2\">" + transTime + "</td>");
+                            var cardNameCol = $("<td class=\"cell100 column3\">" + cardName + "</td>")
+                            var reasonCol = $("<td class=\"cell100 column4\">" + reason + "</td>");
+                            var dealCol = $("<td class=\"cell100 column5\"></td>");
+                            if(dealed){
+                                dealCol.text("已处理");
+                            }
+                            else{
+                                dealCol.data({"reverse_id":revId});
+                                var agreeBtn = $("<div class='btn btn-dark'>同意</div>");
+                                var disagreeBtn = $("<div class='btn btn-danger'>拒绝</div>");
+                                dealCol.append(agreeBtn, disagreeBtn);
+
+                                agreeBtn.on('click', function () {
+                                    let rev = $(this).parent(".cell100").data().reverse_id;
+                                    $.ajax({
+                                        async:true,
+                                        url:"/set_reverse_result",
+                                        type:"post",
+                                        data:JSON.stringify({"reverse_id":rev, "result": true}),
+                                        dataType:"json",
+                                        contentType:"application/json",
+                                        success: function (result) {
+                                            alert("操作成功");
+                                            window.location.reload();
+                                        },
+                                        error: function (result) {
+                                            alert("操作失败");
+                                        }
+                                    });
+                                });
+
+                                disagreeBtn.on('click', function () {
+                                    let rev = $(this).parent(".cell100").data().reverse_id;
+                                    $.ajax({
+                                        async:true,
+                                        url:"/set_reverse_result",
+                                        type:"post",
+                                        data:JSON.stringify({"reverse_id":rev, "result": false}),
+                                        dataType:"json",
+                                        contentType:"application/json",
+                                        success: function (result) {
+                                            alert("操作成功");
+                                            window.location.reload();
+                                        },
+                                        error: function (result) {
+                                            alert("操作失败");
+                                        }
+                                    });
+                                });
+                            }
+                            row.append(transCol, transTimeCol, cardNameCol, reasonCol, dealCol);
+                            rev_body.append(row);
+
+                            console.log(info);
+                        },
+                        error: function (result) {
+                            console.log(result);
+                        }
+                    });
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+        }
+        let colNum = 5;
+        for(i = reversesId.length; i < rowNum; i++){
+            let tr = $("<tr></tr>");
+            for(var j = 0; j < colNum; j++){
+                tr.append($("<td></td>"))
+            }
+            body.append(tr);
+        }
+    }
+
+    $.ajax({
+        async:true,
+        url:"/get_account_info",
+        type:"post",
+        data:JSON.stringify({}),
+        dataType:"json",
+        contentType:"application/json",
+        success: function (result) {
+            console.log(result);
+            let info = result["info"];
+            console.log(info);
+            let reversesId = info["reversesId"];
+            loadReverses(reversesId);
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
+</script>
+<!--===============================================================================================-->
+<!--<script src="js/main.js"></script>-->
+
+</body>
 </html>
-
