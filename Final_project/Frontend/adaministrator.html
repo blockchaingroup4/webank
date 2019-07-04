@@ -89,7 +89,7 @@
                         <tr class="row100 head">
                             <th class="cell100 column1">仲裁ID</th>
                             <th class="cell100 column2">卡片名称</th>
-                            <th class="cell100 column3">卡片时间戳</th>
+                            <th class="cell100 column3">交易时间戳</th>
                             <th class="cell100 column4">申请理由</th>
                             <th class="cell100 column5">是否同意</th>
                         </tr>
@@ -99,6 +99,7 @@
 
                 <div class="table100-body js-pscroll">
                     <table>
+<<<<<<< HEAD
                         <tbody>
                         <tr class="row100 body">
                             <td class="cell100 column1">111</td>
@@ -107,14 +108,24 @@
                             <td class="cell100 column4">太亏了</td>
                             <td class="cell100 column5"><button>同意</button>&nbsp &nbsp &nbsp<button>不同意</button> </td>
                         </tr>
+=======
+                        <tbody id="ad_rev_body">
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1">111</td>-->
+<!--                            <td class="cell100 column2">name</td>-->
+<!--                            <td class="cell100 column3">1231541313</td>-->
+<!--                            <td class="cell100 column4">太亏了</td>-->
+<!--                            <td class="cell100 column5"><button>同意</button>&nbsp &nbsp &nbsp<button>不同意</button> </td>-->
+<!--                        </tr>-->
+>>>>>>> f2f6e7eb6868e778f18cdcace63fe05ffd31f9d9
 
-                        <tr class="row100 body">
-                            <td class="cell100 column1">0xaaf1245662b</td>
-                            <td class="cell100 column2">0x23454563224</td>
-                            <td class="cell100 column3">0x23421419249</td>
-                            <td class="cell100 column4">no reason</td>
-                            <td class="cell100 column5"><button>同意</button>&nbsp &nbsp &nbsp <button>不同意</button></td>
-                        </tr>
+<!--                        <tr class="row100 body">-->
+<!--                            <td class="cell100 column1">0xaaf1245662b</td>-->
+<!--                            <td class="cell100 column2">0x23454563224</td>-->
+<!--                            <td class="cell100 column3">0x23421419249</td>-->
+<!--                            <td class="cell100 column4">no reason</td>-->
+<!--                            <td class="cell100 column5"><button>同意</button>&nbsp &nbsp &nbsp <button>不同意</button></td>-->
+<!--                        </tr>-->
 
 
 
@@ -148,7 +159,99 @@
         })
     });
 
+    function loadReverses(reverses){
+        let rowNum = 15;
+        let body = $("#ad_rev_body");
+        for(var i = 0; i < reverses.length; i++){
+            let info = reverses[i];
+            let reverseId = info.reverseId;
+            let cardName = info.cardName;
+            let reason = info.reason;
+            let sent = info.sent;
+            $.ajax({
+                async:false,
+                url:"/get_transaction_info",
+                type:"post",
+                data:JSON.stringify({"transaction_id": info.transactionId}),
+                dataType:"json",
+                contentType:"application/json",
+                success: function (result) {
+                    let transTime = result["info"].timestamp;
+                    let rev_body = $("#ad_rev_body");
+                    let row = $("<tr class=\"row100 body\"></tr>");
+                    var reverseIdCol = $("<td class=\"cell100 column1\">" + reverseId + "</td>");
+                    var cardNameCol = $("<td class=\"cell100 column2\">" + cardName + "</td>");
+                    var transTimeCol = $("<td class=\"cell100 column4\">" + transTime + "</td>");
+                    var reasonCol = $("<td class=\"cell100 column3\">" + reason + "</td>")
+                    var stateCol = $("<td class=\"cell100 column5\"></td>");
+                    if(sent){
+                        stateCol.text("已处理");
+                    }
+                    else{
+                        stateCol.data({"reverse_id":info.reverseId});
+                        let sendBtn = $("<div class='btn btn-dark'>发送</div>");
+                        stateCol.append(sendBtn, $("<div class='btn btn-danger'>拒绝</div>"));
 
+                        sendBtn.on('click', function () {
+                            let reverse_id = $(this).parent(".cell100").data().reverse_id;
+                            $.ajax({
+                                async:false,
+                                url:"/send_reverse",
+                                type:"post",
+                                data:JSON.stringify({"reverse_id":reverse_id}),
+                                dataType:"json",
+                                contentType:"application/json",
+                                success: function (result) {
+                                    alert("操作成功");
+                                    window.location.reload();
+                                },
+                                error: function (result) {
+                                    alert("操作失败");
+                                }
+                            });
+                        });
+
+                    }
+                    row.append(reverseIdCol, cardNameCol, transTimeCol, reasonCol, stateCol);
+                    rev_body.append(row);
+
+                    console.log(result);
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+
+
+            console.log(info);
+
+        }
+        let colNum = 5;
+        for(i = reverses.length; i < rowNum; i++){
+            let tr = $("<tr class=\"row100 body\"></tr>");
+            for(var j = 0; j < colNum; j++){
+                tr.append($("<td></td>"))
+            }
+            body.append(tr);
+        }
+    }
+
+    $.ajax({
+        async:true,
+        url:"/get_reverse_applies",
+        type:"post",
+        data:JSON.stringify({}),
+        dataType:"json",
+        contentType:"application/json",
+        success: function (result) {
+            console.log(result);
+            let reverses = result["reverses"];
+            loadReverses(reverses);
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
 </script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
