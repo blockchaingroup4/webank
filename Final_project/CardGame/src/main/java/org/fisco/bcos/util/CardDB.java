@@ -63,9 +63,11 @@ public class CardDB {
             }
     };
     public static void setCardUrlAndName(CardInfo info){
+        System.out.println(info);
         Random random = new Random();
         int index = Math.abs(random.nextInt()) % cards[info.getLevel()-1].length;
         info.setUrl(cards[info.getLevel() - 1][index][0]);
         info.setName(cards[info.getLevel() - 1][index][1]);
+        System.out.println(info);
     }
 }

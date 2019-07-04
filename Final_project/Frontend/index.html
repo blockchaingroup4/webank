@@ -90,6 +90,7 @@
 								<h2>欢迎回来，伟大的<br>召唤师 <b id="b_name"></b></h2> <!-- 在这里返回一个用户名  -->
 								<p><span>今天也要元气满满哦 <i class="icon-heart3"></i></span></p>
 								<span><a class="btn btn-primary" href="#" id="button_draw">抽卡</a></span>
+								<span><label style="font-weight: 500">剩余抽卡次数：</label><label id="label_draw_count">0</label><label>次</label></span>
 							</div>
 						</div>
 					</div>
@@ -117,31 +118,31 @@
 							选择你要抽的卡片
 						</h4>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body" id="draw_card_dialog">
 
 						<div class="row">
 							<ul>
 								<li class="zyq">
 									<div class="scene">
 										<div class="card">
-											<div class="card__face card__face--front"><a id="lottery1" data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
-											<div class="card__face card__face--back"></div>
+											<div class="card__face card__face--front"><a  data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
+											<div class="card__face card__face--back"><a  data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
 										</div>
 									</div>
 								</li>
 								<li class="zyq">
 									<div class="scene">
 										<div class="card">
-											<div class="card__face card__face--front"><a id="lottery2" data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
-											<div class="card__face card__face--back"></div>
+											<div class="card__face card__face--front"><a  data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
+											<div class="card__face card__face--back"><a  data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
 										</div>
 									</div>
 								</li>
 								<li class="zyq">
 									<div class="scene">
 										<div class="card">
-											<div class="card__face card__face--front"><a id="lottery3" data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
-											<div class="card__face card__face--back"></div>
+											<div class="card__face card__face--front"><a  data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
+											<div class="card__face card__face--back"><a  data-dismiss="modal"><img src="images/cards_out6.png"></a></div>
 										</div>
 									</div>
 								</li>
@@ -200,7 +201,12 @@
 	}
 </script>
 	<script>
+		var accountInfo = null;
 		function draw(){
+			if(accountInfo.drawCount == 0){
+				alert("抽卡次数不足");
+				return;
+			}
 			$.ajax({
 				async:false,
 				url:"/draw_card",
@@ -210,10 +216,12 @@
 				contentType:"application/json",
 				success: function (result) {
 					let info = result["card_info"];
-					console.log(info);
 					$("#card_hit").attr("src", info.url);
+					accountInfo.drawCount--;
+					$("#label_draw_count").text(accountInfo.drawCount);
 				},
 				error: function (result) {
+					alert("抽卡失败");
 					console.log(result);
 				}
 			});
@@ -222,17 +230,21 @@
 		$("#button_draw").on('click', function () {
 			$("#card_dialog").modal();
 		});
-		$("")
-		$("#lottery1").on('click', function () {
-			draw();
-
+		$("#draw_card_dialog").find("a").each(function () {
+			$(this).on('click', function () {
+				draw();
+			});
 		});
-		$("#lottery2").on('click', function () {
-			draw();
-		});
-		$("#lottery3").on('click', function () {
-			draw();
-		});
+		// $("#lottery1").on('click', function () {
+		// 	draw();
+		//
+		// });
+		// $("#lottery2").on('click', function () {
+		// 	draw();
+		// });
+		// $("#lottery3").on('click', function () {
+		// 	draw();
+		// });
 		// {
 		// 	status: “ok”,
 		// 	info: {
@@ -245,16 +257,16 @@
 		// }
 
 		$.ajax({
-			async:true,
+			async:false,
 			url:"/get_account_info",
 			type:"post",
 			data:JSON.stringify({}),
 			dataType:"json",
 			contentType:"application/json",
 			success: function (result) {
-				let info = result["info"];
-				$("#b_name").text(info.name);
-				console.log(info);
+				accountInfo = result["info"];
+				$("#b_name").text(accountInfo.name);
+				$("#label_draw_count").text(accountInfo.drawCount);
 			},
 			error: function (result) {
 				console.log(result);
