@@ -745,7 +745,7 @@ contract ReverseManagementContract{
   cat > ./conf/node_deployment.ini << EOF
   [group]
   group_id=1
-  
+
   [node0]
   ; host ip for the communication among peers.
   ; Please use your ssh login ip.
@@ -760,7 +760,7 @@ contract ReverseManagementContract{
   p2p_listen_port=30300
   channel_listen_port=20200
   jsonrpc_listen_port=8545
-  
+
   [node1]
   p2p_ip=127.0.0.1
   rpc_ip=127.0.0.1
@@ -777,7 +777,7 @@ contract ReverseManagementContract{
   cat > ./conf/node_deployment.ini << EOF
   [group]
   group_id=1
-  
+
   [node0]
   ; host ip for the communication among peers.
   ; Please use your ssh login ip.
@@ -792,7 +792,7 @@ contract ReverseManagementContract{
   p2p_listen_port=30302
   channel_listen_port=20202
   jsonrpc_listen_port=8547
-  
+
   [node1]
   p2p_ip=127.0.0.1
   rpc_ip=127.0.0.1
@@ -808,7 +808,7 @@ contract ReverseManagementContract{
   cd ~/generator-A
   ./generator --generate_all_certificates ./agencyA_node_info
   cp ./agencyA_node_info/peers.txt ~/generator-B/meta/peersA.txt
-  
+
   ```
 
   ##### 4.6. 机构B生成并发送节点信息
@@ -818,7 +818,7 @@ contract ReverseManagementContract{
   ./generator --generate_all_certificates ./agencyB_node_info
   cp ./agencyB_node_info/cert*.crt ~/generator-A/meta/
   cp ./agencyB_node_info/peers.txt ~/generator-A/meta/peersB.txt
-  
+
   ```
 
   ##### 4.7. 机构A生成群组1创世区块
@@ -828,7 +828,7 @@ contract ReverseManagementContract{
   cat > ./conf/group_genesis.ini << EOF
   [group]
   group_id=1
-  
+
   [nodes]
   node0=127.0.0.1:30300
   node1=127.0.0.1:30301
@@ -837,7 +837,7 @@ contract ReverseManagementContract{
   EOF
   ./generator --create_group_genesis ./group
   cp ./group/group.1.genesis ~/generator-B/meta
-  
+
   ```
 
   ##### 4.8. 机构A生成所属节点
@@ -846,7 +846,7 @@ contract ReverseManagementContract{
   cd ~/generator-A
   ./generator --build_install_package ./meta/peersB.txt ./nodeA
   bash ./nodeA/start_all.sh
-  
+
   ```
 
   ##### 4.9. 机构B生成所属节点
@@ -855,7 +855,7 @@ contract ReverseManagementContract{
   cd ~/generator-B
   ./generator --build_install_package ./meta/peersA.txt ./nodeB
   bash ./nodeB/start_all.sh
-  
+
   ```
 
   ##### 5. 证书授权机构初始化机构C
@@ -865,7 +865,7 @@ contract ReverseManagementContract{
   cp -r ~/generator ~/generator-C
   ./generator --generate_agency_certificate ./dir_agency_ca ./dir_chain_ca agencyC
   cp ./dir_chain_ca/ca.crt ./dir_agency_ca/agencyC/agency.crt ./dir_agency_ca/agencyC/agency.key ~/generator-C/meta/
-  
+
   ```
 
   ##### 6. 机构A, C构建群组2
@@ -876,7 +876,7 @@ contract ReverseManagementContract{
   cd ~/generator-A
   cp ./agencyA_node_info/cert*.crt ~/generator-C/meta/
   cp ./agencyA_node_info/peers.txt ~/generator-C/meta/peersA.txt
-  
+
   ```
 
   ##### 6.2 机构C修改配置文件
@@ -886,7 +886,7 @@ contract ReverseManagementContract{
   cat > ./conf/node_deployment.ini << EOF
   [group]
   group_id=2
-  
+
   [node0]
   ; host ip for the communication among peers.
   ; Please use your ssh login ip.
@@ -901,7 +901,7 @@ contract ReverseManagementContract{
   p2p_listen_port=30304
   channel_listen_port=20204
   jsonrpc_listen_port=8549
-  
+
   [node1]
   p2p_ip=127.0.0.1
   rpc_ip=127.0.0.1
@@ -909,7 +909,7 @@ contract ReverseManagementContract{
   channel_listen_port=20205
   jsonrpc_listen_port=8550
   EOF
-  
+
   ```
 
   ##### 6.3 机构C生成并发送节点信息
@@ -918,7 +918,7 @@ contract ReverseManagementContract{
   cd ~/generator-C
   ./generator --generate_all_certificates ./agencyC_node_info
   cp ./agencyC_node_info/peers.txt ~/generator-A/meta/peersC.txt
-  
+
   ```
 
   ##### 6.4 机构C生成群组2创世区块
@@ -928,7 +928,7 @@ contract ReverseManagementContract{
   cat > ./conf/group_genesis.ini << EOF
   [group]
   group_id=2
-  
+
   [nodes]
   node0=127.0.0.1:30300
   node1=127.0.0.1:30301
@@ -937,7 +937,7 @@ contract ReverseManagementContract{
   EOF
   ./generator --create_group_genesis ./group
   cp ./group/group.2.genesis ~/generator-A/meta/
-  
+
   ```
 
   ##### 6.5 机构C生成所属节点
@@ -946,7 +946,7 @@ contract ReverseManagementContract{
   cd ~/generator-C
   ./generator --build_install_package ./meta/peersA.txt ./nodeC
   bash ./nodeC/start_all.sh
-  
+
   ```
 
   ##### 6.6 机构A为现有节点初始化群组2
@@ -957,7 +957,7 @@ contract ReverseManagementContract{
   ./generator --add_peers ./meta/peersC.txt ./nodeA
   bash ./nodeA/stop_all.sh
   bash ./nodeA/start_all.sh
-  
+
   ```
 
 - ### 公布课程最终作业和考核内容
@@ -985,3 +985,37 @@ contract ReverseManagementContract{
 ## 周五 （2019/6/28）
 
 ##### 由于组内计划更改，被分配了前端设计的工作。于是设计出前端页面的基本结构，并开始构建前端。
+--------
+# 5. 张羽颀
+
+## 周一
+1. 继续学习Vue.js，Vue-cli，学习HTML/CSS/JS等前端知识，为之后的前端页面制作打下基础。
+## 周二
+请假
+## 周三
+参与讨论需求，确定前端页面需求，制作登陆页面:    
+![333](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/login.png)
+## 周四
+- 设计并制作初始页面:![初始页面](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/index.png)
+
+- 设计并制作用户页面:![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/account.png)
+## 周五
+- 设计并制作交易信息页面，交易表格：![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/transactions.png)
+
+- 设计并制作管理员信息界面：![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/ad.png)
+## 周六
+- 设计并制作用户卡组信息界面：![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/card.png)
+- 设计并制作卡片商店界面： ![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/card.png)
+## 周日
+-设计并制作抽卡界面：![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/card_out1.png)
+- 完成抽卡页面：![](https://raw.githubusercontent.com/blockchaingroup4/webank/master/day3/%E5%BC%A0%E7%BE%BD%E9%A2%80/images_day3/card_out2.png)
+
+
+# 最后一周：
+完善各个页面的HTML/CSS/JS文件，修正部分bug。
+
+与后端工程师陈思源，李冠海一同植入区块链逻辑，完成前后端连接工作，完成逻辑连接工作。
+
+结束前端制作，玩成PPT制作和答辩。
+
+### 特别鸣谢：前端制作过程中李冠海同学参与帮助完成了前端逻辑架构，陈思源同学参与了页面的制作和PS美工。
