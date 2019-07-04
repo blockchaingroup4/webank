@@ -44,7 +44,7 @@ $("#button_login").on('click', function () {
                 window.location.href = "index.html";
             }
             else if(result["type"]=="manager"){
-                window.location.href="adaministractor.html";
+                window.location.href="adaministrator.html";
             }
         } ,
         error: function (result) {

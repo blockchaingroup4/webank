@@ -9,6 +9,8 @@ import org.fisco.bcos.web3j.protocol.Web3j;
 import org.fisco.bcos.web3j.tuples.generated.Tuple10;
 
 import java.math.BigInteger;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
@@ -38,7 +40,10 @@ public class TransactionContractClient extends ContractClient{
         TransactionInfo ret = new TransactionInfo();
         try {
             Tuple10<BigInteger, String, String, BigInteger, String, String, BigInteger, Boolean, Boolean, Boolean> info = contract.getTransactionInfo(new BigInteger(transactionId)).send();
-            ret.setTimestamp(String.valueOf(new Date(info.getValue1().longValue())));
+
+            DateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //HH表示24小时制；
+            String formatDate = dFormat.format(new Date(info.getValue1().longValue()));
+            ret.setTimestamp(formatDate);
             ret.setCardId(info.getValue2());
             ret.setCardName(info.getValue3());
             ret.setPrice(String.valueOf(info.getValue4()));
