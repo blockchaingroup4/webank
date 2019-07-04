@@ -1,5 +1,5 @@
 /*
- * jQuery Superfish Menu Plugin
+ * jQuery Superfish Menu plugins
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
