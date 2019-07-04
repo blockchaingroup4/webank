@@ -185,7 +185,6 @@
 			<div id="fh5co-header">
 				<header id="fh5co-header-section">
 					<div class="container">
-<<<<<<< HEAD
 						<div class="nav-header">
 							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 							<h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
@@ -207,28 +206,7 @@
 									<li><a href="account.html">用户</a></li>
 								</ul>
 							</nav>
-=======
-						<div class="row">
-							<div class="col-md-7">
-								<div class="pic_list_con" style="height: 540px; width: auto;">
-									<h3><span>我的卡组</span></h3>
-									<ul class="clearfix">
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-									</ul>
 
-								</div>
-
-							</div>
->>>>>>> f2f6e7eb6868e778f18cdcace63fe05ffd31f9d9
 						</div>
 					</div>
 				</header>
@@ -242,27 +220,27 @@
 			<div >
 				<h1 class="title" style=" color:#ffffff; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 0px #090909">我的卡组</h1>
 
-				<div id="app" class="container">
-					<card data-image="./images/6_1.png">
-						<h1 slot="header">Canyons</h1>
-						<p slot="content"><button class="btn btn-dark">上架</button></p>
+				<div id="app" class="container" id="card_cont">
+					<card data-image="#">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
 					</card>
-					<card data-image="https://images.unsplash.com/photo-1479659929431-4342107adfc1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=">
-						<h1 slot="header">Beaches</h1>
-						<p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<card data-image="#">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
 					</card>
-					<card data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=">
-						<h1 slot="header">Trees</h1>
-						<p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<card data-image="#">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
 					</card>
-					<card data-image="https://images.unsplash.com/photo-1479621051492-5a6f9bd9e51a?dpr=2&auto=compress,format&fit=crop&w=1199&h=811&q=80&cs=tinysrgb&crop=">
-						<h1 slot="header">Lakes</h1>
-						<p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<card data-image="#">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
 					</card>
 				</div>
 				<div style="text-align: center;">
-					<button class="btn btn-warning btn-lg" style="font-weight: 700">上一页</button>
-					<button class="btn btn-warning btn-lg" style="font-weight: 700">下一页</button>
+					<button class="btn btn-warning btn-lg" style="font-weight: 700" id="btn_prev">上一页</button>
+					<button class="btn btn-warning btn-lg" style="font-weight: 700" id="btn_next">下一页</button>
 				</div>
 			</div>
 
@@ -271,12 +249,12 @@
 	</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="js/card.js"></script>
+<script src="js/jquery-2.1.4.min.js"/>
 <!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
 <!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="vendor/bootstrap/js/popper.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
 <!--===============================================================================================-->
 <script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
@@ -289,11 +267,88 @@
 			ps.update();
 		})
 	});
-
-
 </script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
+<!--<script src="js/main.js"></script>-->
+<script src="js/card.js"></script>
+<script>
+	var cards;
+
+	$.ajax({
+		async:false,
+		url:"/get_cards_on_sale",
+		type:"post",
+		data:JSON.stringify({}),
+		dataType:"json",
+		contentType:"application/json",
+		success: function (result) {
+			console.log(result);
+			cards = result["cards_on_sale"];
+		},
+		error: function (result) {
+			console.log(result);
+		}
+	});
+
+	let cardPerPage = 4;
+	let totalPage = Math.ceil(cards.length / cardPerPage);
+	let cardWraps = $(".card-wrap");
+	var prevBtn = $("#btn_prev");
+	var nextBtn = $("#btn_next");
+	var curPage = 0;
+	function loadPage(page) {
+		curPage = page;
+		prevBtn.attr('disabled', page == 0);
+		nextBtn.attr('disabled', page == totalPage - 1);
+
+
+		let start = page * cardPerPage;
+		for(var i = start; i < start + cardPerPage; i++){
+			var wrap = $(cardWraps[i - start]);
+			if(i >= cards.length){
+				$(wrap.find(".card-bg")[0]).css("background-image", "url(#)");
+				$(wrap.find("h1")[0]).text("暂无卡片");
+				$(wrap.find("p")[0]).html("");
+				continue;
+			}
+			var cardInfo = cards[i];
+			$(wrap.find(".card-bg")[0]).css("background-image", "url(" + cardInfo.url + ")");
+			$(wrap.find("h1")[0]).text(cardInfo.name);
+			$(wrap.find("p")[0]).html("<label style='font-weight: 700; padding-right: 15px'>价格： " +cardInfo.price+ "</label><button class=\"btn btn-dark btn_buy_card\">购买</button>");
+			var btn = $(wrap.find(".btn_buy_card")[0]);
+			btn.data({"card_id": cardInfo.cardId});
+			btn.on('click', function(){
+				let id = $(this).data().card_id;
+				$.ajax({
+					async:false,
+					url:"/buy_card",
+					type:"post",
+					data:JSON.stringify({"card_id": id}),
+					dataType:"json",
+					contentType:"application/json",
+					success: function (result) {
+						console.log(result);
+						alert("购买成功");
+						window.location.reload();
+					},
+					error: function (result) {
+						console.log(result);
+						alert("购买失败");
+					}
+				})
+			});
+		}
+	}
+
+	loadPage(curPage);
+
+	prevBtn.on('click', ()=>{
+		loadPage(curPage - 1);
+	});
+	nextBtn.on('click', ()=>{
+		loadPage(curPage + 1);
+	});
+</script>
 
 </body>
 </html>

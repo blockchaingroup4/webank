@@ -66,6 +66,7 @@ public class MarketController {
         Object clientObj = request.getSession().getAttribute("market_contract_client");
         MarketContractClient client = (MarketContractClient)clientObj;
         String cardId = (String)jsonObject.get("card_id");
+        System.out.println(cardId);
         client.pullCard(cardId);
         ret.put("status", "ok");
         return ret.toJSONString();
@@ -80,6 +81,7 @@ public class MarketController {
         MarketContractClient client = (MarketContractClient)clientObj;
         String cardId = (String)jsonObject.get("card_id");
         String amount = (String)jsonObject.get("amount");
+        System.out.println(cardId);
         client.pushCard(cardId, new BigInteger(amount));
         ret.put("status", "ok");
         return ret.toJSONString();

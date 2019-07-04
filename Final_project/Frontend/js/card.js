@@ -1,3 +1,4 @@
+
 Vue.config.devtools = true;
 
 Vue.component('card', {
@@ -26,7 +27,8 @@ Vue.component('card', {
         height: 0,
         mouseX: 0,
         mouseY: 0,
-        mouseLeaveDelay: null }),
+        mouseLeaveDelay: null,
+        }),
 
     computed: {
         mousePX() {
@@ -67,10 +69,15 @@ Vue.component('card', {
             this.mouseLeaveDelay = setTimeout(() => {
                 this.mouseX = 0;
                 this.mouseY = 0;
-            }, 1000);
+            }, 200);
         } } });
 
 
 
 const app = new Vue({
     el: '#app' });
+
+console.log(app.$data);
+
+
+
