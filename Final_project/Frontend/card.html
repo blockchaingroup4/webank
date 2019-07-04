@@ -373,7 +373,7 @@
         for(var i = start; i < start + cardPerPage; i++){
             var wrap = $(cardWraps[i - start]);
             if(i >= cards.length){
-                $(wrap.find(".card-bg")[0]).css("background-image", "url(#)");
+                $(wrap.find(".card-bg")[0]).css("background-image", "url(images/cards_out6.png)");
                 $(wrap.find("h1")[0]).text("暂无卡片");
                 $(wrap.find("p")[0]).html("");
                 continue;
@@ -388,7 +388,8 @@
                 $(wrap.find("p")[0]).empty();
                 $(wrap.find("p")[0]).append(btnPush);
                 btnPush.on('click', function(){
-                    let amount = window.prompt();
+                    let amount = window.prompt("请输入卡片价格");
+                    if(amount.length == 0)return;
                     post("/push_card", {"card_id": $($(this).parents(".card-wrap")[0]).data().card_id, "amount": amount},
                         ()=>{
                             alert("上架成功");
@@ -405,7 +406,8 @@
                 var btnPull = $("<button class=\"btn btn-dark btn_pull_card\">下架</button>");
                 $(wrap.find("p")[0]).append(btnChange, btnPull);
                 btnChange.on('click', function(){
-                    let amount = window.prompt();
+                    let amount = window.prompt("请输入卡片价格");
+                    if(amount.length == 0)return;
                     post("/set_card_price", {"card_id": $($(this).parents(".card-wrap")[0]).data().card_id, "price": amount},
                         ()=>{
                             alert("修改成功");

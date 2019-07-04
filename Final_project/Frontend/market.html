@@ -191,10 +191,10 @@
 							<!-- START #fh5co-menu-wrap -->
 							<nav id="fh5co-menu-wrap" role="navigation">
 								<ul class="sf-menu" id="fh5co-primary-menu">
-									<li class="active">
+									<li>
 										<a href="index.html">首页</a>
 									</li>
-									<li>
+									<li class="active">
 										<a href="market.html">市场</a>
 
 									</li>
@@ -218,8 +218,12 @@
 		<div class="wrap-table100">
 
 			<div >
-				<h1 class="title" style=" color:#ffffff; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 0px #090909">我的卡组</h1>
-
+				<h1 class="title">
+					<label style=" color:#ffffff; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 0px #090909">卡片市场</label>
+					<br/>
+					<label style=" color:#ffffff; font-size: 30px; font-weight: bold; text-shadow: 3px 3px 0px #090909">我的余额：</label>
+					<label id="label_balance" style=" color:#ffffff; font-size: 30px; font-weight: bold; text-shadow: 3px 3px 0px #090909"></label>
+				</h1>
 				<div id="app" class="container" id="card_cont">
 					<card data-image="#">
 						<h1 slot="header"></h1>
@@ -272,6 +276,23 @@
 <!--<script src="js/main.js"></script>-->
 <script src="js/card.js"></script>
 <script>
+	var account;
+	$.ajax({
+		async:true,
+		url:"/get_account_info",
+		type:"post",
+		data:JSON.stringify({}),
+		dataType:"json",
+		contentType:"application/json",
+		success: function (result) {
+			account = result["info"];
+			$("#label_balance").text(account.balance);
+		},
+		error: function (result) {
+			console.log(result);
+		}
+	});
+
 	var cards;
 
 	$.ajax({
@@ -306,7 +327,7 @@
 		for(var i = start; i < start + cardPerPage; i++){
 			var wrap = $(cardWraps[i - start]);
 			if(i >= cards.length){
-				$(wrap.find(".card-bg")[0]).css("background-image", "url(#)");
+				$(wrap.find(".card-bg")[0]).css("background-image", "url(images/cards_out6.png)");
 				$(wrap.find("h1")[0]).text("暂无卡片");
 				$(wrap.find("p")[0]).html("");
 				continue;
@@ -316,8 +337,14 @@
 			$(wrap.find("h1")[0]).text(cardInfo.name);
 			$(wrap.find("p")[0]).html("<label style='font-weight: 700; padding-right: 15px'>价格： " +cardInfo.price+ "</label><button class=\"btn btn-dark btn_buy_card\">购买</button>");
 			var btn = $(wrap.find(".btn_buy_card")[0]);
-			btn.data({"card_id": cardInfo.cardId});
+			btn.data({"card_id": cardInfo.cardId, "card_price":cardInfo.price});
 			btn.on('click', function(){
+				let price = $(this).data().card_price;
+				console.log(price + ": " +account.balance);
+				if(account.balance < price){
+					alert("余额不足");
+					return;
+				}
 				let id = $(this).data().card_id;
 				$.ajax({
 					async:false,
