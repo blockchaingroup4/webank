@@ -220,20 +220,20 @@
                 <h1 class="title" style=" color:#ffffff; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 0px #090909">我的卡组</h1>
 
                 <div id="app" class="container">
-                    <card data-image="#">
+                    <card data-image="images/bg_placeholder.png">
                         <h1 slot="header"></h1>
                         <p slot="content"></p>
 
                     </card>
-                    <card data-image="#">
+                    <card data-image="images/bg_placeholder.png">
                         <h1 slot="header"></h1>
                         <p slot="content"></p>
                     </card>
-                    <card data-image="#">
+                    <card data-image="images/bg_placeholder.png">
                         <h1 slot="header"></h1>
                         <p slot="content"></p>
                     </card>
-                    <card data-image="#">
+                    <card data-image="images/bg_placeholder.png">
                         <h1 slot="header"></h1>
                         <p slot="content"></p>
                     </card>
@@ -373,7 +373,7 @@
         for(var i = start; i < start + cardPerPage; i++){
             var wrap = $(cardWraps[i - start]);
             if(i >= cards.length){
-                $(wrap.find(".card-bg")[0]).css("background-image", "url(images/cards_out6.png)");
+                $(wrap.find(".card-bg")[0]).css("background-image", "url(images/bg_placeholder.png)");
                 $(wrap.find("h1")[0]).text("暂无卡片");
                 $(wrap.find("p")[0]).html("");
                 continue;

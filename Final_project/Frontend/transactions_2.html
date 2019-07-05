@@ -150,7 +150,9 @@
                     let cardName = info.cardName;
                     let transIsReversing = info.reversing;
                     let transIsRevered = info.reversed;
-                    let transReveredRes = info.reversedResult;
+                    let transReveredRes = info.reverseResult;
+                    console.log(info);
+                    console.log(info.reversedResult);
                     let trans_body = $("#trans_body");
                     let row = $("<tr class=\"row100 body\"></tr>");
                     var cardIdCol = $("<td class=\"cell100 column1\"><label>" + cardId.substr(0, 22) + "....</label></td>");
@@ -175,7 +177,7 @@
                         stateCol.append(applyBtn);
 
                         applyBtn.on('click', function () {
-                            let reason = window.prompt();
+                            let reason = window.prompt("请输入仲裁理由");
                             let trans = $(this).parent(".cell100").data().transaction_id;
                             $.ajax({
                                 async:false,

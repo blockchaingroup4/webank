@@ -225,19 +225,19 @@
 					<label id="label_balance" style=" color:#ffffff; font-size: 30px; font-weight: bold; text-shadow: 3px 3px 0px #090909"></label>
 				</h1>
 				<div id="app" class="container" id="card_cont">
-					<card data-image="#">
+					<card data-image="images/bg_placeholder.png">
 						<h1 slot="header"></h1>
 						<p slot="content"></p>
 					</card>
-					<card data-image="#">
+					<card data-image="images/bg_placeholder.png">
 						<h1 slot="header"></h1>
 						<p slot="content"></p>
 					</card>
-					<card data-image="#">
+					<card data-image="images/bg_placeholder.png">
 						<h1 slot="header"></h1>
 						<p slot="content"></p>
 					</card>
-					<card data-image="#">
+					<card data-image="images/bg_placeholder.png">
 						<h1 slot="header"></h1>
 						<p slot="content"></p>
 					</card>
@@ -320,14 +320,14 @@
 	function loadPage(page) {
 		curPage = page;
 		prevBtn.attr('disabled', page == 0);
-		nextBtn.attr('disabled', page == totalPage - 1);
+		nextBtn.attr('disabled', page >= totalPage - 1);
 
 
 		let start = page * cardPerPage;
 		for(var i = start; i < start + cardPerPage; i++){
 			var wrap = $(cardWraps[i - start]);
 			if(i >= cards.length){
-				$(wrap.find(".card-bg")[0]).css("background-image", "url(images/cards_out6.png)");
+				$(wrap.find(".card-bg")[0]).css("background-image", "url(images/bg_placeholder.png)");
 				$(wrap.find("h1")[0]).text("暂无卡片");
 				$(wrap.find("p")[0]).html("");
 				continue;
@@ -340,8 +340,7 @@
 			btn.data({"card_id": cardInfo.cardId, "card_price":cardInfo.price});
 			btn.on('click', function(){
 				let price = $(this).data().card_price;
-				console.log(price + ": " +account.balance);
-				if(account.balance < price){
+				if(parseInt(account.balance) < parseInt(price)){
 					alert("余额不足");
 					return;
 				}

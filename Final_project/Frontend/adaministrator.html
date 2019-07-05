@@ -130,12 +130,12 @@
     </div>
 </div>
 
-
+<script src="js/jquery-2.1.4.min.js"/>
 <!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
 <!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="vendor/bootstrap/js/popper.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
 <!--===============================================================================================-->
 <script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
@@ -153,9 +153,8 @@
         let rowNum = 15;
         let body = $("#ad_rev_body");
         for(var i = 0; i < reverses.length; i++){
-            let info = reverses[i];
+            var info = reverses[i];
             let reverseId = info.reverseId;
-            let cardName = info.cardName;
             let reason = info.reason;
             let sent = info.sent;
             $.ajax({
@@ -167,12 +166,13 @@
                 contentType:"application/json",
                 success: function (result) {
                     let transTime = result["info"].timestamp;
+                    let cardName = result["info"].cardName;
                     let rev_body = $("#ad_rev_body");
                     let row = $("<tr class=\"row100 body\"></tr>");
                     var reverseIdCol = $("<td class=\"cell100 column1\">" + reverseId + "</td>");
                     var cardNameCol = $("<td class=\"cell100 column2\">" + cardName + "</td>");
                     var transTimeCol = $("<td class=\"cell100 column4\">" + transTime + "</td>");
-                    var reasonCol = $("<td class=\"cell100 column3\">" + reason + "</td>")
+                    var reasonCol = $("<td class=\"cell100 column3\">" + reason + "</td>");
                     var stateCol = $("<td class=\"cell100 column5\"></td>");
                     if(sent){
                         stateCol.text("已处理");
@@ -205,15 +205,12 @@
                     row.append(reverseIdCol, cardNameCol, transTimeCol, reasonCol, stateCol);
                     rev_body.append(row);
 
-                    console.log(result);
                 },
                 error: function (result) {
                     console.log(result);
                 }
             });
 
-
-            console.log(info);
 
         }
         let colNum = 5;
@@ -234,7 +231,6 @@
         dataType:"json",
         contentType:"application/json",
         success: function (result) {
-            console.log(result);
             let reverses = result["reverses"];
             loadReverses(reverses);
         },
@@ -244,7 +240,7 @@
     });
 </script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
+<!--<script src="js/main.js"></script>-->
 
 </body>
 </html>
