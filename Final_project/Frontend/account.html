@@ -189,13 +189,14 @@
                     });
 
                     $("#btn_my_cards").on("click", function () {
-                       window.location.href = "card_need_test.html"
+                       window.location.href = "card.html"
                     });
                     $("#btn_my_reverses").on("click", function () {
                        window.location.href = "user_reverses.html"
                     });
                     $("#btn_recharge").on("click", function () {
-                       let amount = window.prompt();
+                       let amount = window.prompt("请输入要充值的金额");
+                       if(amount.length == 0)return;
                         $.ajax({
                             async:true,
                             url:"/recharge",
@@ -214,7 +215,8 @@
                        console.log(amount);
                     });
                     $("#btn_buy_draw_times").on("click", function () {
-                       let times = window.prompt();
+                       let times = window.prompt("请输入要购买的抽卡次数：10/次");
+                       if(times.length == 0)return;
                        $.ajax({
                            async:true,
                            url:"/buy_draw_card",

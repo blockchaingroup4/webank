@@ -57,7 +57,7 @@
                             <!-- START #fh5co-menu-wrap -->
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
-                                    <li class="active">
+                                    <li>
                                         <a href="index.html">首页</a>
                                     </li>
                                     <li>
@@ -68,7 +68,7 @@
                                         <a href="reverse.html">仲裁</a>
                                     </li>
                                     <li><a href="about.html">玩法</a></li>
-                                    <li><a href="transactions_2.html">交易</a></li>
+                                    <li class="active"><a href="transactions_2.html">交易</a></li>
                                     <li><a href="account.html">用户</a></li>
                                 </ul>
                             </nav>
@@ -99,25 +99,7 @@
 
                 <div class="table100-body js-pscroll">
                     <table>
-                        <tbody>
-                        <tr class="row100 body">
-                            <td class="cell100 column1">Like a butterfly</td>
-                            <td class="cell100 column2">Boxing</td>
-                            <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                            <td class="cell100 column4">Aaron Chapman</td>
-                            <td class="cell100 column5">10</td>
-                        </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">Mind & Body</td>
-                            <td class="cell100 column2">Yoga</td>
-                            <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                            <td class="cell100 column4">Adam Stewart</td>
-                            <td class="cell100 column5">15</td>
-                        </tr>
-
-
-
+                        <tbody id="trans_body">
 
                         </tbody>
                     </table>
@@ -149,6 +131,108 @@
     });
 
 
+    function loadTransactions(transactionsId){
+        let rowNum = 15;
+        let body = $("#trans_body");
+        for(var i = 0; i < transactionsId.length; i++){
+            $.ajax({
+                async:false,
+                url:"/get_transaction_info",
+                type:"post",
+                data:JSON.stringify({"transaction_id": transactionsId[i]}),
+                dataType:"json",
+                contentType:"application/json",
+                success: function (result) {
+                    let info = result["info"];
+                    let cardId = info.cardId;
+                    let cardPrice = info.price;
+                    let transTime = info.timestamp;
+                    let cardName = info.cardName;
+                    let transIsReversing = info.reversing;
+                    let transIsRevered = info.reversed;
+                    let transReveredRes = info.reversedResult;
+                    let trans_body = $("#trans_body");
+                    let row = $("<tr class=\"row100 body\"></tr>");
+                    var cardIdCol = $("<td class=\"cell100 column1\"><label>" + cardId.substr(0, 22) + "....</label></td>");
+                    var priceCol = $("<td class=\"cell100 column2\">" + cardPrice + "</td>");
+                    var transTimeCol = $("<td class=\"cell100 column3\">" + transTime + "</td>")
+                    var cardNameCol = $("<td class=\"cell100 column4\">" + cardName + "</td>");
+                    var stateCol = $("<td class=\"cell100 column5\"></td>");
+                    if(transIsReversing){
+                        stateCol.text("正在仲裁中");
+                    }
+                    else if(transIsRevered){
+                        if(transReveredRes) {
+                            stateCol.text("仲裁成功");
+                        }
+                        else{
+                            stateCol.text("仲裁失败");
+                        }
+                    }
+                    else{
+                        stateCol.data({"transaction_id":transactionsId[i]});
+                        let applyBtn = $("<div class='btn btn-dark'>申请仲裁</div>");
+                        stateCol.append(applyBtn);
+
+                        applyBtn.on('click', function () {
+                            let reason = window.prompt();
+                            let trans = $(this).parent(".cell100").data().transaction_id;
+                            $.ajax({
+                                async:false,
+                                url:"/apply_for_reverse",
+                                type:"post",
+                                data:JSON.stringify({"transaction_id":trans, "reason": reason}),
+                                dataType:"json",
+                                contentType:"application/json",
+                                success: function (result) {
+                                    alert("操作成功");
+                                    window.location.reload();
+                                },
+                                error: function (result) {
+                                    alert("操作失败");
+                                }
+                            });
+                        });
+
+                    }
+                    row.append(cardIdCol, priceCol, transTimeCol, cardNameCol, stateCol);
+                    trans_body.append(row);
+
+                    console.log(info);
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+
+        }
+        let colNum = 5;
+        for(i = transactionsId.length; i < rowNum; i++){
+            let tr = $("<tr class=\"row100 body\"></tr>");
+            for(var j = 0; j < colNum; j++){
+                tr.append($("<td></td>"))
+            }
+            body.append(tr);
+        }
+    }
+
+    $.ajax({
+        async:true,
+        url:"/get_account_info",
+        type:"post",
+        data:JSON.stringify({}),
+        dataType:"json",
+        contentType:"application/json",
+        success: function (result) {
+            console.log(result);
+            let info = result["info"];
+            let transactionsId = info["transactionsId"];
+            loadTransactions(transactionsId);
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
 </script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>

@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>我的卡牌</title>
+    <title>我的卡组</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
     <link rel="shortcut icon" href="favicon.ico">
 
-    <!-- <link href='https://fonts.useso.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'> -->
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="css/animate.css">
@@ -46,13 +39,148 @@
     <script src="js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /*body {*/
+        /*    margin: 40px 0;*/
+        /*    font-family: "Raleway";*/
+        /*    font-size: 14px;*/
+        /*    font-weight: 500;*x/
+        /*    background-color: #BCAAA4;*/
+        /*    -webkit-font-smoothing: antialiased;*/
+        /*}*/
+
+        .title {
+            font-family: "Raleway";
+            font-size: 24px;
+            font-weight: 700;
+            color: #5D4037;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.5em;
+        }
+
+        h1 + p, p + p {
+            margin-top: 10px;
+        }
+
+        .container {
+            padding: 40px 80px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card-wrap {
+            margin: 10px;
+            -webkit-transform: perspective(800px);
+            transform: perspective(800px);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .card-wrap:hover .card-info {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        .card-wrap:hover .card-info p {
+            opacity: 1;
+        }
+        .card-wrap:hover .card-info, .card-wrap:hover .card-info p {
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .card-wrap:hover .card-info:after {
+            transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        .card-wrap:hover .card-bg {
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0.8;
+        }
+        .card-wrap:hover .card {
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+        }
+
+        .card {
+            position: relative;
+            flex: 0 0 240px;
+            width: 216px;
+            height: 384px;
+            background-color: #333;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+            transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        .card-bg {
+            opacity: 0.5;
+            position: absolute;
+            /*top: -20px;*/
+            /*left: -20px;*/
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+            pointer-events: none;
+        }
+
+        .card-info {
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            -webkit-transform: translateY(40%);
+            transform: translateY(40%);
+            transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .card-info p {
+            opacity: 0;
+            text-shadow: black 0 2px 3px;
+            transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .card-info * {
+            position: relative;
+            z-index: 1;
+        }
+        .card-info:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+            background-blend-mode: overlay;
+            opacity: 0;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+
+        .card-info h1 {
+            font-family: "Playfair Display";
+            font-size: 36px;
+            font-weight: 700;
+            text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+        }
+
+    </style>
 
 </head>
-
-<body>
-    <div id="fh5co-wrapper">
+<body style="background: #090909;background-size: 100%  100%;">
+<div id="fh5co-wrapper">
+    <div class="limiter">
         <div id="fh5co-page">
             <div id="fh5co-header">
                 <header id="fh5co-header-section">
@@ -61,11 +189,9 @@
                             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                             <h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
                             <!-- START #fh5co-menu-wrap -->
-                            <br>
-                            <br>
                             <nav id="fh5co-menu-wrap" role="navigation">
                                 <ul class="sf-menu" id="fh5co-primary-menu">
-                                    <li>
+                                    <li class="active">
                                         <a href="index.html">首页</a>
                                     </li>
                                     <li>
@@ -76,7 +202,7 @@
                                         <a href="reverse.html">仲裁</a>
                                     </li>
                                     <li><a href="about.html">玩法</a></li>
-                                    <li><a href="transaction.html">交易</a></li>
+                                    <li><a href="transactions_2.html">交易</a></li>
                                     <li><a href="account.html">用户</a></li>
                                 </ul>
                             </nav>
@@ -84,254 +210,239 @@
                     </div>
                 </header>
             </div>
-            <!-- end:fh5co-header -->
-            <div class="fh5co-shero">
-                <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/card_background.jpg); background-size: 100%  100%;">
-                    </div>
+        </div>
+    </div>
+    <div class="container-table100"
+         style="background-image: url('images/market_background.png');background-size: 100%  100%;margin-top: 100px;">
+        <div class="wrap-table100">
+
+            <div >
+                <h1 class="title" style=" color:#ffffff; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 0px #090909">我的卡组</h1>
+
+                <div id="app" class="container">
+                    <card data-image="#">
+                        <h1 slot="header"></h1>
+                        <p slot="content"></p>
+
+                    </card>
+                    <card data-image="#">
+                        <h1 slot="header"></h1>
+                        <p slot="content"></p>
+                    </card>
+                    <card data-image="#">
+                        <h1 slot="header"></h1>
+                        <p slot="content"></p>
+                    </card>
+                    <card data-image="#">
+                        <h1 slot="header"></h1>
+                        <p slot="content"></p>
+                    </card>
+
+<!--                    <div class="card-wrap">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-bg" style="background-image: url(#);"></div>-->
+<!--                            <div class="card-info">-->
+<!--                                <h1></h1>-->
+<!--                                <p></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="card-wrap">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-bg" style="background-image: url(#);"></div>-->
+<!--                            <div class="card-info">-->
+<!--                                <h1></h1>-->
+<!--                                <p></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="card-wrap">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-bg" style="background-image: url(#);"></div>-->
+<!--                            <div class="card-info">-->
+<!--                                <h1></h1>-->
+<!--                                <p></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="card-wrap">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-bg" style="background-image: url(#);"></div>-->
+<!--                            <div class="card-info">-->
+<!--                                <h1></h1>-->
+<!--                                <p></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+                <div style="text-align: center;">
+                    <button class="btn btn-warning btn-lg" style="font-weight: 700" id="btn_prev">上一页</button>
+                    <button class="btn btn-warning btn-lg" style="font-weight: 700" id="btn_next">下一页</button>
                 </div>
             </div>
-
-
-
         </div>
-        <!-- END fh5co-page -->
-
     </div>
-    <!-- END fh5co-wrapper -->
-    <!-- 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/card.js"></script>
+<script src="js/jquery-2.1.4.min.js"/>
+<!--===============================================================================================-->
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="vendor/bootstrap/js/popper.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+    $('.js-pscroll').each(function () {
+        var ps = new PerfectScrollbar(this);
 
-	<script type="text/javascript">
-
-// 全局变量
-		var cardsID = [];	// 卡片id，用于发上架、下架的post请求
-		var cardsName = []; // 卡片名字
-		var cardsLevel = [];// 卡片等级
-		var isOnSale = [];  // 卡片是否正在出售（上架）
-		var cardNum = 0;    // 用户的卡片数量
-	// 加入图片
-	// 第一种方法
-		// 获取的是一个 如果要获取多个
-		// document.querySelectorAll(selector)
-		// document.querySelectorAll("#btn-get_card_info-Json").onclick = function () {
-		// 	var ajax = new XMLHttpRequest();
-
-		// 	ajax.open('get','./get_card_info');
-
-		// 	ajax.send();
-
-		// 	ajax.onreadystatechange = function () {
-		// 		if (ajax.readyState==4&&ajax.status==200) {
-		// 			// json 字符串 是字符串 所以我们可以 通过  responseText获取
-		// 			console.log(ajax.responseText);
-
-		// 			// 转化为 js对象
-		// 			var jsObj = JSON.parse(ajax.responseText);
-
-		// 			console.log(jsObj);
-
-		// 			// 拼接ul s
-		// 			var str = '';
-
-		// 			str+='<ul>';
-		// 			str+='<li>'+jsObj.name+'</li>';
-		// 			str+='<li>'+jsObj.skill+'</li>';
-		// 			str+='<li>'+jsObj.friend+'</li>';
-		// 			str+='</ul>';
-
-		// 			// 设置到界面上
-
-		// 			document.body.innerHTML = str;
-		// 		}
-		// 	}
-		// }
-
-		// 页面加载完后自动调用
-		window.onload= function (){
-			addImage();
-   			// bb();
-		}
-
-		// 加入图片
-		// 第二种方法
-		function addImage(){
-			//定义变量sendData
-			this.cardsID ={'card_id':[1,2,3]};   //  假设用户都有ID为1,2,3的卡片
-			var imgNum=0;   //  这个用户的卡片张数
-			var urlImg=[];   //  这个用户的卡片的url
-			var i=0;
-		// alert('here');
-
-		// 请求当前用户拥有的卡片cardsId
-		$.ajax({
-				url: '/get_account_info',
-				type:'post',
-				dataType:'json',
-				contentType:"application/json",
-				async:true,//异步请求
-				cache:false,
-				// data:JSON.stringify(sendData),//没有要发的数据
-				//执行成功的回调函数
-				success:function(data) {
-					// alert(data.info);
-					var jsonData = JSON.parse(data);
-					this.cardsID=jsonData.info.cardsId;  //  获取这个用户所有卡片的id
-					// 获取卡片的张数
-					 for(var aItem in jsonData){
-						imgNum++;
-					 }
-					 this.cardNum=imgNum;
-				},
-				//执行失败或错误的回调函数
-				error:function(data) {
-					alert("未能拿到用户的卡片id信息！");
-				}
-		});
-		for (i = 0; i < imgNum; i++) {
-		// 请求图片url
-		$.ajax({
-				url: '/get_card_info',
-				type:'post',
-				dataType:'json',
-				contentType:"application/json",
-				async:true,//异步请求
-				cache:false,
-				data:JSON.stringify({"card_id":this.cardsID[i]}),//使用变量sendData
-				//执行成功的回调函数
-				success:function(data) {
-					// alert(data.url);
-					var jsonData = JSON.parse(data);
-					urlImg[i]=jsonData.info.url;
-					this.cardsName[i]=jsonData.info.name;
-					this.isOnSale[i]=jsonData.info.isOnSale;
-					this.cardsLevel[i]=jsonData.info.level;
-				},
-				//执行失败或错误的回调函数
-				error:function(data) {
-					alert("没有成功拿到卡片的url！");
-				}
-		});
-		}
-
-		// 动态添加图片
-		// 第一种方法   appendChild
-		// 获取位置元素
-		// var dynamicImg=document.getElementById('dynamicImg');
-		// // 把图片一张张插入页面
-		// for (i = 0; i < imgNum; i++) {
-		// 	var aImg=document.createElement('img');
-		// 	var imgId= document.createTextNode(""+i+1);// 第几张图片，从1开始
-		// 	aImg.src=urlImg[i];
-		// 	aImg.style.marginLeft = "160px";
-		// 	dynamicImg.appendChild(imgId);
-		// 	dynamicImg.appendChild(aImg);
-		// }
-
-		// 第二种方法 动态加入图片
-		var imgClass = document.getElementsByClassName("imgClass");
-		var list="";
-		for (i = 0; i < imgNum; i++) {
-			list += "<li><a href=\"\"><img src=\"" + urlImg[i] +"\" alt=\"商品图片\"></a></li>";
-			list += "<div class=\"item\""+
-						"<div class=\"imgContainer\" >"
-							+"<img src=\"" +urlImg[i] + "\" alt=\"个人拥有的卡片图片\">"
-						+"</div>"
-						+"<div class=\"info\" >"
-							+"<p class = \"cardInfo\" >"
-								+"<span class=\"cardNo\">"
-									+"卡序号："+(i+1)
-								+"</span>"
-								+"<span class=\"name\">"
-									+"名字："+this.cardsName[i]
-								+"</span>"
-								+"<span class=\"level\">"
-									+"等级："+this.cardsLevel[i]
-								+"</span>"
-								+"<span class=\"isOnSale\">"
-									+"是否已上架："+this.isOnSale[i]
-								+"</span>"
-							+"</p>"
-						+"</div>"
-					+"</div>";
-			if(i%4==0)
-				list+="<br>";  // 换行
-		}
-		imgClass.innerHTML = list;
-}
-
-    var goSale = document.getElementById('upMarket');
-    goSale.onclick = function(){
-		// 上架
-		var price =document.getElementById('price').value;
-		var cardNo = document.getElementById('cardNo').value;
-		var sendData={'card_id':this.cardsID[parseInt(cardNo)-1],'price':price};  // parseInt: get int from string
-		$.ajax({
-				url: '/push_card',
-				type:'post',
-				dataType:'json',
-				contentType:"application/json",
-				async:true,//异步请求
-				cache:false,
-				data:JSON.stringify(sendData),
-				//执行成功的回调函数
-				success:function(data) {
-					// alert(data.info);
-					var jsonData = JSON.parse(data);
-					if(jsonData.status=="OK")
-						alert("上架成功！");
-				},
-				//执行失败或错误的回调函数
-				error:function(data) {
-					alert("上架失败！");
-				}
-		});
-	};
-	// 下架
-	var downSale = document.getElementById('downMarket');
-    downSale.onclick = function(){
-		$.ajax({
-				url: '/pull_card',
-				type:'post',
-				dataType:'json',
-				contentType:"application/json",
-				async:true,//异步请求
-				cache:false,
-				data:JSON.stringify({"card_id":this.cardsID[i]}),
-				//执行成功的回调函数
-				success:function(data) {
-					// alert(data.info);
-					var jsonData = JSON.parse(data);
-					if(jsonData.status=="OK")
-						alert("下架成功！");
-				},
-				//执行失败或错误的回调函数
-				error:function(data) {
-					alert("下架失败！");
-				}
-		});
+        $(window).on('resize', function () {
+            ps.update();
+        })
+    });
 
 
-    };
-    // goSale.click();  //模拟点击事件，页面刷新，出发点击事件
+</script>
+<script>
+    var cards = [];
+    $.ajax({
+        async:false,
+        url:"/get_account_info",
+        type:"post",
+        data:JSON.stringify({}),
+        dataType:"json",
+        contentType:"application/json",
+        success: function (result) {
+            console.log(result);
+            let cardsId = result["info"].cardsId;
+            for(var i = 0; i < cardsId.length; i++){
+                $.ajax({
+                    async:false,
+                    url:"/get_card_info",
+                    type:"post",
+                    data:JSON.stringify({"card_id": cardsId[i]}),
+                    dataType:"json",
+                    contentType:"application/json",
+                    success: function (result) {
+                        cards.push(result["info"]);
+                    },
+                    error: function (result) {
+                        console.log(result);
+                    }
+                });
+            }
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
 
-	</script> &ndash;&gt;-->
+    console.log(cards);
 
-    <script src="js/showUsercards.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="js/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Waypoints -->
-    <script src="js/jquery.waypoints.min.js"></script>
-    <!-- Stellar -->
-    <script src="js/jquery.stellar.min.js"></script>
-    <!-- Superfish -->
-    <script src="js/hoverIntent.js"></script>
-    <script src="js/superfish.js"></script>
+    let cardPerPage = 4;
+    let totalPage = Math.ceil(cards.length / cardPerPage);
+    let cardWraps = $(".card-wrap");
+    var prevBtn = $("#btn_prev");
+    var nextBtn = $("#btn_next");
+    var curPage = 0;
+    function post(_url, _data, _success, _error) {
+        $.ajax({
+            async:false,
+            url:_url,
+            type:"post",
+            data:JSON.stringify(_data),
+            dataType:"json",
+            contentType:"application/json",
+            success: _success,
+            error: _error
+        });
+    }
 
-    <!-- Main JS (Do not remove) -->
-    <script src="js/main.js"></script>
 
+    function loadPage(page) {
+        curPage = page;
+        prevBtn.attr('disabled', page == 0);
+        nextBtn.attr('disabled', page == totalPage - 1);
+        let start = page * cardPerPage;
+        for(var i = start; i < start + cardPerPage; i++){
+            var wrap = $(cardWraps[i - start]);
+            if(i >= cards.length){
+                $(wrap.find(".card-bg")[0]).css("background-image", "url(images/cards_out6.png)");
+                $(wrap.find("h1")[0]).text("暂无卡片");
+                $(wrap.find("p")[0]).html("");
+                continue;
+            }
+            var cardInfo = cards[i];
+            $(wrap.find(".card-bg")[0]).css("background-image", "url(" + cardInfo.url + ")");
+            $(wrap.find("h1")[0]).text(cardInfo.name);
+            var dat = {"card_id":cardInfo.cardId};
+            wrap.data(dat);
+            if(!cardInfo.onSale){
+                var btnPush = $("<button class=\"btn btn-dark btn_push_card\">上架</button>");
+                $(wrap.find("p")[0]).empty();
+                $(wrap.find("p")[0]).append(btnPush);
+                btnPush.on('click', function(){
+                    let amount = window.prompt("请输入卡片价格");
+                    if(amount.length == 0)return;
+                    post("/push_card", {"card_id": $($(this).parents(".card-wrap")[0]).data().card_id, "amount": amount},
+                        ()=>{
+                            alert("上架成功");
+                            window.location.reload();
+                        },
+                        ()=>{
+                            alert("上架失败");
+                        });
+                });
+            }
+            else{
+                $(wrap.find("p")[0]).empty();
+                var btnChange = $("<label style='font-weight: 700; padding-right: 15px'>价格：" + cardInfo.price + " <button class=\"btn btn-dark btn_change_price\">修改价格</button>");
+                var btnPull = $("<button class=\"btn btn-dark btn_pull_card\">下架</button>");
+                $(wrap.find("p")[0]).append(btnChange, btnPull);
+                btnChange.on('click', function(){
+                    let amount = window.prompt("请输入卡片价格");
+                    if(amount.length == 0)return;
+                    post("/set_card_price", {"card_id": $($(this).parents(".card-wrap")[0]).data().card_id, "price": amount},
+                        ()=>{
+                            alert("修改成功");
+                            window.location.reload();
+                        },
+                        ()=>{
+                            alert("修改失败");
+                        });
+                });
+                btnPull.on('click', function () {
+                    post("/pull_card", {"card_id": $($(this).parents(".card-wrap")[0]).data().card_id},
+                        ()=>{
+                            alert("下架成功");
+                            window.location.reload();
+                        },
+                        ()=>{
+                            alert("下架失败");
+                        });
+
+                });
+            }
+
+        }
+    }
+
+    loadPage(curPage);
+
+    prevBtn.on('click', ()=>{
+        loadPage(curPage - 1);
+    });
+    nextBtn.on('click', ()=>{
+        loadPage(curPage + 1);
+    });
+</script>
+<!--===============================================================================================-->
+<!--<script src="js/main.js"></script>-->
 </body>
-
 </html>
