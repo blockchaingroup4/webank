@@ -81,4 +81,15 @@ sudo mount -t vboxsf course1 /home/fisco-bcos/Desktop/share
 2. cat /etc/lsb-release
 3. uname -a
 
-### 8. 
+### 8. sudo apt install -y openssl curl
+
+- 下载不了，报错：
+  - E: Could not get lock /var/cache/apt/archives/lock - open (11: Resource temporarily unavailable)
+  - E: Unable to lock directory /var/cache/apt/archives/
+- 解决办法，删除锁文件：
+  - sudo rm /var/lib/dpkg/lock-frontend
+  - sudo rm /var/lib/dpkg/lock
+
+### 9. git命令
+
+- git checkout https://github.com/blockchaingroup4/webank/trunk/Final_project 下载部分文件（注意改成trunk）
