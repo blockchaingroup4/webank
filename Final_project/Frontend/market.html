@@ -1,33 +1,28 @@
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="en">
+<head>
 	<title>市场</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
 	<link rel="shortcut icon" href="favicon.ico">
 
-<!--	<link href='https://fonts.useso.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>-->
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -38,7 +33,6 @@
 	<link rel="stylesheet" href="css/superfish.css">
 
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/market.css">
 
 
 	<!-- Modernizr JS -->
@@ -47,102 +41,340 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-	<script src="js/market.js"></script>
+	<style>
+		/*body {*/
+		/*    margin: 40px 0;*/
+		/*    font-family: "Raleway";*/
+		/*    font-size: 14px;*/
+		/*    font-weight: 500;*x/
+        /*    background-color: #BCAAA4;*/
+		/*    -webkit-font-smoothing: antialiased;*/
+		/*}*/
 
-	</head>
-	<body style="background: #090909;">
-		<div id="fh5co-wrapper">
+		.title {
+			font-family: "Raleway";
+			font-size: 24px;
+			font-weight: 700;
+			color: #5D4037;
+			text-align: center;
+		}
+
+		p {
+			line-height: 1.5em;
+		}
+
+		h1 + p, p + p {
+			margin-top: 10px;
+		}
+
+		.container {
+			padding: 40px 80px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.card-wrap {
+			margin: 10px;
+			-webkit-transform: perspective(800px);
+			transform: perspective(800px);
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			cursor: pointer;
+		}
+		.card-wrap:hover .card-info {
+			-webkit-transform: translateY(0);
+			transform: translateY(0);
+		}
+		.card-wrap:hover .card-info p {
+			opacity: 1;
+		}
+		.card-wrap:hover .card-info, .card-wrap:hover .card-info p {
+			transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+		}
+		.card-wrap:hover .card-info:after {
+			transition: 5s cubic-bezier(0.23, 1, 0.32, 1);
+			opacity: 1;
+			-webkit-transform: translateY(0);
+			transform: translateY(0);
+		}
+		.card-wrap:hover .card-bg {
+			transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 5s cubic-bezier(0.23, 1, 0.32, 1);
+			opacity: 0.8;
+		}
+		.card-wrap:hover .card {
+			transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+			box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+		}
+
+		.card {
+			position: relative;
+			flex: 0 0 240px;
+			width: 216px;
+			height: 384px;
+			background-color: #333;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+			transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+		}
+
+		.card-bg {
+			opacity: 0.5;
+			position: absolute;
+			/*top: -20px;*/
+			/*left: -20px;*/
+			width: 100%;
+			height: 100%;
+			padding: 20px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+			pointer-events: none;
+		}
+
+		.card-info {
+			padding: 20px;
+			position: absolute;
+			bottom: 0;
+			color: #fff;
+			-webkit-transform: translateY(40%);
+			transform: translateY(40%);
+			transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+		}
+		.card-info p {
+			opacity: 0;
+			text-shadow: black 0 2px 3px;
+			transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+		}
+		.card-info * {
+			position: relative;
+			z-index: 1;
+		}
+		.card-info:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 0;
+			width: 100%;
+			height: 100%;
+			background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+			background-blend-mode: overlay;
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			transform: translateY(100%);
+			transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+		}
+
+		.card-info h1 {
+			font-family: "Playfair Display";
+			font-size: 36px;
+			font-weight: 700;
+			text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+		}
+
+	</style>
+
+</head>
+<body style="background: #090909;background-size: 100%  100%;">
+<div id="fh5co-wrapper">
+	<div class="limiter">
 		<div id="fh5co-page">
-		<div id="fh5co-header">
-			<header id="fh5co-header-section">
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-						<h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li>
-									<a href="index.html">首页</a>
-								</li>
-								<li class="active">
-									<a href="market.html" >市场</a>
-
-								</li>
-							
-								<li>
-									<a href="reverse.html">仲裁</a>
-								</li>
-
-								<li><a href="about.html">玩法</a></li>
-								<li><a href="transactions_2.html">交易</a></li>
-								<li><a href="account.html">用户</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>		
-		</div>
-		<!-- end:fh5co-header -->
-
-		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
-			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/market_background.png);">
-				<div class="desc animate-box">
+			<div id="fh5co-header">
+				<header id="fh5co-header-section">
 					<div class="container">
-						<div class="row">
-							<div class="col-md-7">
-								<div class="pic_list_con">
-									<h3><span>我的卡组</span></h3>
-									<ul class="clearfix">
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-										<!--<li><a href=""><img src="images/sign_in.jpg" alt="商品图片"></a></li>-->
-									</ul>
+						<div class="nav-header">
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+							<h1 id="fh5co-logo"><a href="index.html">今日<span>方舟</span></a></h1>
+							<!-- START #fh5co-menu-wrap -->
+							<nav id="fh5co-menu-wrap" role="navigation">
+								<ul class="sf-menu" id="fh5co-primary-menu">
+									<li>
+										<a href="index.html">首页</a>
+									</li>
+									<li class="active">
+										<a href="market.html">市场</a>
 
-								</div>
+									</li>
+									<li>
+										<a href="reverse.html">仲裁</a>
+									</li>
+									<li><a href="about.html">玩法</a></li>
+									<li><a href="transactions_2.html">交易</a></li>
+									<li><a href="account.html">用户</a></li>
+								</ul>
+							</nav>
 
-							</div>
 						</div>
 					</div>
-				</div>
+				</header>
 			</div>
 		</div>
-		<!-- end:fh5co-hero -->
-		
-
 	</div>
-	<!-- END fh5co-page -->
+	<div class="container-table100"
+		 style="background-image: url('images/market_background.png');background-size: 100%  100%;margin-top: 100px;">
+		<div class="wrap-table100">
 
+			<div >
+				<h1 class="title">
+					<label style=" color:#ffffff; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 0px #090909">卡片市场</label>
+					<br/>
+					<label style=" color:#ffffff; font-size: 30px; font-weight: bold; text-shadow: 3px 3px 0px #090909">我的余额：</label>
+					<label id="label_balance" style=" color:#ffffff; font-size: 30px; font-weight: bold; text-shadow: 3px 3px 0px #090909"></label>
+				</h1>
+				<div id="app" class="container" id="card_cont">
+					<card data-image="images/bg_placeholder.png">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
+					</card>
+					<card data-image="images/bg_placeholder.png">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
+					</card>
+					<card data-image="images/bg_placeholder.png">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
+					</card>
+					<card data-image="images/bg_placeholder.png">
+						<h1 slot="header"></h1>
+						<p slot="content"></p>
+					</card>
+				</div>
+				<div style="text-align: center;">
+					<button class="btn btn-warning btn-lg" style="font-weight: 700" id="btn_prev">上一页</button>
+					<button class="btn btn-warning btn-lg" style="font-weight: 700" id="btn_next">下一页</button>
+				</div>
+			</div>
+
+
+		</div>
 	</div>
-	<!-- END fh5co-wrapper -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/jquery-2.1.4.min.js"/>
+<!--===============================================================================================-->
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<!--===============================================================================================-->
+<!--<script src="vendor/bootstrap/js/popper.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+	$('.js-pscroll').each(function () {
+		var ps = new PerfectScrollbar(this);
 
-	<!-- jQuery -->
+		$(window).on('resize', function () {
+			ps.update();
+		})
+	});
+</script>
+<!--===============================================================================================-->
+<!--<script src="js/main.js"></script>-->
+<script src="js/card.js"></script>
+<script>
+	var account;
+	$.ajax({
+		async:true,
+		url:"/get_account_info",
+		type:"post",
+		data:JSON.stringify({}),
+		dataType:"json",
+		contentType:"application/json",
+		success: function (result) {
+			account = result["info"];
+			$("#label_balance").text(account.balance);
+		},
+		error: function (result) {
+			console.log(result);
+		}
+	});
+
+	var cards;
+
+	$.ajax({
+		async:false,
+		url:"/get_cards_on_sale",
+		type:"post",
+		data:JSON.stringify({}),
+		dataType:"json",
+		contentType:"application/json",
+		success: function (result) {
+			console.log(result);
+			cards = result["cards_on_sale"];
+		},
+		error: function (result) {
+			console.log(result);
+		}
+	});
+
+	let cardPerPage = 4;
+	let totalPage = Math.ceil(cards.length / cardPerPage);
+	let cardWraps = $(".card-wrap");
+	var prevBtn = $("#btn_prev");
+	var nextBtn = $("#btn_next");
+	var curPage = 0;
+	function loadPage(page) {
+		curPage = page;
+		prevBtn.attr('disabled', page == 0);
+		nextBtn.attr('disabled', page >= totalPage - 1);
 
 
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+		let start = page * cardPerPage;
+		for(var i = start; i < start + cardPerPage; i++){
+			var wrap = $(cardWraps[i - start]);
+			if(i >= cards.length){
+				$(wrap.find(".card-bg")[0]).css("background-image", "url(images/bg_placeholder.png)");
+				$(wrap.find("h1")[0]).text("暂无卡片");
+				$(wrap.find("p")[0]).html("");
+				continue;
+			}
+			var cardInfo = cards[i];
+			$(wrap.find(".card-bg")[0]).css("background-image", "url(" + cardInfo.url + ")");
+			$(wrap.find("h1")[0]).text(cardInfo.name);
+			$(wrap.find("p")[0]).html("<label style='font-weight: 700; padding-right: 15px'>价格： " +cardInfo.price+ "</label><button class=\"btn btn-dark btn_buy_card\">购买</button>");
+			var btn = $(wrap.find(".btn_buy_card")[0]);
+			btn.data({"card_id": cardInfo.cardId, "card_price":cardInfo.price});
+			btn.on('click', function(){
+				let price = $(this).data().card_price;
+				if(parseInt(account.balance) < parseInt(price)){
+					alert("余额不足");
+					return;
+				}
+				let id = $(this).data().card_id;
+				$.ajax({
+					async:false,
+					url:"/buy_card",
+					type:"post",
+					data:JSON.stringify({"card_id": id}),
+					dataType:"json",
+					contentType:"application/json",
+					success: function (result) {
+						console.log(result);
+						alert("购买成功");
+						window.location.reload();
+					},
+					error: function (result) {
+						console.log(result);
+						alert("购买失败");
+					}
+				})
+			});
+		}
+	}
 
-	<!-- Main JS (Do not remove) -->
-	<script src="js/main.js"></script>
+	loadPage(curPage);
 
-	</body>
+	prevBtn.on('click', ()=>{
+		loadPage(curPage - 1);
+	});
+	nextBtn.on('click', ()=>{
+		loadPage(curPage + 1);
+	});
+</script>
+
+</body>
 </html>
-

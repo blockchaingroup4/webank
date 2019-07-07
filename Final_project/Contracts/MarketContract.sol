@@ -154,7 +154,7 @@ contract MarketContract{
         address cardId = address(cardIdInt);
         nonce++;
         int8 level = 0;
-        if(rand <= 58889){
+        if(rand <= 5889){
             level = 1;
         }else if(rand <= 8889){
             level = 2;

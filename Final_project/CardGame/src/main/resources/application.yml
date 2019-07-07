@@ -15,11 +15,11 @@ user-key:
   user-key: 9b0b7de664abdeff59771047cda1e50a62bc9d3ecd017f31fcb4f7a93e8ae43c
 
 contract-addr:
-  account-contract-address: "0x295b9777c6d51a41c561ddc6cad52917444222b1"
-  card-contract-address: "0x334b6ed5d4be81395b9bcbcf05eb0d5640adc3b6"
-  transaction-contract-address: "0x23c4b20db616948c88f68dfe6a3541d4b7793c29"
-  market-contract-address: "0xfe8e6175b248e58c3c4b06b8ae5d9b2e7b6303b5"
-  reverse-contract-address: "0x36e40e504040c3f86ef172bbbced0eb27f245fdf"
+  account-contract-address: "0x1ad2296c314be1c50f25a8dcecda866948929dfe"
+  card-contract-address: "0x6ddf2c0f3c3b4f84dad05d9fe6e12b982fafa06f"
+  transaction-contract-address: "0xdc9b6eebd95ac38765e84a9118505bfca5ad0b3b"
+  market-contract-address: "0x1b49b0843cdbd3a05e910f424d9ed1d5e15ba7e2"
+  reverse-contract-address: "0x5a57400d6aa3fa2666766d8385c3a3789408d580"
 
 test-keys:
   user1: 9b0b7de664abdeff59771047cda1e50a62bc9d3ecd017f31fcb4f7a93e8ae43c
@@ -31,4 +31,4 @@ spring:
     static-locations: file:${upload.filedir}
 
 upload:
-  filedir: /home/lgh/Documents/webank/Final_project/Frontend
+  filedir: ../Frontend

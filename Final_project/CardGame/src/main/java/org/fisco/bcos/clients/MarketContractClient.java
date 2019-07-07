@@ -63,6 +63,7 @@ public class MarketContractClient extends ContractClient{
 
     public Integer pushCard(String cardId, BigInteger amount){
         try {
+            System.out.println(cardId + " : " + amount);
             contract.pushCard(cardId, amount).send();
             return 0;
         } catch (Exception e) {

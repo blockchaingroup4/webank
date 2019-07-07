@@ -30,6 +30,10 @@ span.onclick = function() {
 //     window.location.href="index.html";
 // }
 
+$("#button_send_check_code").on('click', function () {
+   alert("验证码已发送");
+});
+
 $("#button_login").on('click', function () {
     $.ajax({
         async:false,
@@ -44,7 +48,7 @@ $("#button_login").on('click', function () {
                 window.location.href = "index.html";
             }
             else if(result["type"]=="manager"){
-                window.location.href="adaministractor.html";
+                window.location.href="adaministrator.html";
             }
         } ,
         error: function (result) {
