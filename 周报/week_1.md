@@ -319,14 +319,14 @@ http://github.com/fisco-bcos
 
 ### 5.29 周三
 
-- 完成昨天下午的作业（十个实验要求），写成报告上传到github；
+- 完成昨天下午的作业（十个实验要求），写成报告上传到github,见[《DAY1_石望华_课堂作业.md》]((../day1/石望华/DAY1_石望华_课堂作业.md)；
 - 大致看了下build_chain.sh脚本文件
 - 学习shell教程（变量），见**《shell.study.md》**之5.29
 
 ### 5.30 周四
 
-- 继续学习shell script （传递参数、while循环、expr、read命令、基本运算符），见**《shell.study.md》**之5.30
-- 对脚本做一个简单处理，见**《read_build_chain.md》**
+- 继续学习shell script （传递参数、while循环、expr、read命令、基本运算符），见[《shell.study.md》之5.30](../day1/石望华/石望华_shell_study.md)
+- 对脚本做一个简单处理，见[《read_build_chain.md》](../day1/石望华/石望华_read_build_chain.md)
 
 ### 5.31 周五
 
