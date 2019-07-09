@@ -319,7 +319,7 @@ http://github.com/fisco-bcos
 
 ### 5.29 周三
 
-- 完成昨天下午的作业（十个实验要求），写成报告上传到github,见[《DAY1_石望华_课堂作业.md》]((../day1/石望华/DAY1_石望华_课堂作业.md)；
+- 完成昨天下午的作业（十个实验要求），写成报告上传到github,见[《DAY1_石望华_课堂作业.md》](../day1/石望华/DAY1_石望华_课堂作业.md)；
 - 大致看了下build_chain.sh脚本文件
 - 学习shell教程（变量），见**《shell.study.md》**之5.29
 
