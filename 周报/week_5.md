@@ -671,13 +671,35 @@ contract ReverseManagementContract{
 - 收集126张卡片图片
 - 学部署多群组架构，又遇到了很多问题，问了老师，最后下午四点多才成功打开了控制台！（通过重启节点！！！）详见《FISCO_BCOS文档学习_**3.0**.md》。
 
-# 4. 贾学雨
+# 贾学雨
 
 ## 周一 （2019/6/24）
 
 ##### 复习spring-boot-starter部署应用的方法，浏览FISCO-BCOS官方文档，学习FISCO-BCOS更多相关知识与应用。
 
 ## 周二 （2019/6/25）企业老师授课
+
+- ### build_chain.sh部署多群组架构
+
+  #### 1. 获取build_chain.sh脚本
+
+  #### 2. 生成星形区块链系统配置文件
+
+  ![1](../day3/贾学雨/images/1.jpg)
+
+  #### 3. 使用build_chain.sh脚本构建星形区块链节点配置文件夹
+
+  #### 4. 启动节点与查看共识
+
+  ![2](../day3/贾学雨/images/2.jpg)
+
+  ![3](../day3/贾学雨/images/3.jpg)
+
+  ![4](../day3/贾学雨/images/4.jpg)
+
+  ![5](../day3/贾学雨/images/5.jpg)
+
+  ##### 节点0，1在群组1，2共识正常，节点2，3在群组1共识正常，在群组2不能共识，节点4，5在群组2共识正常，在群组1不能共识。
 
 - ### 搭建多群组架构区块链
 
@@ -745,7 +767,7 @@ contract ReverseManagementContract{
   cat > ./conf/node_deployment.ini << EOF
   [group]
   group_id=1
-
+  
   [node0]
   ; host ip for the communication among peers.
   ; Please use your ssh login ip.
@@ -760,7 +782,7 @@ contract ReverseManagementContract{
   p2p_listen_port=30300
   channel_listen_port=20200
   jsonrpc_listen_port=8545
-
+  
   [node1]
   p2p_ip=127.0.0.1
   rpc_ip=127.0.0.1
@@ -777,7 +799,7 @@ contract ReverseManagementContract{
   cat > ./conf/node_deployment.ini << EOF
   [group]
   group_id=1
-
+  
   [node0]
   ; host ip for the communication among peers.
   ; Please use your ssh login ip.
@@ -792,7 +814,7 @@ contract ReverseManagementContract{
   p2p_listen_port=30302
   channel_listen_port=20202
   jsonrpc_listen_port=8547
-
+  
   [node1]
   p2p_ip=127.0.0.1
   rpc_ip=127.0.0.1
@@ -808,7 +830,6 @@ contract ReverseManagementContract{
   cd ~/generator-A
   ./generator --generate_all_certificates ./agencyA_node_info
   cp ./agencyA_node_info/peers.txt ~/generator-B/meta/peersA.txt
-
   ```
 
   ##### 4.6. 机构B生成并发送节点信息
@@ -818,7 +839,6 @@ contract ReverseManagementContract{
   ./generator --generate_all_certificates ./agencyB_node_info
   cp ./agencyB_node_info/cert*.crt ~/generator-A/meta/
   cp ./agencyB_node_info/peers.txt ~/generator-A/meta/peersB.txt
-
   ```
 
   ##### 4.7. 机构A生成群组1创世区块
@@ -828,7 +848,7 @@ contract ReverseManagementContract{
   cat > ./conf/group_genesis.ini << EOF
   [group]
   group_id=1
-
+  
   [nodes]
   node0=127.0.0.1:30300
   node1=127.0.0.1:30301
@@ -837,7 +857,6 @@ contract ReverseManagementContract{
   EOF
   ./generator --create_group_genesis ./group
   cp ./group/group.1.genesis ~/generator-B/meta
-
   ```
 
   ##### 4.8. 机构A生成所属节点
@@ -846,7 +865,6 @@ contract ReverseManagementContract{
   cd ~/generator-A
   ./generator --build_install_package ./meta/peersB.txt ./nodeA
   bash ./nodeA/start_all.sh
-
   ```
 
   ##### 4.9. 机构B生成所属节点
@@ -855,7 +873,6 @@ contract ReverseManagementContract{
   cd ~/generator-B
   ./generator --build_install_package ./meta/peersA.txt ./nodeB
   bash ./nodeB/start_all.sh
-
   ```
 
   ##### 5. 证书授权机构初始化机构C
@@ -865,7 +882,6 @@ contract ReverseManagementContract{
   cp -r ~/generator ~/generator-C
   ./generator --generate_agency_certificate ./dir_agency_ca ./dir_chain_ca agencyC
   cp ./dir_chain_ca/ca.crt ./dir_agency_ca/agencyC/agency.crt ./dir_agency_ca/agencyC/agency.key ~/generator-C/meta/
-
   ```
 
   ##### 6. 机构A, C构建群组2
@@ -876,7 +892,6 @@ contract ReverseManagementContract{
   cd ~/generator-A
   cp ./agencyA_node_info/cert*.crt ~/generator-C/meta/
   cp ./agencyA_node_info/peers.txt ~/generator-C/meta/peersA.txt
-
   ```
 
   ##### 6.2 机构C修改配置文件
@@ -886,7 +901,7 @@ contract ReverseManagementContract{
   cat > ./conf/node_deployment.ini << EOF
   [group]
   group_id=2
-
+  
   [node0]
   ; host ip for the communication among peers.
   ; Please use your ssh login ip.
@@ -901,7 +916,7 @@ contract ReverseManagementContract{
   p2p_listen_port=30304
   channel_listen_port=20204
   jsonrpc_listen_port=8549
-
+  
   [node1]
   p2p_ip=127.0.0.1
   rpc_ip=127.0.0.1
@@ -909,7 +924,6 @@ contract ReverseManagementContract{
   channel_listen_port=20205
   jsonrpc_listen_port=8550
   EOF
-
   ```
 
   ##### 6.3 机构C生成并发送节点信息
@@ -918,7 +932,6 @@ contract ReverseManagementContract{
   cd ~/generator-C
   ./generator --generate_all_certificates ./agencyC_node_info
   cp ./agencyC_node_info/peers.txt ~/generator-A/meta/peersC.txt
-
   ```
 
   ##### 6.4 机构C生成群组2创世区块
@@ -928,7 +941,7 @@ contract ReverseManagementContract{
   cat > ./conf/group_genesis.ini << EOF
   [group]
   group_id=2
-
+  
   [nodes]
   node0=127.0.0.1:30300
   node1=127.0.0.1:30301
@@ -937,7 +950,6 @@ contract ReverseManagementContract{
   EOF
   ./generator --create_group_genesis ./group
   cp ./group/group.2.genesis ~/generator-A/meta/
-
   ```
 
   ##### 6.5 机构C生成所属节点
@@ -946,7 +958,6 @@ contract ReverseManagementContract{
   cd ~/generator-C
   ./generator --build_install_package ./meta/peersA.txt ./nodeC
   bash ./nodeC/start_all.sh
-
   ```
 
   ##### 6.6 机构A为现有节点初始化群组2
@@ -957,7 +968,6 @@ contract ReverseManagementContract{
   ./generator --add_peers ./meta/peersC.txt ./nodeA
   bash ./nodeA/stop_all.sh
   bash ./nodeA/start_all.sh
-
   ```
 
 - ### 公布课程最终作业和考核内容
@@ -985,6 +995,16 @@ contract ReverseManagementContract{
 ## 周五 （2019/6/28）
 
 ##### 由于组内计划更改，被分配了前端设计的工作。于是设计出前端页面的基本结构，并开始构建前端。
+
+![9](../day3/贾学雨/images/9.jpg)
+
+![10](../day3/贾学雨/images/10.png)
+
+- #### 市场页面下部分代码编写（market.js, market.css, market.html)
+
+- #### 学习css, js帮助组员前端开发，编写代码大多编写函数或其他为主
+
+  ![11](../day3/贾学雨/images/11.png)
 --------
 # 5. 张羽颀
 
