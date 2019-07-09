@@ -632,7 +632,7 @@ contract ReverseManagementContract{
 
 ---
 # 3. 石望华
-###[个人周报汇总](../day3/石望华/石望华_周报_all_weeks.md)
+## [个人周报汇总](../day3/石望华/石望华_周报_all_weeks.md)
 ### 6.24 周一
 
 - 在虚拟机中配置1.8版本的java，出现了新的错误，问了老师，无果，最后的效果还不如上周的了，build不能成功了，详见[《作业报告.md》](../day2/石望华/作业报告_day2_swhua.md)
