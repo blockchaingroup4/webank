@@ -7,12 +7,12 @@
 ### [**个人周报汇总**](../day2/石望华/石望华_周报_all_weeks.md)
 ### 6.17 周一
 
-* 写代码，在remix上测试，写测试报告（[见《作业报告.md》](../day2/石望华/作业报告_day2_swhua.md))
+* 写代码，在remix上测试，写测试报告（见[《作业报告.md》](../day2/石望华/作业报告_day2_swhua.md))
 * 在虚拟机上编译和部署合约，问了老师，最终还是没成功，说是缺少.class文件，但直接javac编译java文件会产生很多错误，而且我将合约转成java文件时也有报与abi相关的错误，但生成了java文件
 
 ### 6.18 周二
 
-* 结合Spring-Boot项目和AssetAPP应用，学习官方文档的Web3SDK（主要是配置SDK和使用SDK），“使用SDK” 部分主要讲的是Spring项目下调用SDK API、创建账号和部署、调用合约，而没有讲SpringBoot项目的开发；了解了Web3SDK API, 做笔记于[《FISCO-BCOS文档学习_2.0.md》](../day2/石望华/石望华_FISCO BCOS文档学习_2.0.md)
+* 结合Spring-Boot项目和AssetAPP应用，学习官方文档的Web3SDK（主要是配置SDK和使用SDK），“使用SDK” 部分主要讲的是Spring项目下调用SDK API、创建账号和部署、调用合约，而没有讲SpringBoot项目的开发；了解了Web3SDK API, 做笔记于[《FISCO-BCOS文档学习_2.0.md》](../day2/石望华/石望华_FISCO-BCOS文档学习_2.0.md)
 * 上午根据SpringBootStarter的REAADME_CN.md进行部署时，在“运行”一步“./gradlew build”命令就没运行成功了，问了老师好久，检查了各种地方，最后发现是因为gradlew是windows下的格式，通过dos2unix转成unix下的格式就运行成功了......
 * 熟悉Spring-Boot项目结构（主要是src（main和test）、各种gradle），认真阅读了main下的8个java类文件
 * 部署groovy环境（springboot里有.groovy文件）
