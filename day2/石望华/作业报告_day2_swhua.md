@@ -8,7 +8,7 @@
 2. 课堂实验
 3. 使用spring-boot-starter部署课上的LAG积分合约https://github.com/FISCO-BCOS/spring-boot-starter/blob/master/doc/README_CN.md
 
-## 2. ![cryptozombies](/images/cryptozombies.png)
+## 2. ![cryptozombies](./images/cryptozombies.png)
 
 # 3. remix - 测试
 
@@ -24,9 +24,9 @@
 
 * 以上测试截图记录如下：
 
-  ![test1](./images\test1.png)
+  ![test1](./images/test1.png)
 
-![test2](./images\test2.png)
+![test2](./images/test2.png)
 
 ### 3.2 转账
 
